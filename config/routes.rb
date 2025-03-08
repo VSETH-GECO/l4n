@@ -426,6 +426,9 @@ Rails.application.routes.draw do
     post :markdown_preview, to: 'markdown#preview'
   end
 
+  # Check endpoint for K8S
+  get 'healthz' => 'rails/health#show'
+
   # == Dynamic pages ====================================================================
   # Wildcard route for dynamic pages. This **needs** to come last at all times
   get '*page', to: 'pages#show', page: /((?!rails|admin|paymentgateway).)*/
