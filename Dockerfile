@@ -51,7 +51,7 @@ ENV RUBY_YJIT_ENABLE true
 ADD  --chown=rails:rails . /app
 
 # Precompile assets
-RUN bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile && mkdir -p /app/.config/rclone
 
 EXPOSE 3000
 
