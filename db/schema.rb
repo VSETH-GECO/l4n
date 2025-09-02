@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_07_02_194629) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_02_194629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -78,8 +78,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_02_194629) do
   end
 
   create_table "event_dates", force: :cascade do |t|
-    t.datetime "start_date", null: false
-    t.datetime "end_date", null: false
+    t.datetime "start_date", precision: nil, null: false
+    t.datetime "end_date", precision: nil, null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
