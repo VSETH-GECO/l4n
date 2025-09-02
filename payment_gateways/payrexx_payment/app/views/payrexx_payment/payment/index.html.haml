@@ -1,0 +1,46 @@
+- content_for :page_title do
+  = _('PayrexxPaymentGateway|Title')
+
+.alert.alert-warning.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
+  = _('PayrexxPaymentGateway|Time left:')
+  %span#time-left= _('PayrexxPaymentGateway|Countdown loading...')
+
+.row
+  .col-xl-6.mb-3.mb-xl-0
+    .card
+      .card-header
+        = _('PayrexxPaymentGateway|Payment details')
+      .card-body
+        = _('PayrexxPaymentGateway|Description')
+      .card-footer.d-flex.flex-wrap.gap-2
+        = button_to _('PayrexxPaymentGateway|Pay now'), complete_payment_path(order_id: op.result[:order_id]), method: :post, data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
+        = link_to _('PayrexxPaymentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger'
+  .col-xl-6
+    .card
+      .card-header
+        = _('PayrexxPaymentGateway|Order details')
+      .card-body.p-0
+        %table.table.table-borderless.mb-0
+          %tr
+            %th= _('Order|Product')
+            %th= _('Order|Quantity')
+            %th= _('Order|Total')
+          - op.result[:items].each do |item|
+            %tr
+              %td= item[:product]
+              %td= item[:quantity]
+              %td= PayrexxPayment::ApplicationController.money_formatted(item[:total])
+          - op.result[:promotion_codes].each do |promotion_code|
+            %tr
+              %td= "#{_('Order|PromotionCode')} #{promotion_code[:name]}"
+              %td= 1
+              %td.text-success= PayrexxPayment::ApplicationController.money_formatted(-promotion_code[:reduction])
+          %tr.border-top
+            %td= _('Order|Total')
+            %td
+            %td= PayrexxPayment::ApplicationController.money_formatted(op.result[:total])
+
+:javascript
+  (function() {
+    setupCountdownTimer()
+  })();
