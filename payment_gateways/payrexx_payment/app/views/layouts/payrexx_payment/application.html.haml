@@ -1,0 +1,26 @@
+!!!
+- color_theme = cookies[:_l4n_color_theme].presence || 'auto'
+%html{ lang: FastGettext.locale, 'data-bs-theme' => color_theme }
+  %head
+    -# This is put here such that it runs as soon as possible, to avoid a flash of unstyled content
+    :javascript
+      if (document.documentElement.dataset['bsTheme'] === 'auto') {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', 'light')
+        }
+      }
+    %title L4n Payrexx Payment
+    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_include_tag 'payrexx_payment/application'
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'payrexx_payment/application'
+  %body.d-flex.application
+    .main.container
+      .page-title
+        %h1= yield :page_title
+      .content
+        = yield

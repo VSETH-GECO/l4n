@@ -116,3 +116,4 @@ end
 # Payment gateways
 gem 'paypal_payment', path: 'payment_gateways/paypal_payment'
 gem 'seki_payment', path: 'payment_gateways/seki_payment'
+gem 'payrexx_payment', path: 'payment_gateways/payrexx_payment'

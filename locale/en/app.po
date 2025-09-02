@@ -2187,7 +2187,40 @@ msgid "PaypalPaymentGateway|Time left:"
 msgstr "Time left:"
 
 msgid "PaypalPaymentGateway|Title"
-msgstr "Paypal payment"
+msgstr "Payrexx payment"
+
+msgid "PayrexxPaymentGateway"
+msgstr "PayrexxPayment"
+
+msgid "PayrexxPaymentGateway|Cancel"
+msgstr "Cancel payment"
+
+msgid "PayrexxPaymentGateway|Countdown loading..."
+msgstr "Countdown loading..."
+
+msgid "PayrexxPaymentGateway|Description"
+msgstr " Simply pay your order using Twint"
+
+msgid "PayrexxPaymentGateway|Order details"
+msgstr "Order"
+
+msgid "PayrexxPaymentGateway|Pay"
+msgstr "Pay with Twint"
+
+msgid "PayrexxPaymentGateway|Pay now"
+msgstr "Pay now"
+
+msgid "PayrexxPaymentGateway|Payment details"
+msgstr "Payment details"
+
+msgid "PayrexxPaymentGateway|Time left:"
+msgstr "Time left:"
+
+msgid "PayrexxPaymentGateway|Title"
+msgstr "Parexx payment gateway"
+
+msgid "PayrexxPayment|There was an error, please try again"
+msgstr "There was an error, please try again"
 
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
 msgstr "Are you sure you want to delete all rounds for this phase?"

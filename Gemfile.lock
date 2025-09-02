@@ -12,6 +12,13 @@ PATH
       rails (>= 7.1.2)
 
 PATH
+  remote: payment_gateways/payrexx_payment
+  specs:
+    payrexx_payment (1.0.0)
+      httparty
+      rails (>= 7.1.2)
+
+PATH
   remote: payment_gateways/seki_payment
   specs:
     seki_payment (1.0.0)
@@ -536,6 +543,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0.1)
   omniauth-steam (~> 1.0.6)
   paypal_payment!
+  payrexx_payment!
   pg (~> 1.5.3)
   pry-byebug (~> 3.9)
   puma (~> 6.4)

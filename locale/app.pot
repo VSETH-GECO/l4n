@@ -2190,6 +2190,39 @@ msgstr ""
 msgid "PaypalPaymentGateway|Title"
 msgstr ""
 
+msgid "PayrexxPaymentGateway"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Cancel"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Countdown loading..."
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Description"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Order details"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Pay"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Pay now"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Payment details"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Time left:"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Title"
+msgstr ""
+
+msgid "PayrexxPayment|There was an error, please try again"
+msgstr ""
+
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
 msgstr ""
 
