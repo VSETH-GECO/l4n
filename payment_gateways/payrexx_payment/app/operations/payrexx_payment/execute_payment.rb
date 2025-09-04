@@ -7,17 +7,18 @@ module PayrexxPayment
 
     def perform
       # Get data from the backend about the payment
-      begin
-        result = Operations::PaymentGateway::GetPaymentInfo.run!(order_id: osparams.order_id).result
-
-        # Check that the order is still valid
-        fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Order is expired, payment was not executed') if result[:valid_until] <= Time.zone.now
-      rescue Operations::PaymentGateway::InvalidOrder => e
-        fail PayrexxPayment::ExecutionFailed, e.message
-      end
+      # begin
+      #   result = Operations::PaymentGateway::GetPaymentInfo.run!(order_id: osparams.order_id).result
+      #
+      #   # Check that the order is still valid
+      #   fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Order is expired, payment was not executed') if result[:valid_until] <= Time.zone.now
+      # rescue Operations::PaymentGateway::InvalidOrder => e
+      #   fail PayrexxPayment::ExecutionFailed, e.message
+      # end
 
       # Verify the payment status with Payrexx
-      gateway_info = get_gateway_info(::Order.find_by(uuid: osparams.order_id))
+      order = ::Order.find_by(uuid: osparams.order_id)
+      gateway_info = get_gateway_info(order)
 
       # Check if payment was successful
       unless payment_successful?(gateway_info)
@@ -27,7 +28,7 @@ module PayrexxPayment
       # If the payment is approved, mark the order as paid
       run_sub Operations::PaymentGateway::SubmitPaymentResult, {
         gateway_name: 'Payrexx Payment',
-        payment_id: payment_id.to_s,
+        payment_id: order.payment_gateway_payment_id,
         order_id: osparams.order_id
       }
 
