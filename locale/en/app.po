@@ -2195,6 +2195,9 @@ msgstr "PayrexxPayment"
 msgid "PayrexxPaymentGateway|Cancel"
 msgstr "Cancel payment"
 
+msgid "PayrexxPaymentGateway|Could not verify payment status"
+msgstr "Could not verify payment status"
+
 msgid "PayrexxPaymentGateway|Countdown loading..."
 msgstr "Countdown loading..."
 
@@ -2210,17 +2213,26 @@ msgstr "Pay with Twint"
 msgid "PayrexxPaymentGateway|Pay now"
 msgstr "Pay now"
 
+msgid "PayrexxPaymentGateway|Payment could not be verified"
+msgstr "Payment could not be verified"
+
 msgid "PayrexxPaymentGateway|Payment details"
 msgstr "Payment details"
+
+msgid "PayrexxPaymentGateway|Payment was cancelled or failed"
+msgstr "Payment was cancelled or failed"
+
+msgid "PayrexxPaymentGateway|Payment was not successful"
+msgstr "Payment was not successful"
+
+msgid "PayrexxPaymentGateway|Something went wrong, please try again"
+msgstr "Something went wrong, please try again"
 
 msgid "PayrexxPaymentGateway|Time left:"
 msgstr "Time left:"
 
 msgid "PayrexxPaymentGateway|Title"
 msgstr "Parexx payment gateway"
-
-msgid "PayrexxPayment|There was an error, please try again"
-msgstr "There was an error, please try again"
 
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
 msgstr "Are you sure you want to delete all rounds for this phase?"
@@ -3230,7 +3242,6 @@ msgstr "Wrong event"
 msgid "TicketScanner|Wrong user"
 msgstr "Wrong user"
 
-#, fuzzy
 msgid "TicketUpgrades|Purchased ticket upgrades"
 msgstr "My ticket upgrades"
 

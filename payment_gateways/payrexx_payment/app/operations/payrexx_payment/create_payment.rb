@@ -55,11 +55,6 @@ module PayrexxPayment
       fail "API request failed: #{response.code} - #{response.message}" unless response.success?
 
       response_data = response.parsed_response
-      
-      pp ("---- REEEESPONSE INFO DUMP ----")
-      pp (response_data)
-      pp ("---------------------------")
-
 
       fail "Gateway creation failed: #{response_data['message'] || 'Unknown error'}" unless response_data['status'] == 'success' && response_data['data']
 
