@@ -5,7 +5,6 @@ module PayrexxPayment
       str? :gateway_id
     end
 
-
     def perform
       # Get data from the backend about the payment
       begin
@@ -18,20 +17,12 @@ module PayrexxPayment
       end
 
       # Verify the payment status with Payrexx
-      gateway_info = get_gateway_info
+      gateway_info = get_gateway_info(::Order.find_by(uuid: osparams.order_id))
 
-
-      pp ("---- GATEWAY INFO DUMP ----")
-      pp (gateway_info)
-      pp ("---------------------------")
-
-        # Check if payment was successful
+      # Check if payment was successful
       unless payment_successful?(gateway_info)
         fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Payment was not successful')
       end
-
-      # Extract payment information
-      #payment_id = gateway_info.dig('data','0', 'id') || osparams.gateway_id
 
       # If the payment is approved, mark the order as paid
       run_sub Operations::PaymentGateway::SubmitPaymentResult, {
@@ -45,13 +36,10 @@ module PayrexxPayment
 
     private
 
-    def get_gateway_info
-
-      pp('Sdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaergershndgjnsrz')
-      pp($gatewaymap[osparams.order_id])
+    def get_gateway_info(order)
       # If we have a gateway_id, use it, otherwise try to find it by reference
       response = HTTParty.get(
-        "https://api.payrexx.com/v1.11/Gateway/#{$gatewaymap[osparams.order_id]}",
+        "https://api.payrexx.com/v1.11/Gateway/#{order.payment_gateway_payment_id}",
         headers: {
           'accept'    => 'application/json',
           'X-API-KEY' => api_key
@@ -60,8 +48,7 @@ module PayrexxPayment
           instance: "#{payrexx_instance}"
         }
       )
-        pp("dfsssssssssssssssssss")
-        pp("https://api.payrexx.com/v1.11/Gateway/#{$gatewaymap[osparams.order_id]}")
+
       unless response.success?
         fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Could not verify payment status')
       end
@@ -74,9 +61,6 @@ module PayrexxPayment
       return false unless gateway_info['data']&.any?
 
       gateway_data = gateway_info['data'].first
-
-      pp('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYyyyyaa')
-      pp(gateway_data)
 
       # Check if the gateway status indicates successful payment
       # Payrexx gateway statuses: waiting, authorized, partially-authorized, confirmed, cancelled, declined, error  

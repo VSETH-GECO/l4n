@@ -63,13 +63,10 @@ module PayrexxPayment
 
       fail "Gateway creation failed: #{response_data['message'] || 'Unknown error'}" unless response_data['status'] == 'success' && response_data['data']
 
-     
+      ::Order.find_by(uuid: osparams.order_id).update!(payment_gateway_payment_id: response_data['data'][0]['id'])
+
       @payment_id = response_data['data'][0]['id']
       @gateway_url = response_data['data'][0]['link']
-
-      $gatewaymap[osparams.order_id]=@payment_id
-
-      pp("the thing is this here #{$gatewaymap[osparams.order_id]}")
     end
 
     def payment_url
