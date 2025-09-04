@@ -21,15 +21,13 @@ module PayrexxPayment
       gateway_info = get_gateway_info(order)
 
       # Check if payment was successful
-      unless payment_successful?(gateway_info)
-        fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Payment was not successful')
-      end
+      fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Payment was not successful') unless payment_successful?(gateway_info)
 
       # If the payment is approved, mark the order as paid
       run_sub Operations::PaymentGateway::SubmitPaymentResult, {
         gateway_name: 'Payrexx Payment',
-        payment_id: order.payment_gateway_payment_id,
-        order_id: osparams.order_id
+        payment_id:   order.payment_gateway_payment_id,
+        order_id:     osparams.order_id
       }
 
       true
@@ -46,13 +44,11 @@ module PayrexxPayment
           'X-API-KEY' => api_key
         },
         query:   {
-          instance: "#{payrexx_instance}"
+          instance: payrexx_instance.to_s
         }
       )
 
-      unless response.success?
-        fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Could not verify payment status')
-      end
+      fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Could not verify payment status') unless response.success?
 
       response.parsed_response
     end
@@ -64,18 +60,14 @@ module PayrexxPayment
       gateway_data = gateway_info['data'].first
 
       # Check if the gateway status indicates successful payment
-      # Payrexx gateway statuses: waiting, authorized, partially-authorized, confirmed, cancelled, declined, error  
+      # Payrexx gateway statuses: waiting, authorized, partially-authorized, confirmed, cancelled, declined, error
       successful_statuses = %w[authorized confirmed]
 
       successful_statuses.include?(gateway_data['status'])
     end
 
     def gateway_url
-      if Rails.env.development?
-        "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
-      else
-        "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
-      end
+      "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
     end
 
     def api_key

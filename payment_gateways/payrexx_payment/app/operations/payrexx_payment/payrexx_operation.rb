@@ -8,7 +8,7 @@ module PayrexxPayment
 
     without_authorization
 
-    PAYREXX_INSTANCE = "vseth"
+    PAYREXX_INSTANCE = 'vseth'.freeze
 
     def perform
       # Can't execute this operations, inheriting operations
@@ -27,7 +27,7 @@ module PayrexxPayment
     end
 
     def api_base_url
-      "https://api.payrexx.com/v1.0"
+      'https://api.payrexx.com/v1.0'
     end
 
     def gateway_url
@@ -36,7 +36,7 @@ module PayrexxPayment
 
     def common_headers
       {
-        'accept' => 'application/json',
+        'accept'    => 'application/json',
         'X-API-KEY' => api_key
       }
     end

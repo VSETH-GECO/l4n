@@ -1,5 +1,4 @@
 module PayrexxPayment
-  $gatewaymap= Hash.new
   class PaymentController < ApplicationController
     def index
       run Operations::PaymentGateway::GetPaymentInfo
@@ -31,7 +30,7 @@ module PayrexxPayment
       if run PayrexxPayment::CreatePayment
         # Redirect to the Payrexx gateway URL
         redirect_to op.gateway_url, allow_other_host: true
-      else  
+      else
         flash[:danger] = _('PayrexxPaymentGateway|Something went wrong, please try again')
         redirect_to main_app.shop_cart_path
       end
@@ -45,7 +44,7 @@ module PayrexxPayment
         flash[:danger] = _('PayrexxPaymentGateway|Payment could not be verified')
         redirect_to main_app.shop_cart_path
       end
-    rescue PayrexxPayment::ExecutionFailed => e 
+    rescue PayrexxPayment::ExecutionFailed => e
       flash[:danger] = e.message
       redirect_to main_app.shop_cart_path
     end

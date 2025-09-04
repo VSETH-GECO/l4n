@@ -27,7 +27,7 @@ module PayrexxPayment
       body = {
         amount:             total_amount,
         currency:           order_data[:currency] || 'CHF',
-        successRedirectUrl: success_url,  
+        successRedirectUrl: success_url,
         failedRedirectUrl:  failure_url,
         cancelRedirectUrl:  cancel_url,
         pm:                 %w[TWINT], # Payment methods
@@ -51,7 +51,7 @@ module PayrexxPayment
           'content-type' => 'application/x-www-form-urlencoded'
         }
       )
-     
+
       fail "API request failed: #{response.code} - #{response.message}" unless response.success?
 
       response_data = response.parsed_response
@@ -65,11 +65,7 @@ module PayrexxPayment
     end
 
     def payment_url
-      if Rails.env.development?
-        "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
-      else
-        "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
-      end
+      "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
     end
 
     def base_url
