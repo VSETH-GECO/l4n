@@ -2187,7 +2187,7 @@ msgid "PaypalPaymentGateway|Time left:"
 msgstr "Time left:"
 
 msgid "PaypalPaymentGateway|Title"
-msgstr "Payrexx payment"
+msgstr "Paypal payment"
 
 msgid "PayrexxPaymentGateway"
 msgstr "PayrexxPayment"
@@ -2202,13 +2202,13 @@ msgid "PayrexxPaymentGateway|Countdown loading..."
 msgstr "Countdown loading..."
 
 msgid "PayrexxPaymentGateway|Description"
-msgstr " Simply pay your order using Twint"
+msgstr "Simply pay your order using Payrexx"
 
 msgid "PayrexxPaymentGateway|Order details"
 msgstr "Order"
 
 msgid "PayrexxPaymentGateway|Pay"
-msgstr "Pay with Twint"
+msgstr "Pay with Payrexx"
 
 msgid "PayrexxPaymentGateway|Pay now"
 msgstr "Pay now"
