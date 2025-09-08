@@ -116,6 +116,7 @@ To develop features for L4N locally, we recommend to install Ruby as well as Pos
    paypal_secret: <your-paypal-secret>
    recaptcha_site_key: <your-recaptcha-site-key>
    recaptcha_site_secret: <your-recaptcha-site-key>
+   payrexx_api_key: <your-payrexx-api-key>
    ```
 7. To start the server locally, use the command `bin/dev`, which will launch the Rails server as well as a JS and CSS compilation process
 
