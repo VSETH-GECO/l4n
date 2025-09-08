@@ -10,7 +10,7 @@ module Operations::Setup
 
     def perform
       # Should only be ran if no other users are present
-      if User.any?
+      if ::User.any?
         puts 'There are already users present, this is only used to create the first user!'
         return
       end
