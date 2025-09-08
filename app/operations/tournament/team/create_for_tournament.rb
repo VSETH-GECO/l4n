@@ -58,12 +58,12 @@ module Operations::Tournament::Team
       super
 
       # Assign Discord role if given
-      if model.tournament.discord_role_id
-        run_sub Operations::User::Discord::AddGuildMemberRole,
-                id: context.user.id,
-                discord_guild_id: model.tournament.lan_party.discord_server_id,
-                discord_role_id: model.tournament.discord_role_id
-      end
+      return unless model.tournament.discord_role_id
+
+      run_sub Operations::User::Discord::AddGuildMemberRole,
+              id:               context.user.id,
+              discord_guild_id: model.tournament.lan_party.discord_server_id,
+              discord_role_id:  model.tournament.discord_role_id
     end
 
     def tournament

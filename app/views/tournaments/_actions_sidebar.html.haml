@@ -20,7 +20,9 @@
           - else
             = _('Tournament|Please join the Discord to see the available actions')
         - else
+          -# rubocop:disable Rails/OutputSafety
           = (_('Tournament|Please link your Discord account to see the available actions %{link}') % { link: settings_gameaccounts_path }).html_safe
+          -# rubocop:enable Rails/OutputSafety
       - else
         = _('Tournament|Please check-in at the event to see the available actions')
     - else

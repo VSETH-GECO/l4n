@@ -112,12 +112,12 @@ class Tournament < ApplicationRecord
   end
 
   def lan_party_server_id_present_if_discord_role_present
-    if discord_role_id.present?
-      if lan_party.blank?
-        errors.add(:lan_party_id, _('Tournament|Lan party must be present if Discord Role ID is set'))
-      elsif lan_party.discord_server_id.blank?
-        errors.add(:lan_party_id, _('Tournament|Lan party Discord Server ID must be present if Discord Role ID is set'))
-      end
+    return if discord_role_id.blank?
+
+    if lan_party.blank?
+      errors.add(:lan_party_id, _('Tournament|Lan party must be present if Discord Role ID is set'))
+    elsif lan_party.discord_server_id.blank?
+      errors.add(:lan_party_id, _('Tournament|Lan party Discord Server ID must be present if Discord Role ID is set'))
     end
   end
 end
