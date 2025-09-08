@@ -15,6 +15,7 @@ module Operations::Admin::Tournament
         obj? :description
         obj? :teams_need_rank
         hsh? :tournament_team_ranks_attributes, additional_properties: true
+        str? :discord_role_id
       end
     end
 

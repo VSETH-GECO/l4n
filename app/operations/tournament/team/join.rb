@@ -49,6 +49,14 @@ module Operations::Tournament::Team
       fail Operations::Exceptions::OpFailed, _('Team|Password is incorrect') unless model.authenticate(osparams.join_data[:password])
 
       model.users << context.user
+
+      # Assign Discord role if given
+      return unless model.tournament.discord_role_id
+
+      run_sub Operations::User::Discord::AddGuildMemberRole,
+              id:               context.user.id,
+              discord_guild_id: model.tournament.lan_party.discord_server_id,
+              discord_role_id:  model.tournament.discord_role_id
     end
   end
 end

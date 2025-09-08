@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_07_02_194629) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_08_133337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_02_194629) do
     t.boolean "timetable_enabled", default: true, null: false
     t.boolean "seatmap_enabled", default: true, null: false
     t.boolean "users_may_have_multiple_tickets_assigned", default: false, null: false
+    t.string "discord_server_id", limit: 20
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -580,6 +581,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_02_194629) do
     t.text "description"
     t.integer "frontend_order", default: 0, null: false
     t.boolean "teams_need_rank", default: false, null: false
+    t.string "discord_role_id", limit: 20
     t.index ["lan_party_id"], name: "index_tournaments_on_lan_party_id"
   end
 
