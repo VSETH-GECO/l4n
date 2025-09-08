@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-04 18:51+0200\n"
-"PO-Revision-Date: 2025-09-04 18:51+0200\n"
+"POT-Creation-Date: 2025-09-08 17:55+0200\n"
+"PO-Revision-Date: 2025-09-08 17:55+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1516,6 +1516,9 @@ msgid "LanParty|Counter"
 msgstr ""
 
 msgid "LanParty|Details"
+msgstr ""
+
+msgid "LanParty|Discord server id"
 msgstr ""
 
 msgid "LanParty|Event end"
@@ -3699,6 +3702,9 @@ msgstr ""
 msgid "Tournament|Description"
 msgstr ""
 
+msgid "Tournament|Discord role id"
+msgstr ""
+
 msgid "Tournament|Files"
 msgstr ""
 
@@ -3721,6 +3727,12 @@ msgid "Tournament|Info"
 msgstr ""
 
 msgid "Tournament|Lan party"
+msgstr ""
+
+msgid "Tournament|Lan party Discord Server ID must be present if Discord Role ID is set"
+msgstr ""
+
+msgid "Tournament|Lan party must be present if Discord Role ID is set"
 msgstr ""
 
 msgid "Tournament|LanParty"
@@ -3793,6 +3805,12 @@ msgid "Tournament|Phase"
 msgstr ""
 
 msgid "Tournament|Please check-in at the event to see the available actions"
+msgstr ""
+
+msgid "Tournament|Please join the Discord to see the available actions"
+msgstr ""
+
+msgid "Tournament|Please link your Discord account to see the available actions %{link}"
 msgstr ""
 
 msgid "Tournament|Please login to see the available actions"

@@ -8,11 +8,19 @@
       -# User can only crate a team if the lan_party is not present or the user
       -# has a checked_in ticket for this lan_party
       - if tournament.lan_party.blank? || current_user.ticket_for(tournament.lan_party)&.checked_in?
-        -# Display the correct sidebar depending on if it's a singleplayer game or not
-        - if tournament.singleplayer?
-          = render partial: 'tournaments/user_singleplayer', locals: { tournament: tournament, op: op }
+        -# Check if user has a correctly linked Discord account if a role ID is given
+        - if tournament.discord_role_id.blank? || Operations::Gameaccounts::ShowDiscord.run!(id: current_user.id).successful
+          -# Check if user linked Discord account is part of tournament Discord server if a role ID is given
+          - if tournament.discord_role_id.blank? || Operations::User::Discord::GetGuildMember.run!(id: current_user.id, discord_guild_id: tournament.lan_party.discord_server_id).successful
+            -# Display the correct sidebar depending on if it's a singleplayer game or not
+            - if tournament.singleplayer?
+              = render partial: 'tournaments/user_singleplayer', locals: { tournament: tournament, op: op }
+            - else
+              = render partial: 'tournaments/user_team', locals: { tournament: tournament, op: op }
+          - else
+            = _('Tournament|Please join the Discord to see the available actions')
         - else
-          = render partial: 'tournaments/user_team', locals: { tournament: tournament, op: op }
+          = (_('Tournament|Please link your Discord account to see the available actions %{link}') % { link: settings_gameaccounts_path }).html_safe
       - else
         = _('Tournament|Please check-in at the event to see the available actions')
     - else
