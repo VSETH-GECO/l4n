@@ -2190,7 +2190,7 @@ msgid "PaypalPaymentGateway|Title"
 msgstr "Paypal payment"
 
 msgid "PayrexxPaymentGateway"
-msgstr "PayrexxPayment"
+msgstr "Twint / Credit Card"
 
 msgid "PayrexxPaymentGateway|Cancel"
 msgstr "Cancel payment"
@@ -2202,13 +2202,13 @@ msgid "PayrexxPaymentGateway|Countdown loading..."
 msgstr "Countdown loading..."
 
 msgid "PayrexxPaymentGateway|Description"
-msgstr "Simply pay your order using Payrexx"
+msgstr "Pay using many different payment methods (incl. Twint and Credit Card) using our payment provider Payrexx."
 
 msgid "PayrexxPaymentGateway|Order details"
 msgstr "Order"
 
 msgid "PayrexxPaymentGateway|Pay"
-msgstr "Pay with Payrexx"
+msgstr "Pay with Twint / Credit Card"
 
 msgid "PayrexxPaymentGateway|Pay now"
 msgstr "Pay now"
