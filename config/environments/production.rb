@@ -115,10 +115,10 @@ Rails.application.configure do
       config.action_mailer.smtp_settings = {
         address:              Figaro.env.smtp_address!,
         port:                 Figaro.env.smtp_port!,
-        authentication:       Figaro.env.smtp_authentication!,
-        user_name:            Figaro.env.smtp_username!,
-        password:             Figaro.env.smtp_password!,
-        domain:               Figaro.env.smtp_domain!,
+        authentication:       Figaro.env.smtp_authentication,
+        user_name:            Figaro.env.smtp_username,
+        password:             Figaro.env.smtp_password,
+        domain:               Figaro.env.smtp_domain,
         enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(Figaro.env.smtp_enable_starttls_auto!)
       }
     else
