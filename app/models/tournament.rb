@@ -36,6 +36,8 @@ class Tournament < ApplicationRecord
   validate :disallow_changes_when_teams_present
   validate :max_number_of_participants_larger_than_in_tournament_teams
   validates :frontend_order, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
+  validates :discord_role_id, length: { in: 17..19 }, format: /\A[+-]?\d+\z/, if: -> { discord_role_id.present? }
+  validate :lan_party_server_id_present_if_discord_role_present
 
   # == Hooks =======================================================================
 
@@ -106,6 +108,16 @@ class Tournament < ApplicationRecord
       errors.add(:max_number_of_participants, _('must be larger than 0'))
     elsif max_number_of_participants < teams.in_tournament.count
       errors.add(:max_number_of_participants, _('must be larger or equal than the number of teams (currently %{number})') % { number: teams.in_tournament.count })
+    end
+  end
+
+  def lan_party_server_id_present_if_discord_role_present
+    return if discord_role_id.blank?
+
+    if lan_party.blank?
+      errors.add(:lan_party_id, _('Tournament|Lan party must be present if Discord Role ID is set'))
+    elsif lan_party.discord_server_id.blank?
+      errors.add(:lan_party_id, _('Tournament|Lan party Discord Server ID must be present if Discord Role ID is set'))
     end
   end
 end

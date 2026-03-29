@@ -39,6 +39,9 @@
           = f.input :frontend_order
         .col-md-6
           = f.input :teams_need_rank, as: :select, include_blank: false, disabled: model.teams.any?
+      .row
+        .col-md-6
+          = f.input :discord_role_id, label: _('Tournament|Discord role id')
 
   .card.mb-3
     .card-header

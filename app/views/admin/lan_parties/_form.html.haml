@@ -25,5 +25,8 @@
         = f.input :event_start, as: :datetime, html5: true
       .col-md-6
         = f.input :event_end, as: :datetime, html5: true
+    .row
+      .col-md-6
+        = f.input :discord_server_id, label: _('LanParty|Discord server id')
   .card-footer
     = f.save

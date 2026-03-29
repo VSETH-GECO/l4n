@@ -1518,9 +1518,6 @@ msgstr ""
 msgid "LanParty|Details"
 msgstr ""
 
-msgid "LanParty|Discord server id"
-msgstr ""
-
 msgid "LanParty|Event end"
 msgstr ""
 
@@ -3702,9 +3699,6 @@ msgstr ""
 msgid "Tournament|Description"
 msgstr ""
 
-msgid "Tournament|Discord role id"
-msgstr ""
-
 msgid "Tournament|Files"
 msgstr ""
 
@@ -3727,12 +3721,6 @@ msgid "Tournament|Info"
 msgstr ""
 
 msgid "Tournament|Lan party"
-msgstr ""
-
-msgid "Tournament|Lan party Discord Server ID must be present if Discord Role ID is set"
-msgstr ""
-
-msgid "Tournament|Lan party must be present if Discord Role ID is set"
 msgstr ""
 
 msgid "Tournament|LanParty"
@@ -3805,12 +3793,6 @@ msgid "Tournament|Phase"
 msgstr ""
 
 msgid "Tournament|Please check-in at the event to see the available actions"
-msgstr ""
-
-msgid "Tournament|Please join the Discord to see the available actions"
-msgstr ""
-
-msgid "Tournament|Please link your Discord account to see the available actions %{link}"
 msgstr ""
 
 msgid "Tournament|Please login to see the available actions"
