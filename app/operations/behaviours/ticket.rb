@@ -16,7 +16,7 @@ module Operations::Behaviours
 
       # Assign the ticket to the user if the user does not have a ticket for that
       # lan party already
-      return unless tickets.count == 1
+      return unless tickets.one?
 
       user = osparams.order_item.order.user
       ticket_to_assign = tickets.first

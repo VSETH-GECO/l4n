@@ -54,7 +54,9 @@ module Operations::Admin::Tournament::Phase
     private
 
     def team
-      @team ||= model.seedable_teams.find_by(id: osparams.seeding[:team])
+      return @team if defined?(@team)
+
+      @team = model.seedable_teams.find_by(id: osparams.seeding[:team])
     end
   end
 end

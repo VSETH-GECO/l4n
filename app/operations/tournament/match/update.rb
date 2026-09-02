@@ -86,7 +86,7 @@ module Operations::Tournament::Match
 
           # Add points if swiss system
           if model.phase.swiss?
-            # rubocop: disable Metrics/BlockNesting
+            # rubocop: disable-next Metrics/BlockNesting
             if model.draw?
               model.home.score += Tournament::Match::DRAW_SCORE
               model.home.save!
@@ -97,7 +97,6 @@ module Operations::Tournament::Match
               model.winner.score += Tournament::Match::WIN_SCORE
               model.winner.save!
             end
-            # rubocop: enable Metrics/BlockNesting
           end
         else
           model.result_status = Tournament::Match.result_statuses[:disputed]

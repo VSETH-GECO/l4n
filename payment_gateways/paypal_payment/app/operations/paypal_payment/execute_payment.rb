@@ -6,7 +6,7 @@ module PaypalPayment
       str! :order_id
     end
 
-    def perform
+    def perform # rubocop:disable Naming/PredicateMethod
       # Get data from the backend about the payment
       begin
         result = Operations::PaymentGateway::GetPaymentInfo.run!(order_id: osparams.order_id).result

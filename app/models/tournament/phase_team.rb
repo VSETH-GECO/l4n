@@ -15,7 +15,7 @@ class Tournament::PhaseTeam < ApplicationRecord
   # == Hooks =======================================================================
 
   # == Scopes ======================================================================
-  scope :ordered_by_seed, -> { order('seed ASC') }
+  scope :ordered_by_seed, -> { order(:seed) }
 
   # == Class Methods ===============================================================
 

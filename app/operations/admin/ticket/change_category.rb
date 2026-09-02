@@ -52,15 +52,21 @@ module Operations::Admin::Ticket
     private
 
     def new_category
-      @new_category ||= SeatCategory.find_by(id: osparams.ticket_upgrade[:category_id])
+      return @new_category if defined?(@new_category)
+
+      @new_category = SeatCategory.find_by(id: osparams.ticket_upgrade[:category_id])
     end
 
     def to_product
-      @to_product ||= Product.find_by(seat_category: new_category)
+      return @to_product if defined?(@to_product)
+
+      @to_product = Product.find_by(seat_category: new_category)
     end
 
     def from_product
-      @from_product ||= Product.find_by(seat_category: model.seat_category)
+      return @from_product if defined?(@from_product)
+
+      @from_product = Product.find_by(seat_category: model.seat_category)
     end
   end
 end
