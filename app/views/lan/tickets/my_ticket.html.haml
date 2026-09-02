@@ -1,7 +1,7 @@
 - provide :page_title, _('Ticket|Tickets for %{lan_name}') % { lan_name: model.name }
 
 .row
-  - if op.tickets.count == 1
+  - if op.tickets.one?
     - ticket = op.tickets.first
     .col-md-6.mb-3
       .card

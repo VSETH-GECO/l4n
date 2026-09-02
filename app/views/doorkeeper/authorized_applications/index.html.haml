@@ -7,7 +7,7 @@
     .card
       .card-body
         - if @applications.any?
-          - if @applications.count == 1
+          - if @applications.one?
             = _('Oauth|You have granted 1 application access to your account')
           - else
             = _('Oauth|You have granted %{count} applications access to your account') % { count: @applications.count }
