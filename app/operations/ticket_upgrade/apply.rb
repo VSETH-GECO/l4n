@@ -47,11 +47,15 @@ module Operations::TicketUpgrade
     private
 
     def ticket_upgrade
-      @ticket_upgrade ||= ::TicketUpgrade.find_by(id: osparams.ticket_upgrade[:upgrade_id])
+      return @ticket_upgrade if defined?(@ticket_upgrade)
+
+      @ticket_upgrade = ::TicketUpgrade.find_by(id: osparams.ticket_upgrade[:upgrade_id])
     end
 
     def ticket
-      @ticket ||= ::Ticket.find_by(id: osparams.ticket_upgrade[:ticket_id])
+      return @ticket if defined?(@ticket)
+
+      @ticket = ::Ticket.find_by(id: osparams.ticket_upgrade[:ticket_id])
     end
   end
 end

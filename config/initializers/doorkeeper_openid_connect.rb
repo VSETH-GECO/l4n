@@ -26,10 +26,9 @@ Doorkeeper::OpenidConnect.configure do
   end
 
   claims do
-    # rubocop:disable Style/SymbolProc
+    # rubocop:disable-next Style/SymbolProc
     claim :username, response: %i[id_token user_info], scope: :openid do |resource_owner|
       resource_owner.username
     end
-    # rubocop:enable Style/SymbolProc
   end
 end

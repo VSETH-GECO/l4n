@@ -58,7 +58,7 @@ module TestDataFactory
     )
   end
 
-  # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable-next Metrics/ParameterLists
   def create_promotion(name = SecureRandom.alphanumeric, active: true, code_type: Promotion.code_types[:fixed_value],
                        reduction: nil, product_ids: [], codes_to_generate: 10, code_prefix: nil)
     ::Operations::Admin::Promotion::Create.run!(
@@ -73,7 +73,6 @@ module TestDataFactory
       }
     ).model.reload
   end
-  # rubocop:enable Metrics/ParameterLists
 
   # Should only be used in tests where we want to quickly test the behaviour of an order_item.
   # Usually, order items are created from a cart_item, as we need to decrease quantity etc.

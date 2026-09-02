@@ -32,7 +32,9 @@ module Operations::Admin::Ticket
     private
 
     def seat
-      @seat ||= ::Seat.find_by(id: osparams.seat[:seat_id])
+      return @seat if defined?(@seat)
+
+      @seat = ::Seat.find_by(id: osparams.seat[:seat_id])
     end
   end
 end
