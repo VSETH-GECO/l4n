@@ -4,18 +4,18 @@ ruby '3.4.10'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.2'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.6'
 gem 'devise', '~> 4.9'
 gem 'devise-two-factor', '~> 5.1'
-gem 'doorkeeper', '~> 5.7'
-gem 'doorkeeper-openid_connect', '~> 1.8'
-gem 'recaptcha', '~> 5.17'
+gem 'doorkeeper', '~> 5.9'
+gem 'doorkeeper-openid_connect', '~> 1.10'
+gem 'recaptcha', '~> 5.21'
 
 # Session handling
-gem 'activerecord-session_store', '~> 2.1'
+gem 'activerecord-session_store', '~> 2.3'
 
 # Puma
 gem 'puma', '~> 6.4'
@@ -31,9 +31,9 @@ gem 'stimulus-rails', '~> 1.3'
 gem 'turbo-rails', '~> 1.5'
 
 # Application structure
-gem 'active_type', '~> 2.5'
-gem 'inquery', '~> 1.0'
-gem 'rails_ops', '~> 1.5'
+gem 'active_type', '~> 2.8'
+gem 'inquery', '~> 1.1'
+gem 'rails_ops', '~> 1.8'
 gem 'schemacop', '~> 3.0'
 
 # Views
@@ -43,11 +43,11 @@ gem 'datagrid', '~> 1.8'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2'
 gem 'rqrcode', '~> 2.2'
-gem 'simple_form', '~> 5.3'
+gem 'simple_form', '~> 5.4'
 
 # Translations
 gem 'gettext_i18n_rails', '~> 1.12'
-gem 'mobility', '~> 1.2'
+gem 'mobility', '~> 1.3'
 gem 'rails-i18n', '~> 7.0'
 
 # Markdown rendering
@@ -65,7 +65,7 @@ gem 'image_processing', '~> 1.12'
 gem 'money-rails', '~> 1.12'
 
 # Background processing
-gem 'whenever', '~> 1.0', require: false
+gem 'whenever', '~> 1.1', require: false
 
 # Tournaments
 gem 'tournament-system', '~> 2.0', require: 'tournament_system'
@@ -109,7 +109,7 @@ end
 
 # Test gems
 group :test do
-  gem 'faker', '~> 3.4'
+  gem 'faker', '~> 3.8'
   gem 'minitest', '~> 5.1'
   gem 'simplecov', '~> 0.22', require: false
 end
