@@ -110,6 +110,7 @@ end
 # Test gems
 group :test do
   gem 'faker', '~> 3.4.0'
+  gem 'minitest', '~> 5.1'
   gem 'simplecov', '~> 0.22.0', require: false
 end
 

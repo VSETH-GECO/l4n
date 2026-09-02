@@ -292,9 +292,7 @@ GEM
     mini_magick (5.4.0)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.6)
-      drb (~> 2.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     mobility (1.2.9)
       i18n (>= 0.6.10, < 2)
       request_store (~> 1.0)
@@ -604,6 +602,7 @@ DEPENDENCIES
   kaminari (~> 1.2.1)
   listen (~> 3.2)
   localhost
+  minitest (~> 5.1)
   mobility (~> 1.2.5)
   money-rails (~> 1.12)
   omniauth (~> 2.1.1)
