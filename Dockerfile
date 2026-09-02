@@ -4,8 +4,8 @@ FROM ruby:3.4.10
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y postgresql-client libvips cron && apt update -y \
                        && curl -sSL https://deb.nodesource.com/setup_26.x | bash - \
-                       && curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-                       && echo 'deb https://dl.yarnpkg.com/debian/ stable main' | tee /etc/apt/sources.list.d/yarn.list \
+                       && curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /usr/share/keyrings/yarnkey.gpg \
+                       && echo 'deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian/ stable main' | tee /etc/apt/sources.list.d/yarn.list \
                        && apt-get update && apt-get install -y --no-install-recommends nodejs yarn supervisor dumb-init rclone && \
                        rm -rf /var/lib/apt/lists /var/cache/apt/archives && \
                        chmod gu+s /usr/sbin/cron && \
