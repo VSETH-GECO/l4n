@@ -95,7 +95,7 @@ group :development do
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.58', require: false
+  gem 'haml_lint', '~> 0.78', require: false
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'
