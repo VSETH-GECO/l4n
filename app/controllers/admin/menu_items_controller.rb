@@ -18,7 +18,7 @@ module Admin
       else
         add_breadcrumb _('Admin|MenuItem|New Link')
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('MenuItem') }
-        render :new_link, status: :unprocessable_entity
+        render :new_link, status: :unprocessable_content
       end
     end
 
@@ -34,7 +34,7 @@ module Admin
       else
         add_breadcrumb _('Admin|MenuItem|New Dropdown')
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('MenuItem') }
-        render :new_dropdown, status: :unprocessable_entity
+        render :new_dropdown, status: :unprocessable_content
       end
     end
 
@@ -50,7 +50,7 @@ module Admin
       else
         add_breadcrumb model.title
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('MenuItem') }
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_content
       end
     end
 

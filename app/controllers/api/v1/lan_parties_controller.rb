@@ -15,10 +15,10 @@ module Api
         render json: data, status: :not_found
       rescue Operations::Api::V1::LanParty::UserHasNoTicket
         data = { message: 'User has no ticket assigned for this LanParty' }
-        render json: data, status: :unprocessable_entity
+        render json: data, status: :unprocessable_content
       rescue Operations::Api::V1::LanParty::NotCheckedIn
         data = { message: 'User has not checked in at this LanParty' }
-        render json: data, status: :unprocessable_entity
+        render json: data, status: :unprocessable_content
       end
 
       def user_status_multiple
@@ -29,10 +29,10 @@ module Api
         render json: data, status: :not_found
       rescue Operations::Api::V1::LanParty::UserHasNoTicket
         data = { message: 'User has no ticket assigned for this LanParty' }
-        render json: data, status: :unprocessable_entity
+        render json: data, status: :unprocessable_content
       rescue Operations::Api::V1::LanParty::NotCheckedIn
         data = { message: 'User has not checked in at this LanParty' }
-        render json: data, status: :unprocessable_entity
+        render json: data, status: :unprocessable_content
       end
     end
   end

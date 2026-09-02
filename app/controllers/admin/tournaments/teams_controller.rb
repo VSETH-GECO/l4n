@@ -19,13 +19,13 @@ module Admin
           add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
           add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament|Team') }
           flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Team') }
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       rescue Operations::Admin::Tournament::Team::UserError
         add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament|Team') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Team') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       rescue Operations::Exceptions::OpFailed => e
         flash[:danger] = e.message
         redirect_to admin_tournament_path(op.tournament)
@@ -45,7 +45,7 @@ module Admin
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
           flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Tournament|Team') }
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
 
