@@ -10,6 +10,7 @@ module HeaderExtension
   end
 end
 
+# rubocop:disable-next Style/OneClassPerFile
 class Datagrid::Columns::Column
   prepend ::HeaderExtension
 end

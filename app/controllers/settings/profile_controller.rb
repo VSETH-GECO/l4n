@@ -17,7 +17,7 @@ module Settings
         redirect_to settings_profile_path
       else
         flash.now[:danger] = _('User|Profile could not be updated')
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_content
       end
     end
   end

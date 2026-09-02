@@ -18,7 +18,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Page') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Page') }
-        render :new_content_page, status: :unprocessable_entity
+        render :new_content_page, status: :unprocessable_content
       end
     end
 
@@ -34,7 +34,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Page') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Page') }
-        render :new_redirect_page, status: :unprocessable_entity
+        render :new_redirect_page, status: :unprocessable_content
       end
     end
 
@@ -50,7 +50,7 @@ module Admin
       else
         add_breadcrumb model.title
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Page') }
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_content
       end
     end
 

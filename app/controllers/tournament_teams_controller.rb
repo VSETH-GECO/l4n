@@ -26,10 +26,10 @@ class TournamentTeamsController < ApplicationController
       flash[:danger] = model.errors.full_messages.to_sentence
     end
 
-    redirect_back(fallback_location: tournament_path(op.tournament))
+    redirect_back_or_to(tournament_path(op.tournament))
   rescue Operations::Exceptions::OpFailed => e
     flash[:danger] = e.message
-    redirect_back(fallback_location: tournament_path(op.tournament))
+    redirect_back_or_to(tournament_path(op.tournament))
   end
 
   def update
@@ -56,10 +56,10 @@ class TournamentTeamsController < ApplicationController
       flash[:danger] = _('Team|Could not be deleted')
     end
 
-    redirect_back(fallback_location: tournament_path(model.tournament))
+    redirect_back_or_to(tournament_path(model.tournament))
   rescue Operations::Exceptions::OpFailed => e
     flash[:danger] = e.message
-    redirect_back(fallback_location: tournament_path(model.tournament))
+    redirect_back_or_to(tournament_path(model.tournament))
   end
 
   def register_for_tournament

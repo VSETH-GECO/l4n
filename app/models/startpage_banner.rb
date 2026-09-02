@@ -28,8 +28,7 @@ class StartpageBanner < ApplicationRecord
   def set_others_to_not_visible
     return unless visible?
 
-    # rubocop:disable Rails/SkipsModelValidations
+    # rubocop:disable-next Rails/SkipsModelValidations
     self.class.where('id <> ? AND visible = true', id).update_all("visible = 'false'")
-    # rubocop:enable Rails/SkipsModelValidations
   end
 end

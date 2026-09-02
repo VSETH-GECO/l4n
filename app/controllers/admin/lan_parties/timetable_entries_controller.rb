@@ -17,7 +17,7 @@ module Admin
           add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
           add_breadcrumb _('Admin|Timetable'), admin_lan_party_timetable_path(op.lan_party)
           flash[:danger] = _('Admin|Timetable|Entry could not be created')
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
 
@@ -35,7 +35,7 @@ module Admin
           add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
           add_breadcrumb _('Admin|Timetable'), admin_lan_party_timetable_path(op.lan_party)
           flash[:danger] = _('Admin|Timetable|Entry could not be updated')
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
 

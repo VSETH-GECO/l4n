@@ -31,14 +31,14 @@ module Admin
           add_breadcrumb _('Admin|Tickets'), admin_lan_party_tickets_path(op.lan_party)
           add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Ticket') }
           flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Ticket') }
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       rescue Operations::Exceptions::OpFailed => e
         flash[:danger] = e.message
         add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
         add_breadcrumb _('Admin|Tickets'), admin_lan_party_tickets_path(op.lan_party)
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Ticket') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
 
       def assign_user

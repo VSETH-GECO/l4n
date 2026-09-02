@@ -8,6 +8,7 @@ module TurboForm
   end
 end
 
+# rubocop:disable-next Style/OneClassPerFile
 module SimpleForm
   module ActionViewExtensions
     module FormHelper

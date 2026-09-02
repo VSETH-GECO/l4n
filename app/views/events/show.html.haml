@@ -20,7 +20,7 @@
 
     = markdown(model.description)
 
-  - if model.event_dates.count > 1
+  - if model.event_dates.many?
     .card-footer
       .mb-3= _('Event|This event will take place at the following dates')
       %table.table.table-striped.mb-2

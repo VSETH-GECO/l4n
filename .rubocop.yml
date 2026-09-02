@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
 
@@ -163,5 +163,9 @@ Rails/ThreeStateBooleanColumn:
 
 # Does not work in haml files
 Lint/RedundantCopDisableDirective:
+  Exclude:
+    - 'app/views/**/*'
+
+Style/SafeNavigationChainLength:
   Exclude:
     - 'app/views/**/*'

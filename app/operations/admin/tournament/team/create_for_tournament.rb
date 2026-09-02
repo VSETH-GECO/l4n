@@ -32,11 +32,10 @@ module Operations::Admin::Tournament::Team
 
         # Check that the user has a ticket (only if the tournament is
         # connected to a lanparty).
-        # rubocop:disable Style/SoleNestedConditional
+        # rubocop:disable-next Style/SoleNestedConditional
         if tournament.lan_party.present?
           fail Operations::Exceptions::OpFailed, _('Admin|Team|User needs to be checked in to do this') if singleplayer_user.ticket_for(tournament.lan_party).nil? || !singleplayer_user.ticket_for(tournament.lan_party).checked_in?
         end
-        # rubocop:enable Style/SoleNestedConditional
       end
     end
 
@@ -78,7 +77,9 @@ module Operations::Admin::Tournament::Team
     private
 
     def singleplayer_user
-      @singleplayer_user ||= ::User.find_by('LOWER(username) = ?', osparams.tournament_team[:single_user_name].downcase)
+      return @singleplayer_user if defined?(@singleplayer_user)
+
+      @singleplayer_user = ::User.find_by('LOWER(username) = ?', osparams.tournament_team[:single_user_name].downcase)
     end
   end
 

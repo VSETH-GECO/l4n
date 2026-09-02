@@ -25,6 +25,7 @@ module ArrayExt
   end
 end
 
+# rubocop:disable-next Style/OneClassPerFile
 class Array
   prepend ::ArrayExt
 end
