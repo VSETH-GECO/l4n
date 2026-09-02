@@ -17,7 +17,7 @@ module Admin
           add_breadcrumb model.username
           add_breadcrumb _('Admin|User|Permissions'), permissions_admin_user_path(model)
           flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('User|Permissions') }
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
     end

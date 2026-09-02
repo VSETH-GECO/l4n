@@ -23,7 +23,7 @@ module Admin
           add_breadcrumb model.lan_party.name, admin_lan_party_path(model.lan_party)
           add_breadcrumb _('Admin|Timetable')
           flash[:danger] = _('Admin|Timetable|Could not be updated')
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
     end

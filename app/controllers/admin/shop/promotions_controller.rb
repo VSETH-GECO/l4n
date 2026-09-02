@@ -24,7 +24,7 @@ module Admin
         else
           add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Promotion') }
           flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Promotion') }
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
 
@@ -40,7 +40,7 @@ module Admin
         else
           add_breadcrumb model.name
           flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Promotion') }
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
 
@@ -67,7 +67,7 @@ module Admin
           add_breadcrumb model.name, admin_shop_promotion_path(model)
           add_breadcrumb _('Admin|Promotion|Add codes')
           flash[:danger] = _('Admin|Promotion|Codes could not be added')
-          render :add_codes, status: :unprocessable_entity
+          render :add_codes, status: :unprocessable_content
         end
       end
 

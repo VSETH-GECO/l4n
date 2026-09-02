@@ -18,7 +18,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('StartpageBanner') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('StartpageBanner') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 
@@ -34,7 +34,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('StartpageBanner') }
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('StartpageBanner') }
-        render :update, status: :unprocessable_entity
+        render :update, status: :unprocessable_content
       end
     end
 

@@ -15,7 +15,7 @@ module Admin
           redirect_to admin_lan_party_timetable_path(op.lan_party)
         else
           flash[:danger] = _('Admin|Timetable|Category could not be created')
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
 
@@ -31,7 +31,7 @@ module Admin
           redirect_to admin_lan_party_timetable_path(op.lan_party)
         else
           flash[:danger] = _('Admin|Timetable|Category could not be updated')
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
 

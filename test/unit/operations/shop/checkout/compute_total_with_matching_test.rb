@@ -297,7 +297,7 @@ module Unit
               }
             end
 
-            assert_equal (expected.sort_by { |data| data[:promotion_code_id] }), (result_array.sort_by { |data| data[:promotion_code_id] })
+            assert_equal(expected.sort_by { |data| data[:promotion_code_id] }, result_array.sort_by { |data| data[:promotion_code_id] })
           end
         end
       end
