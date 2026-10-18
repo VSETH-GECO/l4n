@@ -12,7 +12,7 @@ recurring events and more!
 ## Features
 
 * Ticketing System with QR Code Scanner for checking in at the event
-* General Purpose Sop to sell tickets, merchandise, food, etc.
+* General Purpose Shop to sell tickets, merchandise, food, etc.
 * Tournament System which can be used independently from a LAN party
 * Newspost / Blogging system with markdown
 * Side-Events with multiple dates
@@ -38,7 +38,7 @@ Below are the steps needed to deploy the app in such a way:
 
 ### Install docker
 
-First, you should install `docker` and `docker-compose` on your server. Follow the [official installation guides](https://docs.docker.com/get-docker/)
+First, you should install `docker` on your server. Follow the [official installation guides](https://docs.docker.com/get-docker/)
 for your system to do this.
 
 ### Setup traefik
@@ -58,7 +58,7 @@ image, which is the edge variant with the newest commits to the main branch. We 
 and as such you should replace `main` with the tag of the latest release.
 
 After that, you can start L4N using `docker compose up -d`. This will pull the image, create the database,
-run the migrations and prepare other required settings for L4N.
+run the migrations, set up the cron jobs and start the server.
 
 ### Creating the first user
 
@@ -78,7 +78,7 @@ where `<container_name>` is the name of the container, usually `l4n-web-1`.
 ### Custom installations
 
 L4N can also be used in a custom setup, with your own docker compose setup. Please note however, that L4N requires Postgresql as the application database server. Currently it is not possible to use SQLite, mySQL or any other database as the application database server.
-Also, please note that in development mode, SSL is required by the application, as
+Also, please note that in production mode, SSL is required by the application, as
 only connections over SSL are accepted, Strict-Transport-Security is enabled and cookies
 are marked as secure.
 
@@ -110,16 +110,36 @@ To develop features for L4N locally, we recommend to install Ruby as well as Pos
    # Install yarn packages
    yarn
    ```
-6. Create the file `config/application.yml` with the required env variables as follows. You can set dummy values if you don't want to use the Paypal payment gateway or recaptcha locally, replacing the placeholders in brackets with some random values:
-   ```yaml
-   paypal_id: <your-paypal-id>
-   paypal_secret: <your-paypal-secret>
-   recaptcha_site_key: <your-recaptcha-site-key>
-   recaptcha_site_secret: <your-recaptcha-site-key>
-   payrexx_api_key: <your-payrexx-api-key>
-   ```
-7. To start the server locally, use the command `bin/dev`, which will launch the Rails server as well as a JS and CSS compilation process
+6. Create a `.env` file in the project root with the required env variables. See `DEVELOPMENT.md` for a full list. At a minimum you will need the following (dummy values are fine for local development):
+   ```bash
+   # Rails
+   SECRET_KEY_BASE=<random-secret>
+   AR_PRIMARY_KEY=<random-key>
+   AR_DETERMINISTIC_KEY=<random-key>
+   AR_KEY_DERIVATION_SALT=<random-salt>
 
+   # Application
+   APPLICATION_DOMAIN=localhost
+
+   # OIDC (generate with: openssl genrsa 2048)
+   OIDC_RSA_PRIVATE_KEY=<rsa-private-key>
+
+   # Recaptcha (use dummy values to skip)
+   RECAPTCHA_SITE_KEY=<your-recaptcha-site-key>
+   RECAPTCHA_SITE_SECRET=<your-recaptcha-site-secret>
+
+   # Game accounts (use dummy values to skip)
+   STEAM_WEB_API_KEY=<your-steam-key>
+   DISCORD_ID=<your-discord-id>
+   DISCORD_SECRET=<your-discord-secret>
+   DISCORD_BOT_AUTH=<your-discord-bot-auth>
+
+   # Payment gateways (optional, use dummy values to skip)
+   PAYPAL_ID=<your-paypal-id>
+   PAYPAL_SECRET=<your-paypal-secret>
+   ```
+
+7. To start the server locally, use the command `bin/dev`, which will launch the Rails server as well as a JS and CSS compilation process
 
 ### Code style
 
