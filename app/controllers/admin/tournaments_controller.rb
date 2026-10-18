@@ -23,7 +23,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 
@@ -39,7 +39,7 @@ module Admin
       else
         add_breadcrumb model.name, admin_tournament_path(model)
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Tournament') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 
@@ -79,7 +79,7 @@ module Admin
       else
         add_breadcrumb model.name, admin_tournament_path(model)
         flash[:danger] = _('Admin|Tournament|Failed to update the permissions')
-        render :permissions, status: :unprocessable_entity
+        render :permissions, status: :unprocessable_content
       end
     end
   end

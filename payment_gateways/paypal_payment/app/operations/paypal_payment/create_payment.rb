@@ -45,18 +45,20 @@ module PaypalPayment
           payment_method: 'paypal'
         },
         transactions:  [
-          amount:         {
-            total:    order_data[:total].format(symbol: false, decimal_mark: '.'),
-            currency: 'CHF',
-            details:  {
-              subtotal: order_data[:total].format(symbol: false, decimal_mark: '.')
-            }
-          },
-          item_list:      {
-            items: items
-          },
-          description:    _('PaypalPaymentGateway|Order description for %{order_id}') % { order_id: order_data[:real_order_id] },
-          invoice_number: SecureRandom.hex
+          {
+            amount:         {
+              total:    order_data[:total].format(symbol: false, decimal_mark: '.'),
+              currency: 'CHF',
+              details:  {
+                subtotal: order_data[:total].format(symbol: false, decimal_mark: '.')
+              }
+            },
+            item_list:      {
+              items: items
+            },
+            description:    _('PaypalPaymentGateway|Order description for %{order_id}') % { order_id: order_data[:real_order_id] },
+            invoice_number: SecureRandom.hex
+          }
         ]
       }
 

@@ -18,7 +18,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('Settings') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Settings') }
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_content
       end
     end
   end

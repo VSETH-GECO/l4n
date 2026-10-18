@@ -1,10 +1,13 @@
 {
   "name": "app",
   "private": "true",
+  "engines": {
+    "node": ">=26"
+  },
   "devDependencies": {
-    "eslint": "^8.31.0",
+    "eslint": "^8.57.1",
     "po2json": "^0.4.0",
-    "sass": "^1.44.0"
+    "sass": "^1.103.1"
   },
   "scripts": {
     "build:css": "yarn build:css:app && yarn build:css:admin",
@@ -13,18 +16,18 @@
     "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds --public-path=assets --minify"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.2.1",
-    "@hotwired/stimulus": "^3.1.1",
-    "@hotwired/turbo-rails": "^7.2.4",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.0",
-    "bootstrap": "5.3.0",
-    "cropperjs": "^1.5.12",
-    "easymde": "2.18.0",
-    "esbuild": "0.18.10",
-    "gettext.js": "2.0.0",
+    "bootstrap": "^5.3.8",
+    "cropperjs": "^1.6.3",
+    "easymde": "^2.21.0",
+    "esbuild": "^0.28.2",
+    "gettext.js": "^2.0.3",
     "konva": "9.2.0",
     "qr-scanner": "^1.4.1",
     "stimulus-autocomplete": "^3.0.2",
-    "sweetalert2": "11.7.12"
+    "sweetalert2": "^11.26.25"
   }
 }
