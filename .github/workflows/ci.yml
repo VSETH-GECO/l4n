@@ -1,11 +1,11 @@
-name: CI check
+name: Verify
 
 on:
   workflow_call:
 
 jobs:
   verify:
-    name: Test
+    name: Lint and test
     runs-on: ubuntu-latest
 
     services:
