@@ -3,14 +3,20 @@ name: Build the edge docker image
 on:
   push:
     branches:
-      - main
+      - '**'
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  verify:
+    uses: ./.github/workflows/ci.yml
+
   build-and-push-image:
+    needs: verify
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
