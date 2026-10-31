@@ -82,15 +82,21 @@ module Operations::Admin::Tournament::Match
     private
 
     def previous_winner
-      @previous_winner ||= ::Tournament::PhaseTeam.find_by(id: model.winner_id_was)
+      return @previous_winner if defined?(@previous_winner)
+
+      @previous_winner = ::Tournament::PhaseTeam.find_by(id: model.winner_id_was)
     end
 
     def previous_home
-      @previous_home ||= ::Tournament::PhaseTeam.find_by(id: model.home_id_was)
+      return @previous_home if defined?(@previous_home)
+
+      @previous_home = ::Tournament::PhaseTeam.find_by(id: model.home_id_was)
     end
 
     def previous_away
-      @previous_away ||= ::Tournament::PhaseTeam.find_by(id: model.away_id_was)
+      return @previous_away if defined?(@previous_away)
+
+      @previous_away = ::Tournament::PhaseTeam.find_by(id: model.away_id_was)
     end
   end
 

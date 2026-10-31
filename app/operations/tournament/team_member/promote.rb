@@ -27,11 +27,10 @@ module Operations::Tournament::TeamMember
 
       # Check that the user has a ticket (only if the tournament is
       # connected to a lanparty).
-      # rubocop:disable Style/SoleNestedConditional
+      # rubocop:disable-next Style/SoleNestedConditional
       if tournament.lan_party.present?
         fail Operations::Exceptions::OpFailed, _('Tournament|You need to be checked in to do this') if context.user.ticket_for(tournament.lan_party).nil? || !context.user.ticket_for(tournament.lan_party).checked_in?
       end
-      # rubocop:enable Style/SoleNestedConditional
     end
 
     def perform

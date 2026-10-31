@@ -23,7 +23,7 @@ module Admin
           add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
           add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament|Phase') }
           flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Phase') }
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
 
@@ -41,7 +41,7 @@ module Admin
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
           flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Phase') }
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
 

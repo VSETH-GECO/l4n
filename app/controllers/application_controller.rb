@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
     current_user&.update(color_theme_preference: new_mode)
     cookies[:_l4n_color_theme] = new_mode
-    redirect_back(fallback_location: root_path)
+    redirect_back_or_to(root_path)
   end
 
   private
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.turbo_stream do
         render 'components/modal_update',
-               status: :unprocessable_entity,
+               status: :unprocessable_content,
                locals: { partial: partial, partial_locals: partial_locals }
       end
     end

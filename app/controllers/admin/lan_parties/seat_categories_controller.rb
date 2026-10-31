@@ -21,7 +21,7 @@ module Admin
         else
           add_create_breadcrumbs
           flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('SeatCategory') }
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
 
@@ -37,7 +37,7 @@ module Admin
         else
           add_update_breadcrumbs
           flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('SeatCategory') }
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
 

@@ -29,7 +29,9 @@ module Operations::Ticket
     end
 
     def ticket
-      @ticket ||= ::Ticket.find_by(id: osparams.id)
+      return @ticket if defined?(@ticket)
+
+      @ticket = ::Ticket.find_by(id: osparams.id)
     end
 
     def lan_party

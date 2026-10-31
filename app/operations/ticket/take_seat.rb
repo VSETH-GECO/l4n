@@ -52,11 +52,15 @@ module Operations::Ticket
     private
 
     def seat
-      @seat ||= ::Seat.find_by(id: osparams.ticket[:selected_seat_id])
+      return @seat if defined?(@seat)
+
+      @seat = ::Seat.find_by(id: osparams.ticket[:selected_seat_id])
     end
 
     def ticket
-      @ticket ||= ::Ticket.find_by(id: osparams.id)
+      return @ticket if defined?(@ticket)
+
+      @ticket = ::Ticket.find_by(id: osparams.id)
     end
   end
 end

@@ -14,6 +14,7 @@ module TimeExt
   end
 end
 
+# rubocop:disable-next Style/OneClassPerFile
 class Time
   prepend ::TimeExt
 end

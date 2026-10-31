@@ -19,7 +19,7 @@ module Admin
           add_breadcrumb model.phase.tournament.name, admin_tournament_path(model.phase.tournament)
           add_breadcrumb "#{model.phase.phase_number}. #{model.phase.name}", admin_phase_path(model.phase)
           add_breadcrumb _('Admin|Tournament|Match')
-          render :show, status: :unprocessable_entity
+          render :show, status: :unprocessable_content
         end
       rescue Operations::Admin::Tournament::Match::MatchNotInRunningPhase
         flash[:danger] = _('Admin|Tournament|Match|Not in running phase')

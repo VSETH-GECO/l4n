@@ -1,5 +1,5 @@
 # rubocop:disable Style/GuardClause
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable-next Metrics/ClassLength
 class Ability
   include CanCan::Ability
 
@@ -258,5 +258,4 @@ class Ability
     end
   end
 end
-# rubocop:enable Metrics/ClassLength
 # rubocop:enable Style/GuardClause

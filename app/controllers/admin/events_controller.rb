@@ -23,7 +23,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Event') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Event') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 
@@ -39,7 +39,7 @@ module Admin
       else
         add_breadcrumb model.title
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Event') }
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_content
       end
     end
 

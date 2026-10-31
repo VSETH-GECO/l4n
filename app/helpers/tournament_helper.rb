@@ -28,7 +28,7 @@ module TournamentHelper
     team = match.send(relevant_team)
     score = match.send(:"#{relevant_team}_score").to_s
 
-    # rubocop:disable Lint/DuplicateBranch
+    # rubocop:disable-next Lint/DuplicateBranch
     if match.errors.any?
       tag.div(class: 'bg-secondary text-white result-score-box') do
         _('Match|Tbd')
@@ -50,7 +50,6 @@ module TournamentHelper
         show_score ? score : _('Match|Loser')
       end
     end
-    # rubocop:enable Lint/DuplicateBranch
   end
 
   def format_registration_status(tournament)

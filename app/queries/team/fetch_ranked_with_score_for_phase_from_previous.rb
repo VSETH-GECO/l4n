@@ -16,7 +16,7 @@ module Queries::Team
       ::Tournament::Team.select('*')
                         .from("(#{rel.to_sql}) AS tournament_teams")
                         .where.not(tournament_teams: { id: osparams.phase.teams })
-                        .order('score DESC, seed ASC')
+                        .order(score: :desc, seed: :asc)
     end
   end
 end

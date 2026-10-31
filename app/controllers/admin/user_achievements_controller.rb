@@ -16,7 +16,7 @@ module Admin
         add_breadcrumb op.achievement.title, admin_achievement_path(op.achievement)
         add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('UserAchievement') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('UserAchievement') }
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 
