@@ -21,6 +21,7 @@ class LanParty < ApplicationRecord
   validates_boolean :users_may_have_multiple_tickets_assigned
   validates :event_start, presence: true
   validates :event_end, presence: true, comparison: { greater_than: :event_start }
+  validates :discord_server_id, length: { in: 17..19 }, format: /\A[+-]?\d+\z/, if: -> { discord_server_id.present? }
 
   # == Hooks =======================================================================
   before_destroy :check_if_deletable, prepend: true

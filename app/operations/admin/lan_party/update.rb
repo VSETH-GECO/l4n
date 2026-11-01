@@ -13,6 +13,7 @@ module Operations::Admin::LanParty
         boo? :timetable_enabled, cast_str: true
         boo? :seatmap_enabled, cast_str: true
         boo? :users_may_have_multiple_tickets_assigned, cast_str: true
+        str? :discord_server_id
       end
     end
 

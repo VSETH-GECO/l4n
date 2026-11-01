@@ -1517,6 +1517,9 @@ msgstr "Counter"
 msgid "LanParty|Details"
 msgstr "Details"
 
+msgid "LanParty|Discord server id"
+msgstr "Discord Server ID"
+
 msgid "LanParty|Event end"
 msgstr "Event end"
 
@@ -3698,6 +3701,9 @@ msgstr "Delete team"
 msgid "Tournament|Description"
 msgstr "Description"
 
+msgid "Tournament|Discord role id"
+msgstr "Discord Role ID"
+
 msgid "Tournament|Files"
 msgstr "Files"
 
@@ -3721,6 +3727,12 @@ msgstr "Info"
 
 msgid "Tournament|Lan party"
 msgstr "Lan Party"
+
+msgid "Tournament|Lan party Discord Server ID must be present if Discord Role ID is set"
+msgstr "Discord Server ID must be present if Discord Role ID is set"
+
+msgid "Tournament|Lan party must be present if Discord Role ID is set"
+msgstr "must be present if Discord Role ID is set"
 
 msgid "Tournament|LanParty"
 msgstr "LanParty"
@@ -3793,6 +3805,12 @@ msgstr "Phase"
 
 msgid "Tournament|Please check-in at the event to see the available actions"
 msgstr "You need to check-in at the LAN Party to join this tournament."
+
+msgid "Tournament|Please join the Discord to see the available actions"
+msgstr "The Discord account linked to this Website account is not part of the Discord server of this tournament. You need to join the Discord server to join this tournament."
+
+msgid "Tournament|Please link your Discord account to see the available actions %{link}"
+msgstr "You need to link your account to a valid Discord account to join this tournament. You can do this in your <a href=\"%{link}\">profile settings</a>."
 
 msgid "Tournament|Please login to see the available actions"
 msgstr "Please login to see the available actions"

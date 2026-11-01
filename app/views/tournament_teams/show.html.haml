@@ -113,21 +113,31 @@
           %hr
         - if user_signed_in?
           - if model.tournament.lan_party.blank? || current_user.ticket_for(model.tournament.lan_party)&.checked_in?
-            - if model.users.include?(current_user)
-              - if model.tournament.singleplayer?
-                = render partial: 'singleplayer_sidebar'
+            -# Check if user has a correctly linked Discord account if a role ID is given
+            - if model.tournament.discord_role_id.blank? || Operations::Gameaccounts::ShowDiscord.run!(id: current_user.id).successful
+              -# Check if user linked Discord account is part of tournament Discord server if a role ID is given
+              - if model.tournament.discord_role_id.blank? || Operations::User::Discord::GetGuildMember.run!(id: current_user.id, discord_guild_id: model.tournament.lan_party.discord_server_id).successful
+                - if model.users.include?(current_user)
+                  - if model.tournament.singleplayer?
+                    = render partial: 'singleplayer_sidebar'
+                  - else
+                    = render partial: 'multiplayer_sidebar'
+                - elsif model.full? && !model.tournament.singleplayer?
+                  .d-grid.gap-2
+                    = button _('TournamentTeam|Team is full'), nil, disabled: true
+                - elsif !model.tournament.singleplayer?
+                  .d-grid.gap-2
+                    = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
+                      = f.password :password, placeholder: _('TournamentTeam|Join password')
+                      = f.save _('TournamentTeam|Join'), class: %i[w-100]
+                - else
+                  = _('Team|No actions possible')
               - else
-                = render partial: 'multiplayer_sidebar'
-            - elsif model.full? && !model.tournament.singleplayer?
-              .d-grid.gap-2
-                = button _('TournamentTeam|Team is full'), nil, disabled: true
-            - elsif !model.tournament.singleplayer?
-              .d-grid.gap-2
-                = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
-                  = f.password :password, placeholder: _('TournamentTeam|Join password')
-                  = f.save _('TournamentTeam|Join'), class: %i[w-100]
+                = _('Tournament|Please join the Discord to see the available actions')
             - else
-              = _('Team|No actions possible')
+              -# rubocop:disable Rails/OutputSafety
+              = (_('Tournament|Please link your Discord account to see the available actions %{link}') % { link: settings_gameaccounts_path }).html_safe
+              -# rubocop:enable Rails/OutputSafety
           - else
             = _('Tournament|Please check-in at the event to see the available actions')
         - else
