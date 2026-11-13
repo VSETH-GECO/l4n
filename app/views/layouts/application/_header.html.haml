@@ -30,9 +30,8 @@
           - else
             %li.nav-item
               - if menu_item.to_external?
-                %a.nav-link{ href: menu_item.linked_page_url, target: :_blank }
+                %a.nav-link{ href: menu_item.linked_page_url, class: menu_item_active_classes(menu_item) }
                   = menu_item.title
-                  = icon %i[fas fa-arrow-up-right-from-square]
               - else
                 %a.nav-link{ href: "/#{menu_item.linked_page_url}", class: menu_item_active_classes(menu_item) }
                   = menu_item.title
