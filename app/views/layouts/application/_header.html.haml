@@ -22,9 +22,8 @@
                   - next unless child_menu_item.visible?
 
                   - if child_menu_item.to_external?
-                    %a.dropdown-item{ href: child_menu_item.linked_page_url, target: :_blank }
+                    %a.dropdown-item{ href: child_menu_item.linked_page_url, class: menu_item_active_classes(child_menu_item) }
                       = child_menu_item.title
-                      = icon %i[fas fa-arrow-up-right-from-square]
                   - else
                     %a.dropdown-item{ href: "/#{child_menu_item.linked_page_url}", class: menu_item_active_classes(child_menu_item) }
                       = child_menu_item.title
