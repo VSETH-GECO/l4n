@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.4.10'
+ruby '3.4.13'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
