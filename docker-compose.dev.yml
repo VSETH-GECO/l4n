@@ -1,0 +1,47 @@
+# Local development environment. Usage:
+#   docker compose -f docker-compose.dev.yml up --build
+#   docker compose -f docker-compose.dev.yml exec app bin/rails test
+# The app is served on https://localhost:3000 (self-signed certificate).
+name: l4n-dev
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "rails"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+  app:
+    build:
+      context: docker/dev
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    env_file: .env
+    environment:
+      POSTGRES_HOSTNAME: db
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+    tty: true
+    stdin_open: true
+
+volumes:
+  db-data:
+  bundle:
+  node_modules:
