@@ -1,27 +1,21 @@
 module Queries::Event
   class FetchPastEvents < Inquery::Query
     def call
-      # Fetch events that are in the past, i.e. the end_date is
-      # smaller than the current date
+      # Fetch events where all dates have ended, ordered by their last date
       rel = Event.all
 
-      rel = rel.joins("
+      rel = rel.joins(ActiveRecord::Base.sanitize_sql_array([<<~SQL.squish, { now: Time.zone.now }]))
         INNER JOIN (
           SELECT DISTINCT ON (event_id) * FROM event_dates
           WHERE event_id NOT IN (
-            SELECT DISTINCT ON (event_id) event_id
+            SELECT event_id
             FROM event_dates
-            WHERE event_dates.start_date >= '#{Time.zone.today}'
-            OR (
-              event_dates.start_date <= '#{Time.zone.today}'
-              AND event_dates.end_date >= '#{Time.zone.today}'
-            )
-            ORDER BY event_id, start_date DESC
+            WHERE event_dates.end_date >= :now
           )
           ORDER BY event_id, start_date DESC
         ) AS event_dates_grouped
         ON events.id = event_dates_grouped.event_id
-      ")
+      SQL
 
       rel.order('event_dates_grouped.start_date DESC')
     end

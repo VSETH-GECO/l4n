@@ -16,8 +16,10 @@ class EventDate < ApplicationRecord
   # == Hooks =======================================================================
 
   # == Scopes ======================================================================
-  scope :future, -> { where('(start_date >= ?) OR (start_date <= ? AND end_date >= ?)', Time.zone.today, Time.zone.today, Time.zone.today) }
-  scope :past, -> { where('(start_date < ?) OR (start_date > ? AND end_date < ?)', Time.zone.today, Time.zone.today, Time.zone.today) }
+  # Dates that haven't ended yet, i.e. upcoming or currently happening
+  scope :future, -> { where(end_date: Time.zone.now..) }
+  # Dates that have already ended
+  scope :past, -> { where(end_date: ...Time.zone.now) }
 
   # == Class Methods ===============================================================
 
