@@ -4,8 +4,9 @@ return unless Rails.env.production?
 # Skip when building the docker image
 return if Figaro.env.building_docker_image
 
-# Skip then notifier is not enabled
-return unless Figaro.env.enable_exception_notifier
+# Skip when the notifier is not enabled. ENV values are strings, so cast them
+# explicitly: a plain truthiness check would treat "false" as enabled.
+return unless ActiveModel::Type::Boolean.new.cast(Figaro.env.enable_exception_notifier)
 
 IGNORED_EXCEPTIONS = [
   'ActionController::BadRequest',
