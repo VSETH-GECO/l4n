@@ -59,3 +59,6 @@ coverage
 
 # .env File
 .env
+
+# Personal Claude Code instructions
+/CLAUDE.local.md
