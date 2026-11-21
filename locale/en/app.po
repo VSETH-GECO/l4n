@@ -1175,47 +1175,8 @@ msgstr "No columns"
 msgid "Datagrid|No results"
 msgstr "No results"
 
-msgid "Doorkeeper/access grant"
-msgstr "Access grant"
-
-msgid "Doorkeeper/access token"
-msgstr "Access token"
-
 msgid "Doorkeeper/application"
 msgstr "OAuth Application"
-
-msgid "Doorkeeper::AccessGrant|Expires in"
-msgstr "Expires in"
-
-msgid "Doorkeeper::AccessGrant|Redirect uri"
-msgstr "Redirect URI"
-
-msgid "Doorkeeper::AccessGrant|Revoked at"
-msgstr "Revoked at"
-
-msgid "Doorkeeper::AccessGrant|Scopes"
-msgstr "Scopes"
-
-msgid "Doorkeeper::AccessGrant|Token"
-msgstr "Token"
-
-msgid "Doorkeeper::AccessToken|Expires in"
-msgstr "Expires in"
-
-msgid "Doorkeeper::AccessToken|Previous refresh token"
-msgstr "Previous refresh token"
-
-msgid "Doorkeeper::AccessToken|Refresh token"
-msgstr "Refresh token"
-
-msgid "Doorkeeper::AccessToken|Revoked at"
-msgstr "Revoked at"
-
-msgid "Doorkeeper::AccessToken|Scopes"
-msgstr "Scopes"
-
-msgid "Doorkeeper::AccessToken|Token"
-msgstr "Token"
 
 msgid "Doorkeeper::Application"
 msgstr "OAuth Application"
@@ -1234,6 +1195,9 @@ msgstr "Client ID"
 
 msgid "Doorkeeper::Application|Name"
 msgstr "Name"
+
+msgid "Doorkeeper::Application|Post logout redirect uris"
+msgstr "Post logout redirect URIs"
 
 msgid "Doorkeeper::Application|Redirect uri"
 msgstr "Redirect URI"

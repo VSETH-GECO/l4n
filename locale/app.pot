@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 14:38+0200\n"
-"PO-Revision-Date: 2025-09-27 14:38+0200\n"
+"POT-Creation-Date: 2026-11-21 12:50+0000\n"
+"PO-Revision-Date: 2026-11-21 12:50+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1176,46 +1176,7 @@ msgstr ""
 msgid "Datagrid|No results"
 msgstr ""
 
-msgid "Doorkeeper/access grant"
-msgstr ""
-
-msgid "Doorkeeper/access token"
-msgstr ""
-
 msgid "Doorkeeper/application"
-msgstr ""
-
-msgid "Doorkeeper::AccessGrant|Expires in"
-msgstr ""
-
-msgid "Doorkeeper::AccessGrant|Redirect uri"
-msgstr ""
-
-msgid "Doorkeeper::AccessGrant|Revoked at"
-msgstr ""
-
-msgid "Doorkeeper::AccessGrant|Scopes"
-msgstr ""
-
-msgid "Doorkeeper::AccessGrant|Token"
-msgstr ""
-
-msgid "Doorkeeper::AccessToken|Expires in"
-msgstr ""
-
-msgid "Doorkeeper::AccessToken|Previous refresh token"
-msgstr ""
-
-msgid "Doorkeeper::AccessToken|Refresh token"
-msgstr ""
-
-msgid "Doorkeeper::AccessToken|Revoked at"
-msgstr ""
-
-msgid "Doorkeeper::AccessToken|Scopes"
-msgstr ""
-
-msgid "Doorkeeper::AccessToken|Token"
 msgstr ""
 
 msgid "Doorkeeper::Application"
@@ -1234,6 +1195,9 @@ msgid "Doorkeeper::Application|Id"
 msgstr ""
 
 msgid "Doorkeeper::Application|Name"
+msgstr ""
+
+msgid "Doorkeeper::Application|Post logout redirect uris"
 msgstr ""
 
 msgid "Doorkeeper::Application|Redirect uri"
@@ -1519,9 +1483,6 @@ msgid "LanParty|Counter"
 msgstr ""
 
 msgid "LanParty|Details"
-msgstr ""
-
-msgid "LanParty|Discord server id"
 msgstr ""
 
 msgid "LanParty|Event end"
@@ -3705,9 +3666,6 @@ msgstr ""
 msgid "Tournament|Description"
 msgstr ""
 
-msgid "Tournament|Discord role id"
-msgstr ""
-
 msgid "Tournament|Files"
 msgstr ""
 
@@ -3730,12 +3688,6 @@ msgid "Tournament|Info"
 msgstr ""
 
 msgid "Tournament|Lan party"
-msgstr ""
-
-msgid "Tournament|Lan party Discord Server ID must be present if Discord Role ID is set"
-msgstr ""
-
-msgid "Tournament|Lan party must be present if Discord Role ID is set"
 msgstr ""
 
 msgid "Tournament|LanParty"
@@ -3808,12 +3760,6 @@ msgid "Tournament|Phase"
 msgstr ""
 
 msgid "Tournament|Please check-in at the event to see the available actions"
-msgstr ""
-
-msgid "Tournament|Please join the Discord to see the available actions"
-msgstr ""
-
-msgid "Tournament|Please link your Discord account to see the available actions %{link}"
 msgstr ""
 
 msgid "Tournament|Please login to see the available actions"
