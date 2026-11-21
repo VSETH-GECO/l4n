@@ -1,0 +1,90 @@
+// Small uppercase labels for facts, e.g. "Start" / "End" in the lan party block
+.sidebar-label
+  color: var(--bs-secondary-color)
+  font-size: 0.75rem
+  font-weight: 500
+  letter-spacing: 0.05em
+  text-transform: uppercase
+  margin-bottom: 0.15rem
+
+.sidebar-facts
+  dd
+    color: var(--l4n-heading-color)
+    margin-bottom: 0.75rem
+    &:last-child
+      margin-bottom: 0
+
+// Card header with a "View all" link on the right
+.card-header.sidebar-header
+  display: flex
+  align-items: baseline
+  justify-content: space-between
+  gap: 0.5rem
+
+.sidebar-view-all
+  font-size: 0.85rem
+  font-weight: 500
+  white-space: nowrap
+  .svg-inline--fa
+    font-size: 0.75em
+    margin-left: 0.25rem
+    transition: transform 0.15s ease
+  &:hover .svg-inline--fa
+    transform: translateX(2px)
+
+// Compact list of events / newsposts
+.sidebar-list
+  list-style: none
+  margin: 0 -0.5rem
+  padding: 0
+
+.sidebar-list-item
+  display: flex
+  align-items: center
+  gap: 0.85rem
+  padding: 0.5rem
+  border-radius: 0.5rem
+  color: inherit
+  transition: background-color 0.15s ease
+  &:hover,
+  &:focus
+    color: inherit
+    background-color: var(--bs-tertiary-bg)
+    .sidebar-list-item-title
+      color: var(--l4n-accent-color)
+
+.sidebar-list-item-text
+  min-width: 0
+
+.sidebar-list-item-title
+  color: var(--l4n-heading-color)
+  font-weight: 500
+  line-height: 1.3
+  transition: color 0.15s ease
+
+.sidebar-list-item-meta
+  color: var(--bs-secondary-color)
+  font-size: 0.8rem
+  margin-top: 0.15rem
+
+// Date tile ("21 / NOV") for events
+.sidebar-date-tile
+  flex-shrink: 0
+  width: 3.25rem
+  padding: 0.35rem 0
+  border-radius: 0.5rem
+  background-color: color-mix(in srgb, var(--l4n-accent-color) 15%, transparent)
+  text-align: center
+  line-height: 1.1
+
+.sidebar-date-tile-day
+  color: var(--l4n-heading-color)
+  font-size: 1.25rem
+  font-weight: 700
+
+.sidebar-date-tile-month
+  color: var(--l4n-accent-color)
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.05em
+  text-transform: uppercase

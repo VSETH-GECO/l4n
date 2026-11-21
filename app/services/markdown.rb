@@ -12,6 +12,22 @@ module Services
         allowed_iframe(text)
       end
 
+      ##################################################################################################################################
+      # Paragraphs that contain nothing but links (e.g. "[Info page](...)") get a class, so that they can be styled as buttons
+      ##################################################################################################################################
+      LINK_ONLY_PARAGRAPH = %r{\A\s*(?:<a\s[^>]*>(?:(?!</a>).)*</a>\s*(?:<br>\s*)?)+\z}m
+
+      def paragraph(text)
+        # Overriding this callback disables redcarpet's own hard_wrap handling, so the line breaks are added here
+        text = text.strip.gsub(/\s*\n\s*/, "<br>\n")
+
+        if text.match?(LINK_ONLY_PARAGRAPH)
+          %(<p class="md-link-row">#{text}</p>\n)
+        else
+          "<p>#{text}</p>\n"
+        end
+      end
+
       def table(header, body)
         tag.table class: 'table table-striped table-bordered' do
           (header + body).html_safe # rubocop:disable Rails/OutputSafety

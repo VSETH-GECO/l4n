@@ -2987,6 +2987,9 @@ msgstr "Latest newsposts"
 msgid "Sidebar|Next events"
 msgstr "Next events"
 
+msgid "Sidebar|Sold out"
+msgstr "Sold out"
+
 msgid "Signup"
 msgstr "Sign Up"
 

@@ -11,6 +11,8 @@ class StylingVariable < ApplicationRecord
     --l4n-button-focus-shadow-color
     --l4n-footer-bg
     --l4n-card-bg-color
+    --l4n-card-border-color
+    --l4n-heading-color
   ].freeze
 
   # == Associations ================================================================

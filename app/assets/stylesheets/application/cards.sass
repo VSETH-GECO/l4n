@@ -1,6 +1,27 @@
 .card
-  border: unset !important
-  border-radius: unset
+  border: 1px solid var(--l4n-card-border-color) !important
+  border-radius: 0.75rem
+  overflow: hidden
+
+  // The header is a heading inside the card, not a separate bar
+  .card-header
+    background-color: transparent
+    border-bottom: none
+    padding: 1.25rem 1.25rem 0
+    color: var(--l4n-heading-color)
+    font-size: 1.15rem
+    font-weight: 600
+
+  .card-body
+    padding: 1rem 1.25rem 1.25rem
+
+  .card-footer
+    border-top: none
+    padding: 0 1.25rem 1.25rem
+
+// In light mode, a soft shadow helps the cards stand out from the background
+html[data-bs-theme="light"] .card
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 4px 12px rgb(0 0 0 / 4%)
 
 .devise-card
   width: 100%

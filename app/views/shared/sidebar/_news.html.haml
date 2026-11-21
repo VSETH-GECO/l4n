@@ -1,12 +1,14 @@
 .card.mb-3
-  .card-header
+  .card-header.sidebar-header
     = _('Sidebar|Latest newsposts')
+    = link_to news_index_path, class: 'sidebar-view-all' do
+      = _('Sidebar|All newsposts')
+      = icon %i[fas fa-arrow-right]
   .card-body
-    - news_posts.each_with_index do |news_post, index|
-      - unless index.zero?
-        %hr
-
-      %h5.mb-0= link_to news_post.title, news_path(news_post)
-      %small.text-muted= l(news_post.published_at, format: '%d. %b, %H:%M')
-  .card-footer
-    = button _('Sidebar|All newsposts'), news_index_path, size: :sm, color: :default
+    %ul.sidebar-list
+      - news_posts.each do |news_post|
+        %li
+          = link_to news_path(news_post), class: 'sidebar-list-item' do
+            .sidebar-list-item-text
+              .sidebar-list-item-title= news_post.title
+              .sidebar-list-item-meta= l(news_post.published_at, format: '%d. %b %Y')

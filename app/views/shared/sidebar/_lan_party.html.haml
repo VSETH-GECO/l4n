@@ -1,26 +1,23 @@
-.card.mb-3
+.card.mb-3.sidebar-lan-party
   .card-header
     = lan_party.name
   .card-body
     .mb-3
-      .text-muted= _('Sidebar|Available tickets')
+      .sidebar-label= _('Sidebar|Available tickets')
       = lan_party_progress_bar(lan_party)
-    .mb-1
-      .text-muted= _('Sidebar|Lan start')
-      = l lan_party.event_start
-    %div
-      .text-muted= _('Sidebar|Lan end')
-      = l lan_party.event_end
-    - if lan_party.location.present?
-      .mt-1
-        .text-muted= _('Sidebar|Lan location')
-        = lan_party.location
+    %dl.sidebar-facts.mb-0
+      %dt.sidebar-label= _('Sidebar|Lan start')
+      %dd= l lan_party.event_start
+      %dt.sidebar-label= _('Sidebar|Lan end')
+      %dd= l lan_party.event_end
+      - if lan_party.location.present?
+        %dt.sidebar-label= _('Sidebar|Lan location')
+        %dd= lan_party.location
 
   - if user && user.ticket_for(lan_party).present?
-    .card-footer
+    .card-footer.d-grid
       = button _('Ticket|Show ticket'),
                lan_ticket_path(lan_party),
                btn_icon: %i[fas fa-arrow-up-right-from-square],
                html:     { target: :_blank },
-               color:    :default,
-               size:     :sm
+               color:    :default

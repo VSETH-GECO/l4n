@@ -1,6 +1,33 @@
 .ticket-progress
-  height: 1.25rem
+  --ticket-progress-color: var(--l4n-accent-color, var(--bs-primary))
+
+  .ticket-progress-label
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 0.5rem
+    margin-bottom: 0.4rem
+
+  .ticket-progress-count
+    color: var(--bs-secondary-color)
+    strong
+      color: var(--bs-emphasis-color)
+      font-size: 1.1rem
+      font-weight: 600
+
+  .ticket-progress-badge
+    background-color: var(--ticket-progress-color)
+    color: var(--l4n-button-text-color, white)
+    font-size: 0.75rem
+    font-weight: 600
+    letter-spacing: 0.04em
+    text-transform: uppercase
+
+  .progress
+    height: 0.5rem
+    border-radius: 999px
+    background-color: var(--bs-tertiary-bg)
+
   .progress-bar
-    width: 100%
-    font-size: 1rem
-    color: black
+    border-radius: 999px
+    background-color: var(--ticket-progress-color)

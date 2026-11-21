@@ -4,22 +4,21 @@
   if available_products.zero?
     percentage = 0
   else
-    percentage = (sold_tickets / available_products.to_f) * 100.0
+    percentage = [(sold_tickets / available_products.to_f) * 100.0, 100].min
   end
+  sold_out = available_products.positive? && sold_tickets >= available_products
 
-  if percentage < 50
-    color = "rgb(#{(percentage * 5.1).ceil}, 255, 0)"
-  else
-    color = "rgb(255, #{((100 - percentage) * 5.1).ceil}, 0)"
-  end
-
-.progress.ticket-progress
-  .progress-bar{ class: "progress-bar-#{lan_party.id}" }
-    = sold_tickets
-    \/
-    = available_products
+.ticket-progress{ class: ('sold-out' if sold_out) }
+  .ticket-progress-label
+    %span.ticket-progress-count
+      %strong= sold_tickets
+      = "/ #{available_products}"
+    - if sold_out
+      %span.badge.ticket-progress-badge= _('Sidebar|Sold out')
+  .progress
+    .progress-bar{ class: "progress-bar-#{lan_party.id}", role: 'progressbar', 'aria-valuenow' => sold_tickets, 'aria-valuemin' => 0, 'aria-valuemax' => available_products }
 
 :css
   .progress-bar-#{lan_party.id} {
-    background: linear-gradient(to right, #{color} #{percentage}%, transparent #{percentage}%);
+    width: #{percentage.round(2)}%;
   }

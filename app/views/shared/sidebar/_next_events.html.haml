@@ -1,16 +1,22 @@
 .card.mb-3
-  .card-header
+  .card-header.sidebar-header
     = _('Sidebar|Next events')
+    = link_to events_path, class: 'sidebar-view-all' do
+      = _('Sidebar|All events')
+      = icon %i[fas fa-arrow-right]
   .card-body
-    - events.each_with_index do |event, index|
-      - unless index.zero?
-        %hr
-
-      %h5.mb-0= link_to event.title, event
-      %small.text-muted
-        - if event.next_date.location.present?
-          = "#{l(event.next_date.start_date, format: '%d. %b, %H:%M')}, #{_('Event|Location')}: #{event.next_date.location}"
-        - else
-          = l(event.next_date.start_date, format: '%d. %b, %H:%M')
-  .card-footer
-    = button _('Sidebar|All events'), events_path, size: :sm, color: :default
+    %ul.sidebar-list
+      - events.each do |event|
+        - date = event.next_date
+        %li
+          = link_to event, class: 'sidebar-list-item' do
+            .sidebar-date-tile
+              .sidebar-date-tile-day= l(date.start_date, format: '%d')
+              .sidebar-date-tile-month= l(date.start_date, format: '%b')
+            .sidebar-list-item-text
+              .sidebar-list-item-title= event.title
+              .sidebar-list-item-meta
+                = l(date.start_date, format: '%H:%M')
+                - if date.location.present?
+                  = icon %i[fas fa-location-dot], classes: %w[ms-2 me-1]
+                  = date.location
