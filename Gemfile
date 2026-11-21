@@ -41,7 +41,7 @@ gem 'schemacop', '~> 3.0'
 # Views
 gem 'breadcrumbs_on_rails', '~> 4.1'
 gem 'cocoon', '~> 1.2'
-gem 'datagrid', '~> 1.8'
+gem 'datagrid', '~> 2.0'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2'
 gem 'rqrcode', '~> 2.2'

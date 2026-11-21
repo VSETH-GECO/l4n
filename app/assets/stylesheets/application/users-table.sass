@@ -1,11 +1,8 @@
 .users-table-header
-  .ordered
+  .datagrid-order-active-asc,
+  .datagrid-order-active-desc
     background-color: $gray-300
-    &.asc
-      a.asc
-        font-weight: bold
-        color: $red
-    &.desc
-      a.desc
-        font-weight: bold
-        color: $red
+  .datagrid-order-active-asc a.datagrid-order-control-asc,
+  .datagrid-order-active-desc a.datagrid-order-control-desc
+    font-weight: bold
+    color: $red

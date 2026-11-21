@@ -8,9 +8,9 @@
           - op.grid.html_columns.each do |column|
             - next unless column.supports_order?
 
-            .d-flex.px-3.py-1.align-items-center{ class: datagrid_column_classes(op.grid, column) }
+            .d-flex.px-3.py-1.align-items-center{ datagrid_cell_attributes(op.grid, column) }
               .me-2= column.header
-              = datagrid_order_for(op.grid, column)
+              = render 'datagrid/order_for', grid: op.grid, column: column
         %div
           = simple_form_for op.grid, url: users_path, method: :get do |f|
             .d-flex

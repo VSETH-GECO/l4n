@@ -8,22 +8,19 @@ table.datagrid
     &.min
       width: 1%
       white-space: nowrap
-    .order
+    .datagrid-order
       display: inline
       margin-left: map-get($spacers, 1)
-      a.asc, a.desc
+      a
         text-decoration: none
         font-weight: normal
-    &.ordered
+    &.datagrid-order-active-asc,
+    &.datagrid-order-active-desc
       background-color: $gray-100
-      &.asc
-        a.asc
-          font-weight: bold
-          color: $red
-      &.desc
-        a.desc
-          font-weight: bold
-          color: $red
+    &.datagrid-order-active-asc a.datagrid-order-control-asc,
+    &.datagrid-order-active-desc a.datagrid-order-control-desc
+      font-weight: bold
+      color: $red
   .datagrid-actions
     width: 1%
     .datagrid-actions-wrapper
@@ -42,5 +39,6 @@ html.dark
   table.datagrid
     td,
     th
-      &.ordered
+      &.datagrid-order-active-asc,
+      &.datagrid-order-active-desc
         background-color: #323232

@@ -7,13 +7,13 @@
   .table-responsive
     %table.datagrid.table-striped.table-hover{ **options[:html] }
       %thead
-        = datagrid_header grid, options
+        = datagrid_header grid, **options
       %tbody
         - if assets.any?
           = datagrid_rows grid, assets, **options
         - else
           %tr
-            %td.noresults{ colspan: '100%' }
+            %td.datagrid-no-results{ colspan: '100%' }
               = _('Datagrid|No results')
       %tfoot
         %tr
