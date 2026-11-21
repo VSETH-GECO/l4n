@@ -62,3 +62,6 @@ coverage
 
 # Personal Claude Code instructions
 /CLAUDE.local.md
+
+# JetBrains IDE project files
+/.idea/
