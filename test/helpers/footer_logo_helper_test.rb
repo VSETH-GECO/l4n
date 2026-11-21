@@ -7,7 +7,10 @@ class FooterLogoHelperTest < ActionView::TestCase
   def test_raster_image_uses_variant
     logo = FooterLogo.create!(file: upload('logo.png', 'image/png', PNG_1X1))
 
-    html = footer_logo_image_tag(logo.file, :medium, class: 'ms-2')
+    # CI has no libvips, so processing variants for real isn't possible there
+    html = with_null_variant_transformer do
+      footer_logo_image_tag(logo.file, :medium, class: 'ms-2')
+    end
 
     assert_includes html, '/representations/'
     assert_includes html, 'class="ms-2"'
@@ -31,6 +34,14 @@ class FooterLogoHelperTest < ActionView::TestCase
   end
 
   private
+
+  def with_null_variant_transformer
+    previous = ActiveStorage.variant_transformer
+    ActiveStorage.variant_transformer = ActiveStorage::Transformers::NullTransformer
+    yield
+  ensure
+    ActiveStorage.variant_transformer = previous
+  end
 
   def upload(filename, content_type, content)
     Rack::Test::UploadedFile.new(StringIO.new(content), content_type, original_filename: filename)
