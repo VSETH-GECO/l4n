@@ -2,3 +2,10 @@
   .nav-btn
     background-color: transparent
     border: 0
+
+  // Fixed height (not max-height): SVGs with only a viewBox have no intrinsic
+  // size and would otherwise collapse to 0x0 inside the flex navbar.
+  .navbar-logo
+    display: block
+    height: 24px
+    width: auto

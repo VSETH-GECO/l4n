@@ -10,6 +10,10 @@
                 input_html: { value: op.entered_values[:favicon_url].presence || AppConfig.favicon_url },
                 label:      _('Admin|Settings|Favicon URL'),
                 hint:       _('Admin|Settings|Favicon URL hint')
+      = f.input :logo_url,
+                input_html: { value: op.entered_values[:logo_url].presence || AppConfig.logo_url },
+                label:      _('Admin|Settings|Logo URL'),
+                hint:       _('Admin|Settings|Logo URL hint')
 
   .card.mb-3
     .card-header

@@ -429,6 +429,12 @@ msgstr "Favicon URL"
 msgid "Admin|Settings|Favicon URL hint"
 msgstr "Should be an URL pointing to a suitable favicon image (use for example the Uploads functionality to upload the favicon)."
 
+msgid "Admin|Settings|Logo URL"
+msgstr "Logo URL"
+
+msgid "Admin|Settings|Logo URL hint"
+msgstr "If set, this logo is shown in the top navigation instead of the application name. Should be an URL pointing to an image (use for example the Uploads functionality to upload the logo)."
+
 msgid "Admin|Settings|Save"
 msgstr "Save"
 

@@ -145,6 +145,8 @@
     "Admin|Settings|Enforce 2FA for sensitive admin": "Enforce 2FA for sensitive admin permissions",
     "Admin|Settings|Favicon URL": "Favicon URL",
     "Admin|Settings|Favicon URL hint": "Should be an URL pointing to a suitable favicon image (use for example the Uploads functionality to upload the favicon).",
+    "Admin|Settings|Logo URL": "Logo URL",
+    "Admin|Settings|Logo URL hint": "If set, this logo is shown in the top navigation instead of the application name. Should be an URL pointing to an image (use for example the Uploads functionality to upload the logo).",
     "Admin|Settings|Save": "Save",
     "Admin|Settings|Terms and conditions URL": "Terms and conditions URL",
     "Admin|Shop": "Shop",

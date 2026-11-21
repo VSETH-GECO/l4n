@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 14:03+0000\n"
-"PO-Revision-Date: 2026-11-21 14:03+0000\n"
+"POT-Creation-Date: 2026-11-21 14:39+0000\n"
+"PO-Revision-Date: 2026-11-21 14:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -428,6 +428,12 @@ msgid "Admin|Settings|Favicon URL"
 msgstr ""
 
 msgid "Admin|Settings|Favicon URL hint"
+msgstr ""
+
+msgid "Admin|Settings|Logo URL"
+msgstr ""
+
+msgid "Admin|Settings|Logo URL hint"
 msgstr ""
 
 msgid "Admin|Settings|Save"
