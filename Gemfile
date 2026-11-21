@@ -62,7 +62,7 @@ gem 'rails-settings-cached', '~> 2.9'
 # Attachments
 gem 'active_storage_validations', '~> 4.1'
 gem 'image_processing', '~> 2.2'
-gem 'ruby-vips', '~> 2.3'
+gem 'ruby-vips', '~> 2.3', require: false # loaded lazily by image_processing; avoids needing libvips at boot
 
 # Models
 gem 'money-rails', '~> 3.0'
