@@ -11,7 +11,7 @@ gem 'cancancan', '~> 3.6'
 gem 'devise', '~> 5.0'
 gem 'devise-two-factor', '~> 6.1'
 gem 'doorkeeper', '~> 5.9'
-gem 'doorkeeper-openid_connect', '~> 1.10'
+gem 'doorkeeper-openid_connect', '~> 2.1'
 gem 'recaptcha', '~> 5.21'
 
 # Session handling
@@ -34,6 +34,8 @@ gem 'turbo-rails', '~> 2.0'
 gem 'active_type', '~> 2.8'
 gem 'inquery', '~> 1.1'
 gem 'rails_ops', '~> 1.8'
+# rails_ops requires ostruct without declaring it; it is no longer a default gem in Ruby 4
+gem 'ostruct'
 gem 'schemacop', '~> 3.0'
 
 # Views
