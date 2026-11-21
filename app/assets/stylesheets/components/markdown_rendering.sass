@@ -1,3 +1,7 @@
+// Rendered markdown. Used both in the public app and in the preview of the
+// markdown editor in the admin panel, so the preview matches the real page.
+// The admin panel has no --l4n-* theme variables, so Bootstrap colors are used
+// there as fallbacks.
 .markdown-rendering
   // No margin after last paragraph
   > p:last-child
@@ -20,3 +24,68 @@
     left: 0
     width: 100%
     height: 100%
+
+  h1, h2, h3, h4, h5, h6
+    color: var(--l4n-heading-color, var(--bs-emphasis-color))
+    font-weight: 600
+    margin-top: 1.75rem
+    margin-bottom: 0.6rem
+    &:first-child
+      margin-top: 0
+
+  h1
+    font-size: 1.75rem
+  h2
+    font-size: 1.5rem
+  h3
+    font-size: 1.25rem
+  h4
+    font-size: 1.1rem
+  h5, h6
+    font-size: 1rem
+
+  // Paragraphs that only contain links are shown as buttons (see
+  // Services::Markdown)
+  .md-link-row
+    display: flex
+    flex-wrap: wrap
+    gap: 0.5rem
+    br
+      display: none
+    a
+      display: inline-flex
+      align-items: center
+      gap: 0.5rem
+      padding: 0.4rem 1rem
+      border: 1px solid var(--l4n-accent-color, var(--bs-primary))
+      border-radius: 0.5rem
+      color: var(--l4n-accent-color, var(--bs-primary))
+      font-weight: 500
+      transition: background-color 0.15s ease, color 0.15s ease
+      &::after
+        content: "→"
+        transition: transform 0.15s ease
+      &:hover,
+      &:focus
+        background-color: var(--l4n-accent-color, var(--bs-primary))
+        color: var(--l4n-button-text-color, white)
+        &::after
+          transform: translateX(2px)
+      // Icons inside the button, e.g. [![](icon.png) Discord](...). They always
+      // have the height of the text, also if a width was set in the markdown.
+      img
+        height: 1.25rem
+        width: auto !important
+      // Buttons with an icon (usually a brand logo) are neutral, so that they
+      // don't clash with the colors of the logo. They don't need the arrow.
+      &:has(img)
+        border-color: color-mix(in srgb, var(--l4n-heading-color, var(--bs-emphasis-color)) 20%, transparent)
+        color: var(--l4n-heading-color, var(--bs-emphasis-color))
+        transition: border-color 0.15s ease, color 0.15s ease
+        &::after
+          content: none
+        &:hover,
+        &:focus
+          background-color: transparent
+          border-color: var(--l4n-accent-color, var(--bs-primary))
+          color: var(--l4n-accent-color, var(--bs-primary))
