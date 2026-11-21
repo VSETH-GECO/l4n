@@ -8,12 +8,11 @@
           .row
             .col-md-6
               %h4.mb-3= _('Admin|Users|Avatar|Crop your avatar')
-              .canvas-wrapper
-                - url = model.avatar.present? ? url_for(model.avatar) : nil
-                %canvas{ width: '300', height: '300', data: { initial: url, 'image-cropper-target' => 'canvas' } }
+              - url = model.avatar.present? ? url_for(model.avatar) : nil
+              .canvas-wrapper{ data: { initial: url, 'image-cropper-target' => 'container' } }
             .col-md-6
               %h4.mb-3= _('Admin|Users|Avatar|Preview your avatar')
-              .cropper-preview
+              .cropper-preview{ data: { 'image-cropper-target' => 'preview' } }
           %hr
           .input-group.mb-3
             %input.d-none{ type: 'file', id: 'imageLoader', name: 'imageLoader', data: { 'image-cropper-target' => 'imageLoader' } }
