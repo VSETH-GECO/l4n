@@ -12,7 +12,7 @@ module Settings
       op Operations::User::UpdateProfile
 
       if op.run
-        sign_in(model, bypass: true)
+        bypass_sign_in(model)
         flash[:success] = _('User|Profile updated successfully')
         redirect_to settings_profile_path
       else

@@ -4,12 +4,12 @@ ruby '3.4.13'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.2'
+gem 'rails', '~> 8.1', '>= 8.1.4.1'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.6'
-gem 'devise', '~> 4.9'
-gem 'devise-two-factor', '~> 5.1'
+gem 'devise', '~> 5.0'
+gem 'devise-two-factor', '~> 6.1'
 gem 'doorkeeper', '~> 5.9'
 gem 'doorkeeper-openid_connect', '~> 1.10'
 gem 'recaptcha', '~> 5.21'
@@ -48,7 +48,7 @@ gem 'simple_form', '~> 5.4'
 # Translations
 gem 'gettext_i18n_rails', '~> 1.12'
 gem 'mobility', '~> 1.3'
-gem 'rails-i18n', '~> 7.0'
+gem 'rails-i18n', '~> 8.0'
 
 # Markdown rendering
 gem 'redcarpet', '~> 3.6'
@@ -73,7 +73,7 @@ gem 'tournament-system', '~> 2.0', require: 'tournament_system'
 # OAuth
 gem 'omniauth', '~> 2.1'
 gem 'omniauth-discord', '~> 1.2'
-gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'omniauth-rails_csrf_protection', '~> 2.0'
 gem 'omniauth-steam', '~> 1.0'
 
 # Notifications
