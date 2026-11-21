@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 17:34+0000\n"
-"PO-Revision-Date: 2026-11-21 17:34+0000\n"
+"POT-Creation-Date: 2026-11-21 17:56+0000\n"
+"PO-Revision-Date: 2026-11-21 17:56+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1310,6 +1310,11 @@ msgstr ""
 msgid "Events|No events found"
 msgstr ""
 
+msgid "Event|%{count} more date"
+msgid_plural "Event|%{count} more dates"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Event|Add event date"
 msgstr ""
 
@@ -1317,9 +1322,6 @@ msgid "Event|All events"
 msgstr ""
 
 msgid "Event|Description"
-msgstr ""
-
-msgid "Event|From %{start_date} to %{end_date}"
 msgstr ""
 
 msgid "Event|Happening now"
@@ -1332,9 +1334,6 @@ msgid "Event|Last location"
 msgstr ""
 
 msgid "Event|Last start"
-msgstr ""
-
-msgid "Event|Location"
 msgstr ""
 
 msgid "Event|More dates"

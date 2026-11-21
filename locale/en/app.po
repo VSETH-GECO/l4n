@@ -1309,6 +1309,11 @@ msgstr "Events"
 msgid "Events|No events found"
 msgstr "No events found"
 
+msgid "Event|%{count} more date"
+msgid_plural "Event|%{count} more dates"
+msgstr[0] "%{count} more date"
+msgstr[1] "%{count} more dates"
+
 msgid "Event|Add event date"
 msgstr "Add event date"
 
@@ -1317,9 +1322,6 @@ msgstr "All events"
 
 msgid "Event|Description"
 msgstr "Description"
-
-msgid "Event|From %{start_date} to %{end_date}"
-msgstr "From %{start_date} to %{end_date}"
 
 msgid "Event|Happening now"
 msgstr "Happening now"
@@ -1332,9 +1334,6 @@ msgstr "Last location"
 
 msgid "Event|Last start"
 msgstr "Last start"
-
-msgid "Event|Location"
-msgstr "Location"
 
 msgid "Event|More dates"
 msgstr "More dates"

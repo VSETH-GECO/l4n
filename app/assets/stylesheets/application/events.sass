@@ -101,3 +101,37 @@
 .card .card-footer.event-dates
   border-top: 1px solid var(--l4n-card-border-color)
   padding-top: 1.25rem
+
+// Events list
+.event-list-title
+  font-size: 1.25rem
+  font-weight: 600
+  margin-bottom: 0
+  a
+    color: var(--l4n-heading-color)
+    &:hover,
+    &:focus
+      color: var(--l4n-accent-color)
+
+.event-list-footer
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  gap: 0.5rem 1.25rem
+  margin-top: 1rem
+
+.event-read-more
+  font-weight: 500
+  .svg-inline--fa
+    font-size: 0.8em
+    margin-left: 0.35rem
+    transition: transform 0.15s ease
+  &:hover .svg-inline--fa
+    transform: translateX(2px)
+
+.event-list-more-dates
+  color: var(--bs-secondary-color)
+  font-size: 0.9rem
+
+.event-list-excerpt
+  margin-bottom: 0

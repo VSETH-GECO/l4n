@@ -1,28 +1,44 @@
-- provide :page_title, _('Events')
+.event-header
+  %h1.event-title= _('Events')
 
 - if op.events.any?
   - op.events.each do |event|
-    .card.mb-4
+    - next_date = event.next_date
+    - more_dates_count = event.future_dates.count - 1
+    .card.mb-3
       .card-body
-        %h3.mb-1= event.title
-        .mb-3
-          .text-muted
-            = _('Event|From %{start_date} to %{end_date}') % { start_date: l(event.next_date.start_date, format: :short),
-                                                               end_date:   l(event.next_date.end_date, format: :short) }
-          - if event.next_date.location.present?
-            .text-muted
-              = "#{_('Event|Location')}:"
-              = event.next_date.location
-        %p.card-text.mb-auto
-          = markdown(truncate(event.description, length: 600, separator: ' ', escape: false))
+        .event-key-facts
+          = render 'shared/date_tile', date: next_date.start_date, classes: 'date-tile-lg'
+          %div
+            %h2.event-list-title
+              = link_to event.title, event_path(event)
+              - if (badge = event_date_badge(next_date))
+                %span.badge.event-badge= badge
+            .event-key-facts-meta
+              %span
+                = icon %i[far fa-calendar]
+                = event_date_days(next_date)
+              %span
+                = icon %i[far fa-clock]
+                = event_date_times(next_date)
+              - if next_date.location.present?
+                %span
+                  = icon %i[fas fa-location-dot]
+                  = next_date.location
 
-        = button _('Event|Read more'), event_path(event), size: :sm, color: :default
+        %p.event-list-excerpt= event_excerpt(event)
+
+        .event-list-footer
+          = link_to event_path(event), class: 'event-read-more' do
+            = _('Event|Read more')
+            = icon %i[fas fa-arrow-right]
+          - if more_dates_count.positive?
+            %span.event-list-more-dates
+              = n_('Event|%{count} more date', 'Event|%{count} more dates', more_dates_count) % { count: more_dates_count }
 
   - if op.events.total_pages > 1
-    .card
-      .card-body
-        = paginate op.events, theme: 'bootstrap'
+    = paginate op.events, theme: 'bootstrap'
 - else
   .card
-    .card-body
+    .card-body.text-muted
       = _('Events|No events found')

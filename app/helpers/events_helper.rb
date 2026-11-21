@@ -29,4 +29,12 @@ module EventsHelper
       _('Event|Tomorrow')
     end
   end
+
+  # A short plain text teaser of the event description. The markdown is
+  # rendered first, so that the truncation can't break its syntax.
+  def event_excerpt(event, length: 250)
+    # Entities like &amp; are decoded, as truncate escapes the text again
+    text = CGI.unescapeHTML(strip_tags(Services::Markdown.render(event.description))).squish
+    truncate(text, length: length, separator: ' ')
+  end
 end

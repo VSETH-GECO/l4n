@@ -27,6 +27,26 @@ class EventsHelperTest < ActionView::TestCase
     end
   end
 
+  def test_event_excerpt_is_plain_text
+    event = Event.new(description: "# What is it?\n\nA **fun** evening with [friends](https://example.com).")
+
+    assert_equal 'What is it? A fun evening with friends.', event_excerpt(event)
+  end
+
+  def test_event_excerpt_decodes_entities
+    event = Event.new(description: "We're at Town & Züri <script>")
+
+    # truncate escapes the text again, so it ends up escaped exactly once
+    assert_equal 'We&#39;re at Town &amp; Züri', event_excerpt(event)
+  end
+
+  def test_event_excerpt_is_truncated
+    event = Event.new(description: 'word ' * 100)
+
+    assert_operator event_excerpt(event, length: 50).length, :<=, 50
+    assert event_excerpt(event, length: 50).end_with?('...')
+  end
+
   private
 
   def event_date(start_date, end_date)
