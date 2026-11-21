@@ -1,5 +1,4 @@
-.event-header
-  %h1.event-title= _('Events')
+- provide :page_title, _('Events')
 
 - if op.events.any?
   - op.events.each do |event|

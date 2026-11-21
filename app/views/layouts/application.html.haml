@@ -27,6 +27,8 @@
     .main.container.mb-5
       - if content_for?(:page_title)
         .page-title.mb-3
+          -# Optional link above the title, e.g. back to an overview page
+          = yield :page_title_back_link
           %h1= yield :page_title
       .content
         - if @use_sidebar_layout

@@ -7,11 +7,11 @@
   # Highlights this event in the sidebar
   provide :current_event_id, model.id.to_s
 
-.event-header
-  = link_to events_path, class: 'event-back-link' do
+- provide :page_title, model.title
+- content_for :page_title_back_link do
+  = link_to events_path, class: 'page-title-back-link' do
     = icon %i[fas fa-arrow-left]
     = _('Event|All events')
-  %h1.event-title= model.title
 
 .card
   .card-body
