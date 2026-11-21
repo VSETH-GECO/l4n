@@ -978,10 +978,10 @@ keyv@^5.6.0:
   dependencies:
     "@keyv/serialize" "^1.1.1"
 
-konva@9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/konva/-/konva-9.2.0.tgz#3739e539724b0e6b76d697a322efdaa01baa1508"
-  integrity sha512-+woI76Sk+VFVl9z7zPkuTnN2zFpEYg27YWz8BCdQXpt5IS3pdnSPAPQVPPMidcbDi9/G5b/IOIp35/KqMGiYPA==
+konva@10.10.0:
+  version "10.10.0"
+  resolved "https://registry.yarnpkg.com/konva/-/konva-10.10.0.tgz#9855c839c10158e73e183fab6bf20fe5f528d4cc"
+  integrity sha512-hPU7xXWxhOqLScPo1gNCtY/PJAH2aXS//Wile6lfWmoO14vkZQbeS2HK5aV6FJ5Q2OzxgdGVSiMhyLspSk4fRw==
 
 levn@^0.4.1:
   version "0.4.1"
