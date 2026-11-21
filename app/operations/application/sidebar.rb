@@ -16,7 +16,8 @@ module Operations::Application
       ApplicationController.render partial: 'shared/sidebar/lan_party', locals: { user: context.user }, collection: active_lan_parties_with_sidebar
     end
 
-    def next_events_block
+    # The current event (if the user is on an event page) is highlighted
+    def next_events_block(current_event_id: nil)
       # Check that the news feature flag is enabled
       return unless FeatureFlag.enabled?(:events)
 
@@ -25,7 +26,7 @@ module Operations::Application
 
       next_relevant_events = Queries::Event::FetchFutureEvents.call.where(published: true).first(3)
 
-      ApplicationController.render partial: 'shared/sidebar/next_events', locals: { events: next_relevant_events } if next_relevant_events.any?
+      ApplicationController.render partial: 'shared/sidebar/next_events', locals: { events: next_relevant_events, current_event_id: current_event_id } if next_relevant_events.any?
     end
 
     def news_block

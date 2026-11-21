@@ -1,0 +1,4 @@
+-# Small square tile showing the day and month of a date, e.g. "21 / NOV"
+.date-tile{ class: local_assigns[:classes] }
+  .date-tile-day= l(date, format: '%d')
+  .date-tile-month= l(date, format: '%b')

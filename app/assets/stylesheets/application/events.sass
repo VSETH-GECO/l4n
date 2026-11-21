@@ -1,0 +1,103 @@
+// Event page header with back link and title
+.event-header
+  margin-bottom: 1.25rem
+
+.event-back-link
+  display: inline-flex
+  align-items: center
+  gap: 0.4rem
+  font-size: 0.9rem
+  font-weight: 500
+  margin-bottom: 0.25rem
+  .svg-inline--fa
+    font-size: 0.8em
+    transition: transform 0.15s ease
+  &:hover .svg-inline--fa
+    transform: translateX(-2px)
+
+.event-title
+  color: var(--l4n-heading-color)
+  font-weight: 700
+  margin-bottom: 0
+
+// Next date with date tile, times and location
+.event-key-facts
+  display: flex
+  align-items: center
+  gap: 1rem
+  padding-bottom: 1.25rem
+  margin-bottom: 1.25rem
+  border-bottom: 1px solid var(--l4n-card-border-color)
+
+.event-key-facts-days
+  color: var(--l4n-heading-color)
+  font-size: 1.15rem
+  font-weight: 600
+
+.event-key-facts-meta
+  display: flex
+  flex-wrap: wrap
+  column-gap: 1.25rem
+  row-gap: 0.25rem
+  margin-top: 0.25rem
+  color: var(--bs-secondary-color)
+  .svg-inline--fa
+    margin-right: 0.35rem
+
+.event-badge
+  margin-left: 0.5rem
+  vertical-align: middle
+  background-color: var(--l4n-accent-color)
+  color: var(--l4n-button-text-color)
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.04em
+  text-transform: uppercase
+
+// List of further dates
+.event-dates-title
+  color: var(--l4n-heading-color)
+  font-size: 1rem
+  font-weight: 600
+  margin-bottom: 0.75rem
+
+.event-date-list
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr))
+  gap: 0.75rem
+  list-style: none
+  margin: 0
+  padding: 0
+
+.event-date-row
+  display: flex
+  align-items: center
+  gap: 0.85rem
+
+.event-date-row-days
+  color: var(--l4n-heading-color)
+  font-weight: 500
+
+.event-date-row-meta
+  color: var(--bs-secondary-color)
+  font-size: 0.85rem
+  .svg-inline--fa
+    margin-right: 0.25rem
+
+// Past dates are collapsed and muted
+.event-past-dates
+  summary
+    color: var(--bs-secondary-color)
+    font-size: 0.9rem
+    cursor: pointer
+    &:hover
+      color: var(--l4n-accent-color)
+  .event-date-list
+    margin-top: 0.75rem
+    opacity: 0.6
+  &:not(:first-child)
+    margin-top: 1.25rem
+
+.card .card-footer.event-dates
+  border-top: 1px solid var(--l4n-card-border-color)
+  padding-top: 1.25rem

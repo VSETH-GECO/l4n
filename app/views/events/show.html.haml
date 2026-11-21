@@ -1,35 +1,52 @@
-- provide :page_title, _('Events')
+:ruby
+  next_date = model.next_date
+  all_dates = model.event_dates.order(:start_date).to_a
+  # The next date is shown in the header, so it's not repeated in the list
+  upcoming_dates, past_dates = (all_dates - [next_date]).partition { |date| date.end_date.future? }
+
+  # Highlights this event in the sidebar
+  provide :current_event_id, model.id.to_s
+
+.event-header
+  = link_to events_path, class: 'event-back-link' do
+    = icon %i[fas fa-arrow-left]
+    = _('Event|All events')
+  %h1.event-title= model.title
 
 .card
   .card-body
-    %h3.mb-1= model.title
-    .mb-3
-      .text-muted
-        -# Might also be nil, if an event is in the past. In that case, it
-        -# still should be possible to display the event (if the direct link
-        -# is used), without raising an exception
-        - if model.next_date.present?
-          = _('Event|From %{start_date} to %{end_date}') % { start_date: l(model.next_date.start_date, format: :short),
-                                                             end_date:   l(model.next_date.end_date, format: :short) }
-        - else
-          = _('Event|This event is over')
-      - if model.next_date&.location.present?
-        .text-muted
-          = "#{_('Event|Location')}:"
-          = model.next_date.location
+    -# There might be no next date if the event is in the past. It should
+    -# still be possible to display the event when the direct link is used.
+    - if next_date.present?
+      .event-key-facts
+        = render 'shared/date_tile', date: next_date.start_date, classes: 'date-tile-lg'
+        %div
+          .event-key-facts-days
+            = event_date_days(next_date)
+            - if (badge = event_date_badge(next_date))
+              %span.badge.event-badge= badge
+          .event-key-facts-meta
+            %span
+              = icon %i[far fa-clock]
+              = event_date_times(next_date)
+            - if next_date.location.present?
+              %span
+                = icon %i[fas fa-location-dot]
+                = next_date.location
+    - else
+      .event-key-facts
+        .text-muted= _('Event|This event is over')
 
     = markdown(model.description)
 
-  - if model.event_dates.many?
-    .card-footer
-      .mb-3= _('Event|This event will take place at the following dates')
-      %table.table.table-striped.mb-2
-        %tr
-          %th= _('EventDate|Start')
-          %th= _('EventDate|End')
-          %th= _('EventDate|Location')
-        - model.event_dates.order(:start_date).each do |event_date|
-          %tr{ class: ('strikethrough' if event_date.end_date.past?) }
-            %td= l(event_date.start_date, format: :short)
-            %td= l(event_date.end_date, format: :short)
-            %td= event_date.location.presence || '-'
+  - if upcoming_dates.any? || past_dates.any?
+    .card-footer.event-dates
+      - if upcoming_dates.any?
+        %h2.event-dates-title= _('Event|More dates')
+        = render 'events/date_list', dates: upcoming_dates
+
+      - if past_dates.any?
+        -# For events that are over, these are the only dates, so they are shown right away
+        %details.event-past-dates{ open: next_date.nil? }
+          %summary= _('Event|Show past dates (%{count})') % { count: past_dates.count }
+          = render 'events/date_list', dates: past_dates.reverse

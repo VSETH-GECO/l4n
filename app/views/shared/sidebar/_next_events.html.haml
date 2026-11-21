@@ -9,10 +9,8 @@
       - events.each do |event|
         - date = event.next_date
         %li
-          = link_to event, class: 'sidebar-list-item' do
-            .sidebar-date-tile
-              .sidebar-date-tile-day= l(date.start_date, format: '%d')
-              .sidebar-date-tile-month= l(date.start_date, format: '%b')
+          = link_to event, class: ['sidebar-list-item', ('active' if event.id.to_s == current_event_id)] do
+            = render 'shared/date_tile', date: date.start_date
             .sidebar-list-item-text
               .sidebar-list-item-title= event.title
               .sidebar-list-item-meta

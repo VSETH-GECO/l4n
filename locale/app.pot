@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 16:52+0000\n"
-"PO-Revision-Date: 2026-11-21 16:52+0000\n"
+"POT-Creation-Date: 2026-11-21 17:34+0000\n"
+"PO-Revision-Date: 2026-11-21 17:34+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1289,9 +1289,6 @@ msgid_plural "EventDates"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "EventDate|End"
-msgstr ""
-
 msgid "EventDate|End date"
 msgstr ""
 
@@ -1302,9 +1299,6 @@ msgid "EventDate|Needs to be at larger or equal to the start date"
 msgstr ""
 
 msgid "EventDate|Overlaps with another date"
-msgstr ""
-
-msgid "EventDate|Start"
 msgstr ""
 
 msgid "EventDate|Start date"
@@ -1319,10 +1313,16 @@ msgstr ""
 msgid "Event|Add event date"
 msgstr ""
 
+msgid "Event|All events"
+msgstr ""
+
 msgid "Event|Description"
 msgstr ""
 
 msgid "Event|From %{start_date} to %{end_date}"
+msgstr ""
+
+msgid "Event|Happening now"
 msgstr ""
 
 msgid "Event|Last end"
@@ -1335,6 +1335,9 @@ msgid "Event|Last start"
 msgstr ""
 
 msgid "Event|Location"
+msgstr ""
+
+msgid "Event|More dates"
 msgstr ""
 
 msgid "Event|Next end"
@@ -1352,13 +1355,19 @@ msgstr ""
 msgid "Event|Read more"
 msgstr ""
 
+msgid "Event|Show past dates (%{count})"
+msgstr ""
+
 msgid "Event|This event is over"
 msgstr ""
 
-msgid "Event|This event will take place at the following dates"
+msgid "Event|Title"
 msgstr ""
 
-msgid "Event|Title"
+msgid "Event|Today"
+msgstr ""
+
+msgid "Event|Tomorrow"
 msgstr ""
 
 msgid "Event|You need to add at least one date"

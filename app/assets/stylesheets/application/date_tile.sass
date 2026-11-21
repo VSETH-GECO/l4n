@@ -1,0 +1,29 @@
+// Date tile ("21 / NOV"), see shared/_date_tile
+.date-tile
+  flex-shrink: 0
+  width: 3.25rem
+  padding: 0.35rem 0
+  border-radius: 0.5rem
+  background-color: color-mix(in srgb, var(--l4n-accent-color) 15%, transparent)
+  text-align: center
+  line-height: 1.1
+
+.date-tile-day
+  color: var(--l4n-heading-color)
+  font-size: 1.25rem
+  font-weight: 700
+
+.date-tile-month
+  color: var(--l4n-accent-color)
+  font-size: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.05em
+  text-transform: uppercase
+
+.date-tile.date-tile-lg
+  width: 4rem
+  padding: 0.5rem 0
+  .date-tile-day
+    font-size: 1.6rem
+  .date-tile-month
+    font-size: 0.8rem

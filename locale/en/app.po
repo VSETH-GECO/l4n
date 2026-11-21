@@ -1288,9 +1288,6 @@ msgid_plural "EventDates"
 msgstr[0] "Event date"
 msgstr[1] "Event dates"
 
-msgid "EventDate|End"
-msgstr "End"
-
 msgid "EventDate|End date"
 msgstr "End date"
 
@@ -1302,9 +1299,6 @@ msgstr "Needs to be at larger or equal to the start date"
 
 msgid "EventDate|Overlaps with another date"
 msgstr "Overlaps with another date"
-
-msgid "EventDate|Start"
-msgstr "Start"
 
 msgid "EventDate|Start date"
 msgstr "Start date"
@@ -1318,11 +1312,17 @@ msgstr "No events found"
 msgid "Event|Add event date"
 msgstr "Add event date"
 
+msgid "Event|All events"
+msgstr "All events"
+
 msgid "Event|Description"
 msgstr "Description"
 
 msgid "Event|From %{start_date} to %{end_date}"
 msgstr "From %{start_date} to %{end_date}"
+
+msgid "Event|Happening now"
+msgstr "Happening now"
 
 msgid "Event|Last end"
 msgstr "Last end"
@@ -1335,6 +1335,9 @@ msgstr "Last start"
 
 msgid "Event|Location"
 msgstr "Location"
+
+msgid "Event|More dates"
+msgstr "More dates"
 
 msgid "Event|Next end"
 msgstr "Next end"
@@ -1351,14 +1354,20 @@ msgstr "Published"
 msgid "Event|Read more"
 msgstr "Read more"
 
+msgid "Event|Show past dates (%{count})"
+msgstr "Show past dates (%{count})"
+
 msgid "Event|This event is over"
 msgstr "This event is over"
 
-msgid "Event|This event will take place at the following dates"
-msgstr "This event will take place at the following dates"
-
 msgid "Event|Title"
 msgstr "Title"
+
+msgid "Event|Today"
+msgstr "Today"
+
+msgid "Event|Tomorrow"
+msgstr "Tomorrow"
 
 msgid "Event|You need to add at least one date"
 msgstr "You need to add at least one date"
