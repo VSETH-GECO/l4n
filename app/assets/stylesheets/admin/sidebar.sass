@@ -1,3 +1,5 @@
+@use "sass:map"
+
 #sidebar
   width: $sidebar-width
   color: $sidenav-color
@@ -19,7 +21,7 @@
     a
       color: $sidenav-color !important
     .brand-container
-      padding: map-get($spacers, 3)
+      padding: map.get($spacers, 3)
       border-bottom: 1px solid $sidenav-lighter-bg-color
       .brand
         text-decoration: none
@@ -29,7 +31,7 @@
         text-overflow: ellipsis
         white-space: nowrap
     .current-user-info
-      padding: map-get($spacers, 3)
+      padding: map.get($spacers, 3)
       border-bottom: 1px solid $sidenav-lighter-bg-color
       display: flex
       .current-user-avatar
@@ -40,11 +42,11 @@
           &.placeholder-avatar
             filter: invert(80%)
       .current-user-details
-        margin-left: map-get($spacers, 3)
+        margin-left: map.get($spacers, 3)
         overflow: hidden
         text-overflow: ellipsis
     .sidenav
-      margin-top: map-get($spacers, 2)
+      margin-top: map.get($spacers, 2)
       font-weight: $sidenav-font-weight
       font-size: $sidenav-font-size
       .nav-item
@@ -60,7 +62,7 @@
             text-overflow: ellipsis
             overflow: hidden
             .nav-item-text
-              padding-left: map-get($spacers, 1)
+              padding-left: map.get($spacers, 1)
           &.active
             background-color: unset
             color: white !important
