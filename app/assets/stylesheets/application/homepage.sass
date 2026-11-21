@@ -19,31 +19,3 @@
         height: 100%
         width: 100%
         object-fit: cover
-
-// Content blocks: paragraphs that only contain links are shown as buttons
-.startpage-content-block
-  .md-link-row
-    display: flex
-    flex-wrap: wrap
-    gap: 0.5rem
-    br
-      display: none
-    a
-      display: inline-flex
-      align-items: center
-      padding: 0.4rem 1rem
-      border: 1px solid var(--l4n-accent-color)
-      border-radius: 0.5rem
-      color: var(--l4n-accent-color)
-      font-weight: 500
-      transition: background-color 0.15s ease, color 0.15s ease
-      &::after
-        content: "→"
-        margin-left: 0.5rem
-        transition: transform 0.15s ease
-      &:hover,
-      &:focus
-        background-color: var(--l4n-accent-color)
-        color: var(--l4n-button-text-color)
-        &::after
-          transform: translateX(2px)
