@@ -22,6 +22,8 @@ class StylingVariable < ApplicationRecord
   validate :at_least_one_value_set
 
   # == Hooks =======================================================================
+  # Blank values would generate invalid CSS (e.g. "--l4n-bg-color: ;") and override the defaults
+  normalizes :light_mode_value, :dark_mode_value, with: ->(value) { value.strip.presence }
 
   # == Scopes ======================================================================
 
@@ -32,8 +34,9 @@ class StylingVariable < ApplicationRecord
         ''
       else
         output = []
-        light_variables = where.not(light_mode_value: nil)
-        dark_variables = where.not(dark_mode_value: nil)
+        # Filtered in Ruby, as `normalizes` would turn a query for '' into IS NULL, and old rows may still contain ''
+        light_variables = all.select { |variable| variable.light_mode_value.present? }
+        dark_variables = all.select { |variable| variable.dark_mode_value.present? }
 
         # Light variables
 
