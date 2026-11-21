@@ -18,7 +18,7 @@ gem 'recaptcha', '~> 5.21'
 gem 'activerecord-session_store', '~> 2.3'
 
 # Puma
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 8.1'
 
 # Database
 gem 'pg', '~> 1.5'
