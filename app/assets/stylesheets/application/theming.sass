@@ -47,3 +47,8 @@ body
 
 footer
   background-color: var(--l4n-footer-bg)
+
+// Footer logos can have a separate image for the dark theme
+html[data-bs-theme="dark"] .footer-logo-light,
+html:not([data-bs-theme="dark"]) .footer-logo-dark
+  display: none

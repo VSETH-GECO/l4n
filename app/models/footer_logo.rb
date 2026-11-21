@@ -2,6 +2,7 @@ class FooterLogo < ApplicationRecord
   # == Attributes ==================================================================
 
   # == Constants ===================================================================
+  CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/svg+xml'].freeze
 
   # == Associations ================================================================
   has_one_attached :file do |attachable|
@@ -9,10 +10,17 @@ class FooterLogo < ApplicationRecord
     attachable.variant :medium, resize_to_limit: [200, 40]
   end
 
+  # Optional alternative image shown when the dark color theme is active
+  has_one_attached :file_dark do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 20]
+    attachable.variant :medium, resize_to_limit: [200, 40]
+  end
+
   # == Validations =================================================================
   validates :sort, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates_boolean :visible
-  validates :file, attached: true, content_type: ['image/png', 'image/jpeg']
+  validates :file, attached: true, content_type: CONTENT_TYPES
+  validates :file_dark, content_type: CONTENT_TYPES
 
   # == Hooks =======================================================================
 

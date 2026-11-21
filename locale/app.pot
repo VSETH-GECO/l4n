@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 14:39+0000\n"
-"PO-Revision-Date: 2026-11-21 14:39+0000\n"
+"POT-Creation-Date: 2026-11-21 15:17+0000\n"
+"PO-Revision-Date: 2026-11-21 15:17+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -179,6 +179,15 @@ msgid "Admin|FooterLogos"
 msgstr ""
 
 msgid "Admin|FooterLogo|Link is optional"
+msgstr ""
+
+msgid "Admin|FooterLogo|Optional, shown instead of the default image in dark mode"
+msgstr ""
+
+msgid "Admin|FooterLogo|Remove dark mode image"
+msgstr ""
+
+msgid "Admin|FooterLogo|Shown in light mode, and in dark mode if no dark mode image is set"
 msgstr ""
 
 msgid "Admin|LanParties"
@@ -1386,10 +1395,19 @@ msgid_plural "FooterLogos"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "FooterLogo|File"
+msgstr ""
+
+msgid "FooterLogo|File dark"
+msgstr ""
+
 msgid "FooterLogo|Link"
 msgstr ""
 
 msgid "FooterLogo|Logo file"
+msgstr ""
+
+msgid "FooterLogo|Logo file dark"
 msgstr ""
 
 msgid "FooterLogo|Sort"

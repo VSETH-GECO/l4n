@@ -8,17 +8,22 @@
       %nav
         %ol.breadcrumb.mb-0
           = render_breadcrumbs builder: Services::BootstrapBreadcrumbBuilder
-    - footer_logos = FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob).to_a
+    - footer_logos = FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob, file_dark_attachment: :blob).to_a
     - footer_menu_items = Queries::MenuItem::FindActiveTopElements.call(location: 'footer').select(&:visible?)
     - if footer_logos.any? || footer_menu_items.any?
       .d-flex.flex-wrap.justify-content-between.align-items-center.gap-3.py-3.border-top
         .d-flex.flex-wrap.align-items-center
           - footer_logos.each do |logo|
+            - logo_images = capture do
+              - if logo.file_dark.attached?
+                = footer_logo_image_tag logo.file, :medium, class: 'ms-2 footer-logo-light'
+                = footer_logo_image_tag logo.file_dark, :medium, class: 'ms-2 footer-logo-dark'
+              - else
+                = footer_logo_image_tag logo.file, :medium, class: 'ms-2'
             - if logo.link.present?
-              = link_to logo.link, target: :_blank, rel: :noopener do
-                = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
+              = link_to logo_images, logo.link, target: :_blank, rel: :noopener
             - else
-              = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
+              = logo_images
         - if footer_menu_items.any?
           %nav.footer-menu.ms-auto
             %ul.list-unstyled.text-end.small.mb-0

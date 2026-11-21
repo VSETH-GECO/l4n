@@ -78,6 +78,9 @@ N_('StartpageBanner|Images')
 
 # Footer Logo
 N_('FooterLogo|Logo file')
+N_('FooterLogo|Logo file dark')
+N_('FooterLogo|File')
+N_('FooterLogo|File dark')
 
 # Seat categories
 N_('SeatCategory|Seat count')

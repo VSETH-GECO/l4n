@@ -180,6 +180,15 @@ msgstr "Footer Logos"
 msgid "Admin|FooterLogo|Link is optional"
 msgstr "Link is optional"
 
+msgid "Admin|FooterLogo|Optional, shown instead of the default image in dark mode"
+msgstr "Optional, shown instead of the default image in dark mode"
+
+msgid "Admin|FooterLogo|Remove dark mode image"
+msgstr "Remove dark mode image"
+
+msgid "Admin|FooterLogo|Shown in light mode, and in dark mode if no dark mode image is set"
+msgstr "Shown in light mode, and in dark mode if no dark mode image is set"
+
 msgid "Admin|LanParties"
 msgstr "Lan Parties"
 
@@ -1385,11 +1394,20 @@ msgid_plural "FooterLogos"
 msgstr[0] "Footer logo"
 msgstr[1] "Footer logos"
 
+msgid "FooterLogo|File"
+msgstr "Logo"
+
+msgid "FooterLogo|File dark"
+msgstr "Logo (dark mode)"
+
 msgid "FooterLogo|Link"
 msgstr "Link"
 
 msgid "FooterLogo|Logo file"
 msgstr "Logo"
+
+msgid "FooterLogo|Logo file dark"
+msgstr "Logo (dark mode)"
 
 msgid "FooterLogo|Sort"
 msgstr "Sort"

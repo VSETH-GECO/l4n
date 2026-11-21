@@ -10,7 +10,14 @@
         .col-md-6
           = f.input :visible, as: :select, include_blank: false
         .col-md-6
-          = f.input :file
-          = image_tag model.file.variant(:thumb).processed
+          = f.input :file, hint: _('Admin|FooterLogo|Shown in light mode, and in dark mode if no dark mode image is set')
+          = footer_logo_image_tag model.file, :thumb
+      .row
+        .col-md-6.offset-md-6
+          = f.input :file_dark, hint: _('Admin|FooterLogo|Optional, shown instead of the default image in dark mode')
+          - if model.file_dark.attached? && model.file_dark.blob.persisted?
+            .p-2.bg-dark.d-inline-block.rounded
+              = footer_logo_image_tag model.file_dark, :thumb
+            = f.input :remove_file_dark, as: :boolean, label: _('Admin|FooterLogo|Remove dark mode image')
     .card-footer
       = f.save

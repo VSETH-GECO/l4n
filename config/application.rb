@@ -28,6 +28,13 @@ module L4n
     config.active_record.encryption.deterministic_key = Figaro.env.ar_deterministic_key
     config.active_record.encryption.key_derivation_salt = Figaro.env.ar_key_derivation_salt
 
+    # Serve SVGs with their real content type so they render in <img> tags
+    # (e.g. footer logos). They are still served with "Content-Disposition:
+    # attachment" since they are not in `content_types_allowed_inline`, so
+    # opening a blob URL directly downloads it instead of executing scripts in
+    # it on our origin.
+    config.active_storage.content_types_to_serve_as_binary -= ['image/svg+xml']
+
     # Array holding the payment gateways
     config.payment_gateways = []
 

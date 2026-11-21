@@ -1,0 +1,15 @@
+// SVG footer logos are not resized server-side like raster ones. They get a
+// fixed height (not max-height): SVGs with only a viewBox have no intrinsic
+// size and would otherwise collapse to 0x0. Matches the variant limits in
+// FooterLogo.
+.footer-logo-svg-thumb
+  height: 40px
+  width: auto
+  max-width: 100px
+  object-fit: contain
+
+.footer-logo-svg-medium
+  height: 80px
+  width: auto
+  max-width: 200px
+  object-fit: contain

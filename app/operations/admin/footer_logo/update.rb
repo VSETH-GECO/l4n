@@ -6,10 +6,22 @@ module Operations::Admin::FooterLogo
         str? :sort
         str? :visible
         obj? :file
+        obj? :file_dark
+        str? :remove_file_dark
         str? :link
       end
     end
 
-    model ::FooterLogo
+    model ::FooterLogo do
+      attribute :remove_file_dark, :boolean
+    end
+
+    def perform
+      super
+
+      return unless model.valid?
+
+      model.file_dark.purge if model.remove_file_dark && model.file_dark.attached?
+    end
   end
 end

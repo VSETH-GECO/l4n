@@ -34,7 +34,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('FooterLogo') }
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('FooterLogo') }
-        render :new, status: :unprocessable_content
+        render :edit, status: :unprocessable_content
       end
     end
 

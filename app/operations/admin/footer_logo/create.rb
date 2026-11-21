@@ -5,6 +5,7 @@ module Operations::Admin::FooterLogo
         str? :sort
         str? :visible
         obj? :file
+        obj? :file_dark
         str? :link
       end
     end
