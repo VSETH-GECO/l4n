@@ -64,7 +64,7 @@ gem 'active_storage_validations', '~> 4.1'
 gem 'image_processing', '~> 1.12'
 
 # Models
-gem 'money-rails', '~> 1.12'
+gem 'money-rails', '~> 3.0'
 
 # Background processing
 gem 'whenever', '~> 1.1', require: false
