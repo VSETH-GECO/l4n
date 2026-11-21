@@ -4,8 +4,8 @@
     margin-top: 30px;
   }
 
--# Render the banner
-= op.render_banner
-
--# Render the content blocks
-= op.render_content_blocks
+-# Render the banner and the content blocks. The gap only applies between
+-# rendered elements, so the first one never gets a top margin.
+.vstack.gap-3
+  = op.render_banner
+  = op.render_content_blocks
