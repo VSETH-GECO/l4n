@@ -224,7 +224,7 @@ export default class MarkdownEditor extends EasyMDE {
   // Highlight text in markdown
   static highlight(editor) {
     var cm = editor.codemirror;
-    var output = '';
+    var output;
     var str = cm.getSelection();
     if(str.length == 0) {
       output = '== ==';

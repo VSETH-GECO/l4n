@@ -68,7 +68,7 @@ export default class Cocoon {
     let regexpUnderscored = new RegExp('_new_' + assoc + '_(\\w*)', 'g');
     let newId = Cocoon.createNewID();
     let newContent = content.replace(regexpBraced, Cocoon.newcontentBraced(newId));
-    let newContents = [];
+    let newContents;
     let originalEvent = e;
 
     if (newContent === content) {

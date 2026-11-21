@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 
 /*
-  po2json wrapper for gettext.js
-  https://github.com/mikeedwards/po2json
-  Dump a .po file in a json like this one:
+  Converts a .po file to the JSON format used by gettext.js:
   {
     "": {
         "language": "en",
         "plural-forms": "nplurals=2; plural=(n!=1);"
     },
-    "simple key": "It's tranlation",
-    "another with %1 parameter": "It's %1 tranlsation",
+    "simple key": "It's translation",
+    "another with %1 parameter": "It's %1 translation",
     "a key with plural": [
         "a plural form",
         "another plural form",
@@ -18,41 +16,49 @@
     ],
     "a context\u0004a contextualized key": "translation here"
   }
+
+  Usage: bin/po2json input.po output.json [-p]
 */
 
-var
-  fs = require('fs'),
-  po2json = require('po2json'),
-  argv = process.argv,
-  json = {},
-  pretty = '-p' === argv[4];
+const fs = require('node:fs');
+const { po } = require('gettext-parser');
 
-if (argv.length < 4)
-  return console.error("Wrong parameters.\nFormat: po2json.js input.po output.json [OPTIONS]\n-p for pretty");
+const [input, output, flag] = process.argv.slice(2);
+const pretty = flag === '-p';
 
-fs.readFile(argv[2], function (err, buffer) {
-  var jsonData = po2json.parse(buffer);
+if (!input || !output) {
+  console.error('Wrong parameters.\nFormat: po2json input.po output.json [OPTIONS]\n-p for pretty');
+  process.exit(1);
+}
 
-  for (var key in jsonData) {
-    // Special headers handling, we do not need everything
-    if ('' === key) {
-      json[''] = {
-        'language': jsonData['']['language'],
-        'plural-forms': jsonData['']['plural-forms']
-      };
+const parsed = po.parse(fs.readFileSync(input), { defaultCharset: 'utf8' });
 
-      continue;
-    }
+// gettext-parser keeps the original header case (e.g. "Plural-Forms")
+const header = (name) => {
+  const key = Object.keys(parsed.headers).find((k) => k.toLowerCase() === name);
+  return key && parsed.headers[key];
+};
+
+const json = {
+  '': {
+    'language': header('language'),
+    'plural-forms': header('plural-forms')
+  }
+};
+
+for (const [context, translations] of Object.entries(parsed.translations)) {
+  for (const [msgid, t] of Object.entries(translations)) {
+    // Skip the header entry and fuzzy translations
+    if (msgid === '' && context === '') continue;
+    if (t.comments?.flag?.includes('fuzzy')) continue;
 
     // Do not dump untranslated keys, they already are in the templates!
-    if ('' !== jsonData[key][1])
-      json[key] = 2 === jsonData[key].length ? jsonData[key][1] : jsonData[key].slice(1);
-  }
+    if (t.msgstr[0] === '') continue;
 
-  fs.writeFile(argv[3], JSON.stringify(json, null, pretty ? 4 : 0), function(err) {
-    if (err)
-      console.log(err);
-    else
-      console.log('JSON ' + (pretty ? 'pretty' : 'compactly') + ' saved to ' + argv[3]);
-  });
-});
+    const key = context ? `${context}\u0004${msgid}` : msgid;
+    json[key] = t.msgid_plural ? t.msgstr : t.msgstr[0];
+  }
+}
+
+fs.writeFileSync(output, JSON.stringify(json, null, pretty ? 4 : 0));
+console.log(`JSON ${pretty ? 'pretty' : 'compactly'} saved to ${output}`);

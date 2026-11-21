@@ -22,7 +22,7 @@ bundle exec rails test test/unit/operations/user/create_test.rb -n test_basic
 # Lint (all three run in CI along with the tests; see .github/workflows/ci.yml)
 bundle exec rubocop
 bundle exec haml-lint app/views
-yarn run eslint app/javascript/**/*
+yarn run eslint app/javascript
 
 # Translations: extract gettext strings, update locale/*.po and regenerate public/locale/*.json
 bundle exec rake translate:run
