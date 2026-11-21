@@ -1389,6 +1389,9 @@ msgstr ""
 msgid "File is too large, max. allowed %{size}"
 msgstr ""
 
+msgid "File must be an image"
+msgstr ""
+
 msgid "Footer logo"
 msgstr ""
 

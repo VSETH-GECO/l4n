@@ -51,7 +51,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: MIN_PASSWORD_LENGTH, maximum: MAX_PASSWORD_LENGTH }, if: -> { password.present? || new_record? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates :website, length: { maximum: 255 }
-  validates :avatar, size: { less_than: 5.megabytes, message: _('File is too large, max. allowed %{size}') % { size: '5MB' } }, content_type: %r{\Aimage/.*\z}
+  validates :avatar, size: { less_than: 5.megabytes, message: _('File is too large, max. allowed %{size}') % { size: '5MB' } }, content_type: { with: %r{\Aimage/.*\z}, message: _('File must be an image') }
   validates :color_theme_preference, presence: true, inclusion: AVAILABLE_THEME_MODES
 
   # == Hooks =======================================================================

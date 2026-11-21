@@ -460,6 +460,7 @@
     "FeatureFlag|Reinitialize": "Reinitialize",
     "FeatureFlag|Toggle": "Toggle",
     "File is too large, max. allowed %{size}": "File is too large, max. allowed %{size}",
+    "File must be an image": "File must be an image",
     "Footer logo": "Footer logo",
     "FooterLogo": "FooterLogo",
     "FooterLogo|Link": "Link",

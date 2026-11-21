@@ -1388,6 +1388,9 @@ msgstr "Toggle"
 msgid "File is too large, max. allowed %{size}"
 msgstr "File is too large, max. allowed %{size}"
 
+msgid "File must be an image"
+msgstr "File must be an image"
+
 msgid "Footer logo"
 msgstr "Footer logo"
 
