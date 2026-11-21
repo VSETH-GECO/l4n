@@ -3,7 +3,7 @@
     %li.event-date-row
       = render 'shared/date_tile', date: event_date.start_date
       %div
-        .event-date-row-days
+        .event-date-row-days.with-badge
           = event_date_days(event_date)
           - if (badge = event_date_badge(event_date))
             %span.badge.event-badge= badge

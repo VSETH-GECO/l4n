@@ -21,7 +21,7 @@
       .event-key-facts
         = render 'shared/date_tile', date: next_date.start_date, classes: 'date-tile-lg'
         %div
-          .event-key-facts-days
+          .event-key-facts-days.with-badge
             = event_date_days(next_date)
             - if (badge = event_date_badge(next_date))
               %span.badge.event-badge= badge

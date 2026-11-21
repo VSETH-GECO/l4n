@@ -22,9 +22,16 @@
   .svg-inline--fa
     margin-right: 0.35rem
 
+// Container for text followed by a badge. The gap only applies between items
+// on the same line, so a wrapped badge has no margin on the left.
+.with-badge
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  column-gap: 0.5rem
+  row-gap: 0.2rem
+
 .event-badge
-  margin-left: 0.5rem
-  vertical-align: middle
   background-color: var(--l4n-accent-color)
   color: var(--l4n-button-text-color)
   font-size: 0.7rem
@@ -113,3 +120,11 @@
 
 .event-list-excerpt
   margin-bottom: 0
+
+.with-badge:has(.event-badge-sm)
+  column-gap: 0.5rem
+
+.event-badge.event-badge-sm
+  padding: 0.2em 0.45em
+  font-size: 0.65rem
+  vertical-align: center

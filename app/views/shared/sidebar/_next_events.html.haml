@@ -12,7 +12,10 @@
           = link_to event, class: ['sidebar-list-item', ('active' if event.id.to_s == current_event_id)] do
             = render 'shared/date_tile', date: date.start_date
             .sidebar-list-item-text
-              .sidebar-list-item-title= event.title
+              .sidebar-list-item-title.with-badge
+                = event.title
+                - if (badge = event_date_badge(date))
+                  %span.badge.event-badge.event-badge-sm= badge
               .sidebar-list-item-meta
                 = l(date.start_date, format: '%H:%M')
                 - if date.location.present?

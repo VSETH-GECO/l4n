@@ -9,7 +9,7 @@
         .event-key-facts
           = render 'shared/date_tile', date: next_date.start_date, classes: 'date-tile-lg'
           %div
-            %h2.event-list-title
+            %h2.event-list-title.with-badge
               = link_to event.title, event_path(event)
               - if (badge = event_date_badge(next_date))
                 %span.badge.event-badge= badge
