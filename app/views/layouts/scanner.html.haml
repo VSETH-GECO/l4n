@@ -4,6 +4,7 @@
     %title= _('L4N Ticket Scanner')
     %meta{ content: 'width=device-width,initial-scale=1', name: 'viewport' }
     = csrf_meta_tags
+    %meta{ name: 'turbo-prefetch', content: 'false' }
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true

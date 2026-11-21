@@ -28,7 +28,7 @@ gem 'cssbundling-rails', '~> 1.4'
 gem 'jsbundling-rails', '~> 1.3'
 gem 'sprockets-rails', '~> 3.5'
 gem 'stimulus-rails', '~> 1.3'
-gem 'turbo-rails', '~> 1.5'
+gem 'turbo-rails', '~> 2.0'
 
 # Application structure
 gem 'active_type', '~> 2.8'
