@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 12:50+0000\n"
-"PO-Revision-Date: 2026-11-21 12:50+0000\n"
+"POT-Creation-Date: 2026-11-21 12:52+0000\n"
+"PO-Revision-Date: 2026-11-21 12:52+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -40,7 +40,9 @@ msgid "API Application"
 msgstr ""
 
 msgid "Achievement"
-msgstr ""
+msgid_plural "Achievements"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Achievement|Description"
 msgstr ""
@@ -51,8 +53,10 @@ msgstr ""
 msgid "Achievement|Title"
 msgstr ""
 
-msgid "Active storage/record"
-msgstr ""
+msgid "ActiveStorage::Record"
+msgid_plural "ActiveStorage::Records"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "ActiveStorage::Record|Byte size"
 msgstr ""
@@ -963,8 +967,10 @@ msgstr ""
 msgid "Admin|Welcome to the L4N Admin panel, version %{version}"
 msgstr ""
 
-msgid "Api application"
-msgstr ""
+msgid "ApiApplication"
+msgid_plural "ApiApplications"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "ApiApplication|Api key"
 msgstr ""
@@ -993,8 +999,10 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-msgid "Cart item"
-msgstr ""
+msgid "CartItem"
+msgid_plural "CartItems"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "CartItem|A ticket upgrade has its max quantity reached!"
 msgstr ""
@@ -1180,7 +1188,9 @@ msgid "Doorkeeper/application"
 msgstr ""
 
 msgid "Doorkeeper::Application"
-msgstr ""
+msgid_plural "Doorkeeper::Applications"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Doorkeeper::Application|Authorize"
 msgstr ""
@@ -1252,10 +1262,14 @@ msgid "DummyPayment|There was an error, please try again"
 msgstr ""
 
 msgid "Event"
-msgstr ""
+msgid_plural "Events"
+msgstr[0] ""
+msgstr[1] ""
 
-msgid "Event date"
-msgstr ""
+msgid "EventDate"
+msgid_plural "EventDates"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "EventDate|End"
 msgstr ""
@@ -1332,8 +1346,10 @@ msgstr ""
 msgid "Event|You need to add at least one date"
 msgstr ""
 
-msgid "Feature flag"
-msgstr ""
+msgid "FeatureFlag"
+msgid_plural "FeatureFlags"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "FeatureFlag|Enabled"
 msgstr ""
@@ -1356,11 +1372,10 @@ msgstr ""
 msgid "File must be an image"
 msgstr ""
 
-msgid "Footer logo"
-msgstr ""
-
 msgid "FooterLogo"
-msgstr ""
+msgid_plural "FooterLogos"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "FooterLogo|Link"
 msgstr ""
@@ -1464,11 +1479,10 @@ msgstr ""
 msgid "Lan"
 msgstr ""
 
-msgid "Lan party"
-msgstr ""
-
 msgid "LanParty"
-msgstr ""
+msgid_plural "LanParties"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "LanParty|Actions & Links"
 msgstr ""
@@ -1728,11 +1742,10 @@ msgstr ""
 msgid "Match|Winner"
 msgstr ""
 
-msgid "Menu item"
-msgstr ""
-
 msgid "MenuItem"
-msgstr ""
+msgid_plural "MenuItems"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "MenuItem|Content pages"
 msgstr ""
@@ -1791,11 +1804,10 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-msgid "News post"
-msgstr ""
-
 msgid "NewsPost"
-msgstr ""
+msgid_plural "NewsPosts"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "NewsPosts"
 msgstr ""
@@ -1867,10 +1879,14 @@ msgid "Oauth|user:lan:read description"
 msgstr ""
 
 msgid "Order"
-msgstr ""
+msgid_plural "Orders"
+msgstr[0] ""
+msgstr[1] ""
 
-msgid "Order item"
-msgstr ""
+msgid "OrderItem"
+msgid_plural "OrderItems"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "OrderItem|Item"
 msgstr ""
@@ -2062,7 +2078,9 @@ msgid "Order|the terms and conditions page"
 msgstr ""
 
 msgid "Page"
-msgstr ""
+msgid_plural "Pages"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Page|Content"
 msgstr ""
@@ -2299,13 +2317,9 @@ msgid "Players"
 msgstr ""
 
 msgid "Product"
-msgstr ""
-
-msgid "Product category"
-msgstr ""
-
-msgid "Product variant"
-msgstr ""
+msgid_plural "Products"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "ProductBehaviours|Dummy"
 msgstr ""
@@ -2317,7 +2331,9 @@ msgid "ProductBehaviours|Ticket_upgrade"
 msgstr ""
 
 msgid "ProductCategory"
-msgstr ""
+msgid_plural "ProductCategories"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "ProductCategory|Name"
 msgstr ""
@@ -2330,6 +2346,11 @@ msgstr ""
 
 msgid "ProductCategory|Sort"
 msgstr ""
+
+msgid "ProductVariant"
+msgid_plural "ProductVariants"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "ProductVariant|Cannot delete as an order in payment has this variant"
 msgstr ""
@@ -2461,16 +2482,19 @@ msgid "PromitionCodes|Apply filter"
 msgstr ""
 
 msgid "Promotion"
-msgstr ""
-
-msgid "Promotion code"
-msgstr ""
-
-msgid "Promotion code mapping"
-msgstr ""
+msgid_plural "Promotions"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "PromotionCode"
-msgstr ""
+msgid_plural "PromotionCodes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "PromotionCodeMapping"
+msgid_plural "PromotionCodeMappings"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "PromotionCodeMapping|Applied reduction cents"
 msgstr ""
@@ -2529,8 +2553,10 @@ msgstr ""
 msgid "Promotion|Used codes count"
 msgstr ""
 
-msgid "Rails settings/base"
-msgstr ""
+msgid "RailsSettings::Base"
+msgid_plural "RailsSettings::Bases"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "RailsSettings::Base|Value"
 msgstr ""
@@ -2550,11 +2576,10 @@ msgstr ""
 msgid "Round number %{number}"
 msgstr ""
 
-msgid "Scanner user"
-msgstr ""
-
 msgid "ScannerUser"
-msgstr ""
+msgid_plural "ScannerUsers"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "ScannerUser|Already logged in"
 msgstr ""
@@ -2581,19 +2606,17 @@ msgid "Search|Reset"
 msgstr ""
 
 msgid "Seat"
-msgstr ""
-
-msgid "Seat category"
-msgstr ""
-
-msgid "Seat map"
-msgstr ""
+msgid_plural "Seats"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "SeatCategories"
 msgstr ""
 
 msgid "SeatCategory"
-msgstr ""
+msgid_plural "SeatCategories"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "SeatCategory|Color"
 msgstr ""
@@ -2608,7 +2631,9 @@ msgid "SeatCategory|Seat count"
 msgstr ""
 
 msgid "SeatMap"
-msgstr ""
+msgid_plural "SeatMaps"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "SeatMap|Background height"
 msgstr ""
@@ -2880,11 +2905,10 @@ msgstr ""
 msgid "Shop|Sold out"
 msgstr ""
 
-msgid "Sidebar block"
-msgstr ""
-
 msgid "SidebarBlock"
-msgstr ""
+msgid_plural "SidebarBlocks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "SidebarBlock|Content"
 msgstr ""
@@ -2928,14 +2952,10 @@ msgstr ""
 msgid "StarpageBanner|Remove this image"
 msgstr ""
 
-msgid "Startpage banner"
-msgstr ""
-
-msgid "Startpage block"
-msgstr ""
-
 msgid "StartpageBanner"
-msgstr ""
+msgid_plural "StartpageBanners"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "StartpageBanner|Height"
 msgstr ""
@@ -2953,7 +2973,9 @@ msgid "StartpageBanner|Visible"
 msgstr ""
 
 msgid "StartpageBlock"
-msgstr ""
+msgid_plural "StartpageBlocks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "StartpageBlock|Content"
 msgstr ""
@@ -2988,11 +3010,10 @@ msgstr ""
 msgid "SteamStatus|Snooze"
 msgstr ""
 
-msgid "Styling variable"
-msgstr ""
-
 msgid "StylingVariable"
-msgstr ""
+msgid_plural "StylingVariables"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "StylingVariable|Dark mode value"
 msgstr ""
@@ -3145,10 +3166,9 @@ msgid "Team|You are in this team already"
 msgstr ""
 
 msgid "Ticket"
-msgstr ""
-
-msgid "Ticket upgrade"
-msgstr ""
+msgid_plural "Tickets"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "TicketScanner|Already checked in"
 msgstr ""
@@ -3209,6 +3229,11 @@ msgstr ""
 
 msgid "TicketScanner|Wrong user"
 msgstr ""
+
+msgid "TicketUpgrade"
+msgid_plural "TicketUpgrades"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "TicketUpgrades|Purchased ticket upgrades"
 msgstr ""
@@ -3427,19 +3452,25 @@ msgid "Ticket|status|created"
 msgstr ""
 
 msgid "Timetable"
-msgstr ""
+msgid_plural "Timetables"
+msgstr[0] ""
+msgstr[1] ""
 
-msgid "Timetable category"
-msgstr ""
-
-msgid "Timetable entry"
-msgstr ""
+msgid "TimetableCategory"
+msgid_plural "TimetableCategories"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "TimetableCategory|Name"
 msgstr ""
 
 msgid "TimetableCategory|Order"
 msgstr ""
+
+msgid "TimetableEntry"
+msgid_plural "TimetableEntries"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "TimetableEntry|Entry end"
 msgstr ""
@@ -3463,31 +3494,14 @@ msgid "Timetable|Start datetime"
 msgstr ""
 
 msgid "Tournament"
-msgstr ""
-
-msgid "Tournament/match"
-msgstr ""
-
-msgid "Tournament/phase"
-msgstr ""
-
-msgid "Tournament/phase team"
-msgstr ""
-
-msgid "Tournament/round"
-msgstr ""
-
-msgid "Tournament/team"
-msgstr ""
-
-msgid "Tournament/team member"
-msgstr ""
-
-msgid "Tournament/team rank"
-msgstr ""
+msgid_plural "Tournaments"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Tournament::Match"
-msgstr ""
+msgid_plural "Tournament::Matches"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Tournament::Match|Away score"
 msgstr ""
@@ -3514,7 +3528,14 @@ msgid "Tournament::Match|result_status|reported"
 msgstr ""
 
 msgid "Tournament::Phase"
-msgstr ""
+msgid_plural "Tournament::Phases"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Tournament::PhaseTeam"
+msgid_plural "Tournament::PhaseTeams"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Tournament::PhaseTeam|Score"
 msgstr ""
@@ -3564,14 +3585,31 @@ msgstr ""
 msgid "Tournament::Phase|tournament_mode|swiss"
 msgstr ""
 
+msgid "Tournament::Round"
+msgid_plural "Tournament::Rounds"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Tournament::Round|Round number"
 msgstr ""
 
 msgid "Tournament::Team"
-msgstr ""
+msgid_plural "Tournament::Teams"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Tournament::TeamMember"
+msgid_plural "Tournament::TeamMembers"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Tournament::TeamMember|Captain"
 msgstr ""
+
+msgid "Tournament::TeamRank"
+msgid_plural "Tournament::TeamRanks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Tournament::TeamRank|Name"
 msgstr ""
@@ -3928,7 +3966,9 @@ msgid "TwoFactor|Scan code with auth app"
 msgstr ""
 
 msgid "Upload"
-msgstr ""
+msgid_plural "Uploads"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Upload|Filename"
 msgstr ""
@@ -3949,19 +3989,22 @@ msgid "Upload|Uuid"
 msgstr ""
 
 msgid "User"
-msgstr ""
-
-msgid "User achievement"
-msgstr ""
-
-msgid "User permission"
-msgstr ""
+msgid_plural "Users"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "UserAchievement"
-msgstr ""
+msgid_plural "UserAchievements"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "UserAchievement|Awarded at"
 msgstr ""
+
+msgid "UserPermission"
+msgid_plural "UserPermissions"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "UserPermission|Can only be added to user if the user has 2FA enabled!"
 msgstr ""

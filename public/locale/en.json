@@ -10,11 +10,17 @@
     "%{name}|Show": "Show this %{name}",
     "2FA": "2FA",
     "API Application": "API Application",
-    "Achievement": "Achievement",
+    "Achievement": [
+        "Achievement",
+        "Achievements"
+    ],
     "Achievement|Description": "Description",
     "Achievement|Icon": "Icon",
     "Achievement|Title": "Title",
-    "Active storage/record": "Active storage/record",
+    "ActiveStorage::Record": [
+        "Active storage/record",
+        "Active storage/records"
+    ],
     "ActiveStorage::Record|Byte size": "Byte size",
     "ActiveStorage::Record|Checksum": "Checksum",
     "ActiveStorage::Record|Content type": "Content type",
@@ -318,7 +324,10 @@
     "Admin|User|Successfully confirmed user": "Successfully confirmed user",
     "Admin|User|User is not yet confirmed, click confirm below to confirm the user manually": "User is not yet confirmed, click confirm below to confirm the user manually",
     "Admin|Welcome to the L4N Admin panel, version %{version}": "Welcome to the L4N Admin panel, version %{version}",
-    "Api application": "Api Application",
+    "ApiApplication": [
+        "Api Application",
+        "Api Applications"
+    ],
     "ApiApplication|Api key": "Api key",
     "ApiApplication|Id": "ID",
     "ApiApplication|Name": "Name",
@@ -328,7 +337,10 @@
     "Buttons|Confirm message": "Are you sure?",
     "CSV": "CSV",
     "Cart": "Cart",
-    "Cart item": "Cart item",
+    "CartItem": [
+        "Cart item",
+        "Cart items"
+    ],
     "CartItem|A ticket upgrade has its max quantity reached!": "A ticket category change has its max quantity reached!",
     "CartItem|Cannot be deleted": "Cannot be deleted",
     "CartItem|Delete confirmation?": "Remove item from your cart?",
@@ -390,7 +402,10 @@
     "Datagrid|No columns": "No columns",
     "Datagrid|No results": "No results",
     "Doorkeeper/application": "OAuth Application",
-    "Doorkeeper::Application": "OAuth Application",
+    "Doorkeeper::Application": [
+        "OAuth Application",
+        "OAuth Applications"
+    ],
     "Doorkeeper::Application|Authorize": "Authorize",
     "Doorkeeper::Application|Callback uris": "Callback URIs",
     "Doorkeeper::Application|Confidential": "Confidential",
@@ -414,8 +429,14 @@
     "DummyPaymentGateway|Time left:": "Time left:",
     "DummyPaymentGateway|Title": "Dummy payment gateway",
     "DummyPayment|There was an error, please try again": "There was an error, please try again",
-    "Event": "Event",
-    "Event date": "Event date",
+    "Event": [
+        "Event",
+        "Events"
+    ],
+    "EventDate": [
+        "Event date",
+        "Event dates"
+    ],
     "EventDate|End": "End",
     "EventDate|End date": "End date",
     "EventDate|Location": "Location",
@@ -441,7 +462,10 @@
     "Event|This event will take place at the following dates": "This event will take place at the following dates",
     "Event|Title": "Title",
     "Event|You need to add at least one date": "You need to add at least one date",
-    "Feature flag": "Feature flag",
+    "FeatureFlag": [
+        "Feature flag",
+        "Feature flags"
+    ],
     "FeatureFlag|Enabled": "Enabled",
     "FeatureFlag|Key": "Key",
     "FeatureFlag|Please re-initialize the flags, as not all are present and/or unneeded flags are present": "Please re-initialize the flags, as not all are present and/or unneeded flags are present",
@@ -449,8 +473,10 @@
     "FeatureFlag|Toggle": "Toggle",
     "File is too large, max. allowed %{size}": "File is too large, max. allowed %{size}",
     "File must be an image": "File must be an image",
-    "Footer logo": "Footer logo",
-    "FooterLogo": "FooterLogo",
+    "FooterLogo": [
+        "Footer logo",
+        "Footer logos"
+    ],
     "FooterLogo|Link": "Link",
     "FooterLogo|Logo file": "Logo",
     "FooterLogo|Sort": "Sort",
@@ -485,8 +511,10 @@
     "L4N Ticket Scanner": "L4N Ticket Scanner",
     "L4N Version % {version}": "L4N Version % {version}",
     "Lan": "Lan",
-    "Lan party": "Lan Party",
-    "LanParty": "Lan Party",
+    "LanParty": [
+        "Lan Party",
+        "Lan Parties"
+    ],
     "LanParty|Actions & Links": "Actions & Links",
     "LanParty|Active": "Active",
     "LanParty|Checked in users": "Checked in users",
@@ -573,8 +601,10 @@
     "Match|Tbd": "TBD",
     "Match|Win short": "W",
     "Match|Winner": "Winner",
-    "Menu item": "Menu item",
-    "MenuItem": "MenuItem",
+    "MenuItem": [
+        "Menu item",
+        "Menu items"
+    ],
     "MenuItem|Content pages": "Content pages",
     "MenuItem|External link": "External link",
     "MenuItem|Page": "Page",
@@ -594,8 +624,10 @@
     "MenuLinkItem|must be set": "must be set",
     "My Ticket": "My Ticket",
     "News": "News",
-    "News post": "News post",
-    "NewsPost": "News",
+    "NewsPost": [
+        "News",
+        "News"
+    ],
     "NewsPosts": "News",
     "NewsPost|Content": "Content",
     "NewsPost|Published": "Published",
@@ -619,8 +651,14 @@
     "Oauth|read any data not specified above": "read any data not specified above",
     "Oauth|read your password": "read your password",
     "Oauth|user:lan:read description": "read the status of your account at a LanParty (wether you are checked in or not), as well as read your username",
-    "Order": "Order",
-    "Order item": "Order item",
+    "Order": [
+        "Order",
+        "Orders"
+    ],
+    "OrderItem": [
+        "Order item",
+        "Order items"
+    ],
     "OrderItem|Item": "Item",
     "OrderItem|Price": "Price",
     "OrderItem|Price cents": "Price cents",
@@ -684,7 +722,10 @@
     "Order|status|payment_pending": "Payment pending",
     "Order|status|processing": "Processing",
     "Order|the terms and conditions page": "the terms and conditions page",
-    "Page": "Page",
+    "Page": [
+        "Page",
+        "Pages"
+    ],
     "Page|Content": "Content",
     "Page|Published": "Published",
     "Page|Redirects to": "Redirects to",
@@ -763,17 +804,25 @@
     "Phase|Tournament cannot have another phase": "Tournament cannot have another phase",
     "Phase|Tournament mode": "Tournament mode",
     "Players": "Players",
-    "Product": "Product",
-    "Product category": "Product category",
-    "Product variant": "Product variant",
+    "Product": [
+        "Product",
+        "Products"
+    ],
     "ProductBehaviours|Dummy": "Dummy",
     "ProductBehaviours|Ticket": "Ticket",
     "ProductBehaviours|Ticket_upgrade": "Ticket catgeory change",
-    "ProductCategory": "ProductCategory",
+    "ProductCategory": [
+        "Product category",
+        "Product categories"
+    ],
     "ProductCategory|Name": "Name",
     "ProductCategory|Products": "Products",
     "ProductCategory|Products count": "Products",
     "ProductCategory|Sort": "Sort",
+    "ProductVariant": [
+        "Product variant",
+        "Product variants"
+    ],
     "ProductVariant|Cannot delete as an order in payment has this variant": "Cannot delete as an order in payment has this variant",
     "ProductVariant|Could not be added to cart": "Could not be added to cart",
     "ProductVariant|Max quantity reached": "Max quantity reached",
@@ -817,10 +866,18 @@
     "Product|To Product": "To Product",
     "Product|Total inventory": "Total inventory",
     "PromitionCodes|Apply filter": "Apply filter",
-    "Promotion": "Promotion",
-    "Promotion code": "Promotion code",
-    "Promotion code mapping": "Promotion code mapping",
-    "PromotionCode": "PromotionCode",
+    "Promotion": [
+        "Promotion",
+        "Promotions"
+    ],
+    "PromotionCode": [
+        "Promotion code",
+        "Promotion codes"
+    ],
+    "PromotionCodeMapping": [
+        "Promotion code mapping",
+        "Promotion code mappings"
+    ],
     "PromotionCodeMapping|Applied reduction cents": "Applied reduction",
     "PromotionCodes|Show all": "Show all",
     "PromotionCodes|Show only unused": "Show only unused",
@@ -840,15 +897,20 @@
     "Promotion|Products": "Products",
     "Promotion|Reduction cents": "Reduction cents",
     "Promotion|Used codes count": "Used codes count",
-    "Rails settings/base": "Rails settings/base",
+    "RailsSettings::Base": [
+        "Rails settings/base",
+        "Rails settings/bases"
+    ],
     "RailsSettings::Base|Value": "Value",
     "RailsSettings::Base|Var": "Var",
     "RedirectPage": "Redirect page",
     "RedirectPage|Redirects to": "Redirects to",
     "RedirectPage|Url": "Url",
     "Round number %{number}": "Round number %{number}",
-    "Scanner user": "Scanner user",
-    "ScannerUser": "ScannerUser",
+    "ScannerUser": [
+        "Scanner user",
+        "Scanner users"
+    ],
     "ScannerUser|Already logged in": "Already logged in",
     "ScannerUser|Encrypted password": "Encrypted password",
     "ScannerUser|Lan party": "Lan Party",
@@ -857,16 +919,23 @@
     "ScannerUser|Password": "Password",
     "ScannerUser|Successfully logged out": "Successfully logged out",
     "Search|Reset": "Reset",
-    "Seat": "Seat",
-    "Seat category": "Seat category",
-    "Seat map": "Seat map",
+    "Seat": [
+        "Seat",
+        "Seats"
+    ],
     "SeatCategories": "SeatCategories",
-    "SeatCategory": "SeatCategory",
+    "SeatCategory": [
+        "Seat category",
+        "Seat categories"
+    ],
     "SeatCategory|Color": "Color",
     "SeatCategory|Name": "Name",
     "SeatCategory|Relevant for counter": "Relevant for counter",
     "SeatCategory|Seat count": "Number of seats in that category",
-    "SeatMap": "SeatMap",
+    "SeatMap": [
+        "Seat map",
+        "Seat maps"
+    ],
     "SeatMap|Background height": "Background height",
     "SeatMap|Background width": "Background width",
     "SeatMap|Canvas height": "Canvas height",
@@ -957,8 +1026,10 @@
     "Shop|Please log in to purchase this product": "Please log in to purchase this product",
     "Shop|Show all": "Show all",
     "Shop|Sold out": "Sold out",
-    "Sidebar block": "Sidebar block",
-    "SidebarBlock": "SidebarBlock",
+    "SidebarBlock": [
+        "Sidebar block",
+        "Sidebar blocks"
+    ],
     "SidebarBlock|Content": "Content",
     "SidebarBlock|Sort": "Sort",
     "SidebarBlock|Title": "Title",
@@ -973,15 +1044,19 @@
     "Sidebar|Next events": "Next events",
     "Signup": "Sign Up",
     "StarpageBanner|Remove this image": "Remove this image",
-    "Startpage banner": "Startpage banner",
-    "Startpage block": "Startpage block",
-    "StartpageBanner": "StartpageBanner",
+    "StartpageBanner": [
+        "Startpage banner",
+        "Startpage banners"
+    ],
     "StartpageBanner|Height": "Height",
     "StartpageBanner|Images": "Images",
     "StartpageBanner|Name": "Name",
     "StartpageBanner|Number of images": "Number of images",
     "StartpageBanner|Visible": "Visible",
-    "StartpageBlock": "Startpage Block",
+    "StartpageBlock": [
+        "Startpage block",
+        "Startpage blocks"
+    ],
     "StartpageBlock|Content": "Content",
     "StartpageBlock|Sort": "Sort",
     "StartpageBlock|Title": "Title",
@@ -993,8 +1068,10 @@
     "SteamStatus|Offline": "Offline",
     "SteamStatus|Online": "Online",
     "SteamStatus|Snooze": "Snooze",
-    "Styling variable": "Styling Variable",
-    "StylingVariable": "Styling Variable",
+    "StylingVariable": [
+        "Styling Variable",
+        "Styling Variables"
+    ],
     "StylingVariable|Dark mode value": "Value for dark mode",
     "StylingVariable|Key": "Key",
     "StylingVariable|Light mode value": "Value for light mode",
@@ -1045,8 +1122,10 @@
     "Team|User is not confirmed": "User is not confirmed",
     "Team|You are in another team already": "You are in another team already",
     "Team|You are in this team already": "You are in this team already",
-    "Ticket": "Ticket",
-    "Ticket upgrade": "Ticket upgrade",
+    "Ticket": [
+        "Ticket",
+        "Tickets"
+    ],
     "TicketScanner|Already checked in": "Already checked in",
     "TicketScanner|Back to main page": "Back to main page",
     "TicketScanner|Cancel check in": "Cancel check in",
@@ -1067,6 +1146,10 @@
     "TicketScanner|Toggle flash": "Toggle flash",
     "TicketScanner|Wrong event": "Wrong event",
     "TicketScanner|Wrong user": "Wrong user",
+    "TicketUpgrade": [
+        "Ticket upgrade",
+        "Ticket upgrades"
+    ],
     "TicketUpgrades|Purchased ticket upgrades": "My ticket upgrades",
     "TicketUpgrades|You don't have any upgrades for this event": "You don't have any upgrades for this event",
     "TicketUpgrade|Already used": "Already used",
@@ -1139,11 +1222,20 @@
     "Ticket|status|assigned": "Assigned",
     "Ticket|status|checked_in": "Checked in",
     "Ticket|status|created": "Created",
-    "Timetable": "Timetable",
-    "Timetable category": "Timetable category",
-    "Timetable entry": "Timetable entry",
+    "Timetable": [
+        "Timetable",
+        "Timetables"
+    ],
+    "TimetableCategory": [
+        "Timetable category",
+        "Timetable categories"
+    ],
     "TimetableCategory|Name": "Name",
     "TimetableCategory|Order": "Order",
+    "TimetableEntry": [
+        "Timetable entry",
+        "Timetable entries"
+    ],
     "TimetableEntry|Entry end": "Entry end",
     "TimetableEntry|Entry start": "Entry start",
     "TimetableEntry|Link": "Link",
@@ -1151,15 +1243,14 @@
     "Timetable|End datetime": "End datetime",
     "Timetable|No timetable available": "No timetable available",
     "Timetable|Start datetime": "Start datetime",
-    "Tournament": "Tournament",
-    "Tournament/match": "Match",
-    "Tournament/phase": "Phase",
-    "Tournament/phase team": "Tournament/phase team",
-    "Tournament/round": "Round",
-    "Tournament/team": "Team",
-    "Tournament/team member": "Team member",
-    "Tournament/team rank": "Team rank",
-    "Tournament::Match": "Match",
+    "Tournament": [
+        "Tournament",
+        "Tournaments"
+    ],
+    "Tournament::Match": [
+        "Match",
+        "Matches"
+    ],
     "Tournament::Match|Away score": "Away score",
     "Tournament::Match|Draw": "Draw",
     "Tournament::Match|Home score": "Home score",
@@ -1168,7 +1259,14 @@
     "Tournament::Match|result_status|disputed": "Result disputed",
     "Tournament::Match|result_status|missing": "Result missing",
     "Tournament::Match|result_status|reported": "Result reported",
-    "Tournament::Phase": "Phase",
+    "Tournament::Phase": [
+        "Phase",
+        "Phases"
+    ],
+    "Tournament::PhaseTeam": [
+        "Tournament/phase team",
+        "Tournament/phase teams"
+    ],
     "Tournament::PhaseTeam|Score": "Score",
     "Tournament::PhaseTeam|Seed": "Seed",
     "Tournament::Phase|Auto progress": "Auto progress",
@@ -1185,9 +1283,24 @@
     "Tournament::Phase|tournament_mode|double_elimination": "Double elimination",
     "Tournament::Phase|tournament_mode|single_elimination": "Single elimination",
     "Tournament::Phase|tournament_mode|swiss": "Swiss system",
+    "Tournament::Round": [
+        "Round",
+        "Rounds"
+    ],
     "Tournament::Round|Round number": "Round number",
-    "Tournament::Team": "Team",
+    "Tournament::Team": [
+        "Team",
+        "Teams"
+    ],
+    "Tournament::TeamMember": [
+        "Team member",
+        "Team members"
+    ],
     "Tournament::TeamMember|Captain": "Captain",
+    "Tournament::TeamRank": [
+        "Team rank",
+        "Team ranks"
+    ],
     "Tournament::TeamRank|Name": "Name",
     "Tournament::TeamRank|Sort": "Sort",
     "Tournament::Team|Name": "Name",
@@ -1306,18 +1419,29 @@
     "TwoFactor|Please confirm that you saved the backup codes": "Please confirm that you saved the backup codes",
     "TwoFactor|Save the backup codes": "Save the backup codes",
     "TwoFactor|Scan code with auth app": "Scan code with auth app",
-    "Upload": "Upload",
+    "Upload": [
+        "Upload",
+        "Uploads"
+    ],
     "Upload|Filename": "Filename",
     "Upload|Size": "Size",
     "Upload|Type": "Type",
     "Upload|Uploaded at": "Uploaded at",
     "Upload|Uploaded by": "Uploaded by",
     "Upload|Uuid": "Uuid",
-    "User": "User",
-    "User achievement": "User achievement",
-    "User permission": "Permissions",
-    "UserAchievement": "UserAchievement",
+    "User": [
+        "User",
+        "Users"
+    ],
+    "UserAchievement": [
+        "User achievement",
+        "User achievements"
+    ],
     "UserAchievement|Awarded at": "Awarded at",
+    "UserPermission": [
+        "Permissions",
+        "Permissions"
+    ],
     "UserPermission|Can only be added to user if the user has 2FA enabled!": "Can only be added to user if the user has 2FA enabled!",
     "UserPermission|Mode": "Mode",
     "UserPermission|Permission": "Permission",
