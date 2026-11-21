@@ -66,6 +66,22 @@ class MenuLinkItem < MenuItem
     external_link.present?
   end
 
+  # Returns true if the custom link is an absolute http(s) URL (or a
+  # protocol-relative one like `//example.com`). Relative custom links such as
+  # `/news` or `pages/foo` return false, so they are not treated as external.
+  def absolute_external_link?
+    return false unless to_external?
+
+    uri = URI.parse(external_link.strip)
+    uri.scheme&.downcase.in?(%w[http https]) || (uri.scheme.nil? && uri.host.present?)
+  rescue URI::InvalidURIError
+    false
+  end
+
+  def href
+    to_external? ? external_link : "/#{linked_page_url}"
+  end
+
   def visible?
     if page.present?
       FeatureFlag.enabled?(:pages) && page.published?

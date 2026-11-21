@@ -29,5 +29,5 @@
             %ul.list-unstyled.text-end.small.mb-0
               - footer_menu_items.each do |menu_item|
                 %li.py-1
-                  %a.link-secondary.text-decoration-none{ href: menu_item.to_external? ? menu_item.linked_page_url : "/#{menu_item.linked_page_url}" }
+                  %a.link-secondary.text-decoration-none{ href: menu_item.href }
                     = menu_item.title
