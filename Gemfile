@@ -42,9 +42,9 @@ gem 'schemacop', '~> 3.0'
 gem 'breadcrumbs_on_rails', '~> 4.1'
 gem 'cocoon', '~> 1.2'
 gem 'datagrid', '~> 2.0'
-gem 'haml-rails', '~> 2.0'
+gem 'haml-rails', '~> 3.1'
 gem 'kaminari', '~> 1.2'
-gem 'rqrcode', '~> 2.2'
+gem 'rqrcode', '~> 3.2'
 gem 'simple_form', '~> 5.4'
 
 # Translations
@@ -61,7 +61,8 @@ gem 'rails-settings-cached', '~> 2.9'
 
 # Attachments
 gem 'active_storage_validations', '~> 4.1'
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 2.2'
+gem 'ruby-vips', '~> 2.3'
 
 # Models
 gem 'money-rails', '~> 3.0'
@@ -79,7 +80,7 @@ gem 'omniauth-rails_csrf_protection', '~> 2.0'
 gem 'omniauth-steam', '~> 1.0'
 
 # Notifications
-gem 'exception_notification', '~> 4.5'
+gem 'exception_notification', '~> 5.0'
 
 # Development gems
 group :development do
@@ -112,7 +113,7 @@ end
 # Test gems
 group :test do
   gem 'faker', '~> 3.8'
-  gem 'simplecov', '~> 0.22', require: false
+  gem 'simplecov', '~> 1.3', require: false
 end
 
 # Payment gateways

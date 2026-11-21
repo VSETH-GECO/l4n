@@ -3,9 +3,9 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   enable_coverage :branch
 
-  add_group 'Operations', 'operations'
-  add_group 'Queries', 'queries'
-  add_group 'Services', 'services'
+  group 'Operations', 'operations'
+  group 'Queries', 'queries'
+  group 'Services', 'services'
 end
 
 ENV['RAILS_ENV'] ||= 'test'
