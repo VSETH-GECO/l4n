@@ -8,6 +8,7 @@ class MenuDropdownItem < MenuItem
 
   # == Validations =================================================================
   validates :parent_id, absence: true
+  validate :only_in_navbar
 
   # == Hooks =======================================================================
 
@@ -18,4 +19,9 @@ class MenuDropdownItem < MenuItem
   # == Instance Methods ============================================================
 
   # == Private Methods =============================================================
+  private
+
+  def only_in_navbar
+    errors.add(:location, _('MenuDropdownItem|Dropdowns can only be placed in the top navigation')) unless navbar?
+  end
 end

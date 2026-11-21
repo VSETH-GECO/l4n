@@ -4,16 +4,25 @@
       .row
         .col-md-12
           = f.input :title
-      .row
-        .col-md-6
-          = f.input :sort
-        .col-md-6
-          - if model.is_a? MenuLinkItem
+      - if model.is_a? MenuLinkItem
+        .row
+          .col-md-4
+            = f.input :sort
+          .col-md-4
+            = f.input :location,
+                      collection:    MenuItem.location_options,
+                      include_blank: false,
+                      hint:          _('Admin|MenuLinkItem|Footer links cannot be placed in a dropdown')
+          .col-md-4
             = f.input :parent_id,
                       as:            :select,
                       collection:    op.parent_candidates,
                       include_blank: _('Form|Select|Blank')
-          - else
+      - else
+        .row
+          .col-md-6
+            = f.input :sort
+          .col-md-6
             = f.input :visible,
                       input_html:    { class: 'no-validation' },
                       as:            :select,

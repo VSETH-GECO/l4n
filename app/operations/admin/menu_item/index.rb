@@ -6,8 +6,8 @@ module Operations::Admin::MenuItem
       authorize! :manage, MenuItem
     end
 
-    def top_items
-      ::MenuItem.where(parent_id: nil).order(:sort)
+    def top_items(location)
+      ::MenuItem.where(parent_id: nil, location: location).order(:sort)
     end
   end
 end

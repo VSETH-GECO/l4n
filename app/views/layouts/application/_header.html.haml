@@ -9,7 +9,7 @@
         %li.nav-item
           = link_to _('Homepage'), root_path, class: "nav-link #{navbar_item_active_classes(:home)}"
 
-        - Queries::MenuItem::FindActiveTopElements.call.each do |menu_item|
+        - Queries::MenuItem::FindActiveTopElements.call(location: 'navbar').each do |menu_item|
           - next unless menu_item.visible?
 
           - if menu_item.is_a? MenuDropdownItem

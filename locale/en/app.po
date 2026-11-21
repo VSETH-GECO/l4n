@@ -231,6 +231,9 @@ msgstr "New Link"
 msgid "Admin|MenuLinkItem|Either select a page or enter a link hint"
 msgstr "Either select a page or enter a link, but not both"
 
+msgid "Admin|MenuLinkItem|Footer links cannot be placed in a dropdown"
+msgstr "Footer links cannot be placed in a dropdown"
+
 msgid "Admin|NewsPosts"
 msgstr "News Posts"
 
@@ -1741,6 +1744,9 @@ msgstr "W"
 msgid "Match|Winner"
 msgstr "Winner"
 
+msgid "MenuDropdownItem|Dropdowns can only be placed in the top navigation"
+msgstr "can only be placed in the top navigation"
+
 msgid "MenuItem"
 msgid_plural "MenuItems"
 msgstr[0] "Menu item"
@@ -1751,6 +1757,9 @@ msgstr "Content pages"
 
 msgid "MenuItem|External link"
 msgstr "External link"
+
+msgid "MenuItem|Location"
+msgstr "Location"
 
 msgid "MenuItem|Page"
 msgstr "Page"
@@ -1779,11 +1788,20 @@ msgstr "Use namespace for active detection"
 msgid "MenuItem|Visible"
 msgstr "Visible"
 
+msgid "MenuItem|location|footer"
+msgstr "Footer"
+
+msgid "MenuItem|location|navbar"
+msgstr "Top navigation"
+
 msgid "MenuLinkItem|Can only select a page or enter an external link but not both"
 msgstr "Can only select a page or enter an external link but not both"
 
 msgid "MenuLinkItem|Can only set static page name or page id"
 msgstr "Can only set static page name or page id"
+
+msgid "MenuLinkItem|Footer links cannot be placed in a dropdown"
+msgstr "cannot be set for footer links"
 
 msgid "MenuLinkItem|Must be a lan party page"
 msgstr "Must be a lan party page"

@@ -29,6 +29,7 @@ class MenuLinkItem < MenuItem
   validates :static_page_name, length: { maximum: 255 }
   validates :external_link, length: { maximum: 255 }
   validate :only_valid_combination
+  validate :no_parent_in_footer
 
   # == Hooks =======================================================================
 
@@ -80,6 +81,12 @@ class MenuLinkItem < MenuItem
 
   # == Private Methods =============================================================
   private
+
+  def no_parent_in_footer
+    return unless footer? && parent_id.present?
+
+    errors.add(:parent_id, _('MenuLinkItem|Footer links cannot be placed in a dropdown'))
+  end
 
   def only_valid_combination
     # We only allow to have either the `static_page_name`, the `page_id`

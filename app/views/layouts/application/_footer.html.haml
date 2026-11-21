@@ -8,11 +8,21 @@
       %nav
         %ol.breadcrumb.mb-0
           = render_breadcrumbs builder: Services::BootstrapBreadcrumbBuilder
-    - if FooterLogo.where(visible: true).any?
-      .d-flex.flex-wrap.justify-content-left.align-items-center.py-3.border-top
-        - FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob).each do |logo|
-          - if logo.link.present?
-            = link_to logo.link, target: :_blank, rel: :noopener do
+    - footer_logos = FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob).to_a
+    - footer_menu_items = Queries::MenuItem::FindActiveTopElements.call(location: 'footer').select(&:visible?)
+    - if footer_logos.any? || footer_menu_items.any?
+      .d-flex.flex-wrap.justify-content-between.align-items-center.gap-3.py-3.border-top
+        .d-flex.flex-wrap.align-items-center
+          - footer_logos.each do |logo|
+            - if logo.link.present?
+              = link_to logo.link, target: :_blank, rel: :noopener do
+                = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
+            - else
               = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
-          - else
-            = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
+        - if footer_menu_items.any?
+          %nav.footer-menu.ms-auto
+            %ul.list-unstyled.text-end.small.mb-0
+              - footer_menu_items.each do |menu_item|
+                %li.py-1
+                  %a.link-secondary.text-decoration-none{ href: menu_item.to_external? ? menu_item.linked_page_url : "/#{menu_item.linked_page_url}" }
+                    = menu_item.title

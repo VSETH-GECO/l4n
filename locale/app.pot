@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 12:52+0000\n"
-"PO-Revision-Date: 2026-11-21 12:52+0000\n"
+"POT-Creation-Date: 2026-11-21 14:03+0000\n"
+"PO-Revision-Date: 2026-11-21 14:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -230,6 +230,9 @@ msgid "Admin|MenuItem|New Link"
 msgstr ""
 
 msgid "Admin|MenuLinkItem|Either select a page or enter a link hint"
+msgstr ""
+
+msgid "Admin|MenuLinkItem|Footer links cannot be placed in a dropdown"
 msgstr ""
 
 msgid "Admin|NewsPosts"
@@ -1742,6 +1745,9 @@ msgstr ""
 msgid "Match|Winner"
 msgstr ""
 
+msgid "MenuDropdownItem|Dropdowns can only be placed in the top navigation"
+msgstr ""
+
 msgid "MenuItem"
 msgid_plural "MenuItems"
 msgstr[0] ""
@@ -1751,6 +1757,9 @@ msgid "MenuItem|Content pages"
 msgstr ""
 
 msgid "MenuItem|External link"
+msgstr ""
+
+msgid "MenuItem|Location"
 msgstr ""
 
 msgid "MenuItem|Page"
@@ -1780,10 +1789,19 @@ msgstr ""
 msgid "MenuItem|Visible"
 msgstr ""
 
+msgid "MenuItem|location|footer"
+msgstr ""
+
+msgid "MenuItem|location|navbar"
+msgstr ""
+
 msgid "MenuLinkItem|Can only select a page or enter an external link but not both"
 msgstr ""
 
 msgid "MenuLinkItem|Can only set static page name or page id"
+msgstr ""
+
+msgid "MenuLinkItem|Footer links cannot be placed in a dropdown"
 msgstr ""
 
 msgid "MenuLinkItem|Must be a lan party page"

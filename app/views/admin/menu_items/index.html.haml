@@ -3,44 +3,46 @@
     = new_button MenuLinkItem, namespace: %i[admin], href: new_link_admin_menu_items_path
     = new_button MenuDropdownItem, namespace: %i[admin], href: new_dropdown_admin_menu_items_path
 
-.card
-  .card-body
-    .table-responsive
-      %table.table.datagrid.table-hover
-        %tr
-          %th.min
-          %th= _('MenuItem|Title')
-          %th{ title: _('MenuItem|Visible') }= icon %i[fas fa-eye]
-          %th{ title: _('MenuItem|Use namespace for active detection') }= icon %i[fas fa-magnifying-glass]
-          %th{ title: _('MenuItem|Sort') }= icon %i[fas fa-arrow-down-1-9]
-          %th= _('MenuItem|Page_name')
-          %th
-        - op.top_items.each do |top_item|
+- MenuItem.locations.each_key do |location|
+  .card.mb-3
+    .card-header= MenuItem.human_location(location)
+    .card-body
+      .table-responsive
+        %table.table.datagrid.table-hover
           %tr
-            %td.min= top_item.is_a?(MenuDropdownItem) ? icon(%i[fas fa-square-caret-down]) : icon(%i[fas fa-link])
-            %td= top_item.title
-            %td= format_boolean(top_item.visible)
-            %td= format_boolean(top_item.use_namespace_for_active_detection)
-            %td= top_item.sort
-            %td
-              - if top_item.is_a? MenuLinkItem
-                = top_item.link_destination
-              - else
-                \-
-            %td.datagrid-actions
-              .datagrid-actions-wrapper
-                = edit_button(top_item, href: edit_admin_menu_item_path(top_item), size: :sm, icon_only: true)
-                = delete_button(top_item, href: admin_menu_item_path(top_item), size: :sm, icon_only: true)
-            - if top_item.is_a? MenuDropdownItem
-              - top_item.children.order(:sort).each do |child_item|
-                %tr.bg-light
-                  %td.min
-                  %td.indent-1= child_item.title
-                  %td= format_boolean(child_item.visible)
-                  %td= format_boolean(child_item.use_namespace_for_active_detection)
-                  %td= child_item.sort
-                  %td= child_item.link_destination
-                  %td.datagrid-actions
-                    .datagrid-actions-wrapper
-                      = edit_button(child_item, href: edit_admin_menu_item_path(child_item), size: :sm, icon_only: true)
-                      = delete_button(child_item, href: admin_menu_item_path(child_item), size: :sm, icon_only: true)
+            %th.min
+            %th= _('MenuItem|Title')
+            %th{ title: _('MenuItem|Visible') }= icon %i[fas fa-eye]
+            %th{ title: _('MenuItem|Use namespace for active detection') }= icon %i[fas fa-magnifying-glass]
+            %th{ title: _('MenuItem|Sort') }= icon %i[fas fa-arrow-down-1-9]
+            %th= _('MenuItem|Page_name')
+            %th
+          - op.top_items(location).each do |top_item|
+            %tr
+              %td.min= top_item.is_a?(MenuDropdownItem) ? icon(%i[fas fa-square-caret-down]) : icon(%i[fas fa-link])
+              %td= top_item.title
+              %td= format_boolean(top_item.visible)
+              %td= format_boolean(top_item.use_namespace_for_active_detection)
+              %td= top_item.sort
+              %td
+                - if top_item.is_a? MenuLinkItem
+                  = top_item.link_destination
+                - else
+                  \-
+              %td.datagrid-actions
+                .datagrid-actions-wrapper
+                  = edit_button(top_item, href: edit_admin_menu_item_path(top_item), size: :sm, icon_only: true)
+                  = delete_button(top_item, href: admin_menu_item_path(top_item), size: :sm, icon_only: true)
+              - if top_item.is_a? MenuDropdownItem
+                - top_item.children.order(:sort).each do |child_item|
+                  %tr.bg-light
+                    %td.min
+                    %td.indent-1= child_item.title
+                    %td= format_boolean(child_item.visible)
+                    %td= format_boolean(child_item.use_namespace_for_active_detection)
+                    %td= child_item.sort
+                    %td= child_item.link_destination
+                    %td.datagrid-actions
+                      .datagrid-actions-wrapper
+                        = edit_button(child_item, href: edit_admin_menu_item_path(child_item), size: :sm, icon_only: true)
+                        = delete_button(child_item, href: admin_menu_item_path(child_item), size: :sm, icon_only: true)

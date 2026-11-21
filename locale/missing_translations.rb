@@ -5,6 +5,9 @@ N_('Ticket|status|created')
 N_('Ticket|status|assigned')
 N_('Ticket|status|checked_in')
 
+N_('MenuItem|location|navbar')
+N_('MenuItem|location|footer')
+
 N_('Tournament|status|draft')
 N_('Tournament|status|published')
 N_('Tournament|status|archived')

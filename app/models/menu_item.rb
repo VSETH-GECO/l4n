@@ -1,5 +1,9 @@
 class MenuItem < ApplicationRecord
   # == Attributes ==================================================================
+  enum :location, {
+    navbar: 'navbar',
+    footer: 'footer'
+  }, default: :navbar, validate: true
 
   # == Constants ===================================================================
   TYPES = %w[MenuLinkItem MenuDropdownItem].freeze
@@ -18,8 +22,14 @@ class MenuItem < ApplicationRecord
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
+  def self.human_location(location)
+    _("MenuItem|location|#{location}")
+  end
+
+  def self.location_options
+    locations.keys.map { |location| [human_location(location), location] }
+  end
 
   # == Instance Methods ============================================================
-
   # == Private Methods =============================================================
 end

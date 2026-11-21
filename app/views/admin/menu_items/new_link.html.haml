@@ -5,9 +5,14 @@
         .col-md-12
           = f.input :title
       .row
-        .col-md-6
+        .col-md-4
           = f.input :sort
-        .col-md-6
+        .col-md-4
+          = f.input :location,
+                    collection:    MenuItem.location_options,
+                    include_blank: false,
+                    hint:          _('Admin|MenuLinkItem|Footer links cannot be placed in a dropdown')
+        .col-md-4
           = f.input :parent_id,
                     as:            :select,
                     collection:    op.parent_candidates,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_21_120637) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_21_150000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -139,7 +139,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_21_120637) do
     t.boolean "use_namespace_for_active_detection", default: false, null: false
     t.string "external_link"
     t.bigint "lan_party_id"
+    t.string "location", default: "navbar", null: false
     t.index ["lan_party_id"], name: "index_menu_items_on_lan_party_id"
+    t.index ["location"], name: "index_menu_items_on_location"
     t.index ["parent_id"], name: "index_menu_items_on_parent_id"
   end
 

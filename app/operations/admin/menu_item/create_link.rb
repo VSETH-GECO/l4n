@@ -4,6 +4,7 @@ module Operations::Admin::MenuItem
       hsh? :menu_link_item do
         str? :title
         str? :sort, format: :integer
+        str? :location
         str? :page_attr
         str? :external_link
         str? :parent_id
