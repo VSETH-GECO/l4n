@@ -12,8 +12,8 @@
         }
       }
     %title= _('PaypalPaymentGateway|Page title')
-    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
-    %script{src: 'https://www.paypalobjects.com/api/checkout.js'}
+    %meta{ content: 'width=device-width,initial-scale=1', name: 'viewport' }
+    %script{ src: 'https://www.paypalobjects.com/api/checkout.js' }
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_include_tag 'paypal_payment/application'

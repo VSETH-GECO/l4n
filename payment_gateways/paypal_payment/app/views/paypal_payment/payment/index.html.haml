@@ -13,9 +13,9 @@
       .card-body
         = _('PaypalPaymentGateway|Description')
       .card-footer.d-flex.flex-wrap.gap-2
-        #paypal-button-container.d-inline{data: { production: Rails.env.production?.to_s,
-                                         payment_create_url: create_payment_path(order_id: op.result[:order_id]),
-                                         payment_execute_url: execute_payment_path(order_id: op.result[:order_id]) }}
+        .d-inline#paypal-button-container{ data: { production:          Rails.env.production?.to_s,
+                                                   payment_create_url:  create_payment_path(order_id: op.result[:order_id]),
+                                                   payment_execute_url: execute_payment_path(order_id: op.result[:order_id]) } }
         = link_to _('PaypalPaymentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger paypal-cancel-btn'
   .col-xl-6
     .card
