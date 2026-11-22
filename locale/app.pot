@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 17:56+0000\n"
-"PO-Revision-Date: 2026-11-21 17:56+0000\n"
+"POT-Creation-Date: 2026-11-22 18:27+0000\n"
+"PO-Revision-Date: 2026-11-22 18:27+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -2231,6 +2231,9 @@ msgstr ""
 msgid "PayrexxPaymentGateway|Cancel"
 msgstr ""
 
+msgid "PayrexxPaymentGateway|Could not reach the payment provider, please try again"
+msgstr ""
+
 msgid "PayrexxPaymentGateway|Could not verify payment status"
 msgstr ""
 
@@ -2264,10 +2267,16 @@ msgstr ""
 msgid "PayrexxPaymentGateway|Something went wrong, please try again"
 msgstr ""
 
+msgid "PayrexxPaymentGateway|This order has already been paid in another way. If you have been charged twice, please contact us."
+msgstr ""
+
 msgid "PayrexxPaymentGateway|Time left:"
 msgstr ""
 
 msgid "PayrexxPaymentGateway|Title"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Your payment was received, but the order could not be completed. Please contact us."
 msgstr ""
 
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"

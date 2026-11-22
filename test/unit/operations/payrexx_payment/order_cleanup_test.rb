@@ -43,6 +43,23 @@ module Unit
           assert_not fetch(:order).reload.paid?
         end
 
+        def test_keeps_order_unchanged_if_paid_order_cannot_be_processed
+          # Marking the order as paid would make the inventory negative
+          fetch(:product).update!(inventory: 1)
+          stub_get_gateway(42)
+
+          # Like `Admin::Order::CleanupExpired`, run inside an outer transaction that continues
+          # after the failure. Nothing of the failed processing must remain in it.
+          ::ActiveRecord::Base.transaction do
+            ::Operations::Shop::Order::CleanupSingleOrder.run!(order: fetch(:order))
+          end
+
+          order = fetch(:order).reload
+
+          assert_predicate order, :payment_pending?
+          assert_equal 1, fetch(:product).reload.inventory
+        end
+
         def test_cleanup_expired_handles_payrexx_orders
           stub_get_gateway(42, status: 'waiting')
           stub_delete_gateway(42)

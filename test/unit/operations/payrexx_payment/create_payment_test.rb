@@ -68,6 +68,39 @@ module Unit
           assert_predicate fetch(:order).reload, :paid?
           assert_not_requested :post, GATEWAY_BASE_URL
         end
+
+        def test_api_error_fails_cleanly
+          setup_payrexx_order(gateway_id: nil)
+          stub_request(:post, GATEWAY_BASE_URL).with(query: { instance: 'vseth' })
+                                               .to_return(json_response({ status: 'error', message: 'Internal error' }, code: 500))
+
+          assert_create_fails
+        end
+
+        def test_empty_response_fails_cleanly
+          setup_payrexx_order(gateway_id: nil)
+          stub_request(:post, GATEWAY_BASE_URL).with(query: { instance: 'vseth' })
+                                               .to_return(json_response({ status: 'success', data: [] }))
+
+          assert_create_fails
+        end
+
+        def test_unreachable_payrexx_fails_cleanly
+          setup_payrexx_order(gateway_id: nil)
+          stub_request(:post, GATEWAY_BASE_URL).with(query: { instance: 'vseth' }).to_timeout
+
+          assert_create_fails
+        end
+
+        private
+
+        def assert_create_fails
+          assert_raises(::PayrexxPayment::ExecutionFailed) do
+            ::PayrexxPayment::CreatePayment.run!(order_id: fetch(:order).uuid)
+          end
+
+          assert_nil fetch(:order).reload.payment_gateway_payment_id
+        end
       end
     end
   end

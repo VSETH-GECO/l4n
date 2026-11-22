@@ -79,6 +79,19 @@ module Unit
           assert_not_paid
         end
 
+        def test_failure_to_process_the_order_is_not_swallowed
+          # Marking the order as paid would make the inventory negative
+          fetch(:product).update!(inventory: 1)
+          stub_get_gateway(42)
+
+          assert_raises(::PayrexxPayment::ExecutionFailed) do
+            ::PayrexxPayment::ExecutePayment.run!(order_id: fetch(:order).uuid)
+          end
+
+          assert_not fetch(:order).reload.paid?
+          assert_equal 1, fetch(:product).reload.inventory
+        end
+
         def test_missing_order_fails_cleanly
           assert_raises(::PayrexxPayment::ExecutionFailed) do
             ::PayrexxPayment::ExecutePayment.run!(order_id: SecureRandom.uuid)

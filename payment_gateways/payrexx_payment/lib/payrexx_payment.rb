@@ -13,6 +13,15 @@ module PayrexxPayment
     PayrexxPayment::ReleaseGateway.run!(order: order).paid?
   end
 
+  # Called before the order is paid (or marked for a delayed payment) through any
+  # gateway. If that isn't Payrexx, deletes the order's Payrexx gateway, such that
+  # the user can't also pay the order through Payrexx.
+  def self.before_order_settled(order, gateway_name:)
+    return if gateway_name == GATEWAY_NAME
+
+    PayrexxPayment::ReleaseGateway.run!(order: order, settled_elsewhere: true)
+  end
+
   def self.payment_path(*)
     PayrexxPayment::Engine.routes.url_helpers.start_payment_path(*)
   end

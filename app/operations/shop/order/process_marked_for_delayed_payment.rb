@@ -11,6 +11,9 @@ module Operations::Shop::Order
     without_authorization
 
     def perform
+      # Close payments other gateways still have open for this order
+      Services::PaymentGateways.before_order_settled(order, gateway_name: osparams.gateway_name)
+
       ActiveRecord::Base.transaction do
         # Mark payment as delayed payment pending
         order.delayed_payment_pending!

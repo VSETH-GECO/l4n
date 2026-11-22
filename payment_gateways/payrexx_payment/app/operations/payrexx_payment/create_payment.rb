@@ -53,21 +53,19 @@ module PayrexxPayment
         body[:purpose] = purpose.truncate(100) # Payrexx has limits on purpose length
       end
 
-      response = HTTParty.post(
+      response = request(
+        :post,
         gateways_endpoint,
         body:    body,
-        headers: {
-          'accept'       => 'application/json',
-          'X-API-KEY'    => api_key,
-          'content-type' => 'application/x-www-form-urlencoded'
-        }
+        headers: common_headers.merge('content-type' => 'application/x-www-form-urlencoded')
       )
-
-      fail "API request failed: #{response.code} - #{response.message}" unless response.success?
 
       response_data = response.parsed_response
 
-      fail "Gateway creation failed: #{response_data['message'] || 'Unknown error'}" unless response_data['status'] == 'success' && response_data['data']
+      unless response.success? && valid_gateway_response?(response_data) && response_data['data'][0]['link'].present?
+        Rails.logger.error "Could not create Payrexx gateway for order #{osparams.order_id}: #{response.code} - #{response.body.to_s.truncate(500)}"
+        fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Something went wrong, please try again')
+      end
 
       order.update!(
         payment_gateway_name:       PayrexxPayment::GATEWAY_NAME,

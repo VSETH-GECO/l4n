@@ -16,6 +16,13 @@ module PayrexxPayment
     # means the order has actually been paid.
     SUCCESSFUL_STATUS = 'confirmed'.freeze
 
+    # Errors that mean Payrexx could not be reached
+    NETWORK_ERRORS = [
+      HTTParty::Error, SocketError, Timeout::Error, SystemCallError, OpenSSL::SSL::SSLError, EOFError
+    ].freeze
+
+    REQUEST_TIMEOUT = 15 # seconds
+
     def perform
       # Can't execute this operations, inheriting operations
       # need to implement this themselves
@@ -51,10 +58,19 @@ module PayrexxPayment
       }
     end
 
+    # Sends a request to the Payrexx API. Fails with ExecutionFailed if Payrexx
+    # can't be reached, such that callers only need to handle one kind of error.
+    def request(method, url, **)
+      HTTParty.public_send(method, url, timeout: REQUEST_TIMEOUT, **)
+    rescue *NETWORK_ERRORS => e
+      Rails.logger.error "Payrexx API request failed: #{method.upcase} #{url}: #{e.class}: #{e.message}"
+      fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Could not reach the payment provider, please try again')
+    end
+
     # Returns the data of the gateway with the given id, or nil if Payrexx
     # does not know the gateway (anymore). Fails on any other error.
     def fetch_gateway(gateway_id)
-      response = HTTParty.get(gateway_endpoint(gateway_id), headers: common_headers)
+      response = request(:get, gateway_endpoint(gateway_id), headers: common_headers)
 
       return nil if response.not_found?
 
@@ -70,7 +86,7 @@ module PayrexxPayment
     # Deletes the gateway with the given id, such that it can't be paid anymore.
     # A gateway that does not exist (anymore) counts as deleted.
     def delete_gateway(gateway_id)
-      response = HTTParty.delete(gateway_endpoint(gateway_id), headers: common_headers)
+      response = request(:delete, gateway_endpoint(gateway_id), headers: common_headers)
 
       return if response.success? || response.not_found?
 

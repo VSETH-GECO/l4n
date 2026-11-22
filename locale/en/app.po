@@ -2230,6 +2230,9 @@ msgstr "Twint / Credit Card"
 msgid "PayrexxPaymentGateway|Cancel"
 msgstr "Cancel payment"
 
+msgid "PayrexxPaymentGateway|Could not reach the payment provider, please try again"
+msgstr "Could not reach the payment provider, please try again"
+
 msgid "PayrexxPaymentGateway|Could not verify payment status"
 msgstr "Could not verify payment status"
 
@@ -2263,11 +2266,17 @@ msgstr "Payment was not successful"
 msgid "PayrexxPaymentGateway|Something went wrong, please try again"
 msgstr "Something went wrong, please try again"
 
+msgid "PayrexxPaymentGateway|This order has already been paid in another way. If you have been charged twice, please contact us."
+msgstr "This order has already been paid in another way. If you have been charged twice, please contact us."
+
 msgid "PayrexxPaymentGateway|Time left:"
 msgstr "Time left:"
 
 msgid "PayrexxPaymentGateway|Title"
 msgstr "Parexx payment gateway"
+
+msgid "PayrexxPaymentGateway|Your payment was received, but the order could not be completed. Please contact us."
+msgstr "Your payment was received, but the order could not be completed. Please contact us."
 
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
 msgstr "Are you sure you want to delete all rounds for this phase?"

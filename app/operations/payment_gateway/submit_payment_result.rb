@@ -18,7 +18,8 @@ module Operations::PaymentGateway
       # was a problem and they should report to the admin?
       fail 'Order not found' if order.nil?
 
-      run_sub Operations::Shop::Order::ProcessPaid, order: order, gateway_name: osparams.gateway_name, payment_id: osparams.payment_id
+      # Use `run_sub!`, such that a failure to mark the order as paid isn't swallowed
+      run_sub! Operations::Shop::Order::ProcessPaid, order: order, gateway_name: osparams.gateway_name, payment_id: osparams.payment_id
     end
   end
 end
