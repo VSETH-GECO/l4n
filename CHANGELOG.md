@@ -1,5 +1,74 @@
 # Changelog
 
+## 1.11.0 - 2026-11-22
+
+### Added
+
+* Added the Payrexx payment gateway
+* Added error reporting to Sentry / GlitchTip via the Sentry SDK (production
+  only, enabled when `SENTRY_DSN` is set)
+* Added a `/healthz` health check endpoint
+* Menu links can now be placed in the footer as well as the top navigation
+* Added a `logo_url` setting to show a logo instead of the application name
+  in the top navigation
+* Footer logos can have a separate image for dark mode and can be SVGs
+* Paragraphs in markdown that only contain links are shown as buttons on
+  pages and in startpage content blocks. The markdown editor preview shows
+  them the same way
+* Added the styling variables `--l4n-card-border-color` and
+  `--l4n-heading-color`
+* Added post logout redirect URIs to OAuth applications
+* Added an rclone script to sync the storage folder to a backup location
+* Added a Docker dev container (`docker-compose.dev.yml`) and development
+  setup instructions
+
+### Changed
+
+* Updated Ruby to `3.4.13`, Rails to `8.1` and Node to `26`
+* Updated gem and npm dependencies, including puma 8, Turbo 8
+  (turbo-rails 2), datagrid 2, money-rails 3, active_storage_validations 4,
+  doorkeeper-openid_connect 2.1, gettext_i18n_rails 2.2, Font Awesome 7,
+  cropperjs 2, konva 10 and eslint 10
+* Redesigned the event page and the events list, with date tiles and
+  "Happening now" / "Today" / "Tomorrow" badges
+* Modernized the look of cards, the sidebar and the startpage
+* Markdown headings use the bold heading style
+* Only absolute custom menu links open in a new tab
+* Payrexx payments are verified more strictly, are only processed once,
+  and open Payrexx gateways are closed before an order expires or is
+  deleted. Payments that are still being confirmed are no longer lost
+* The SMTP settings `SMTP_AUTHENTICATION`, `SMTP_USERNAME`, `SMTP_PASSWORD`
+  and `SMTP_DOMAIN` are now optional
+* The Docker image now runs mostly as an unprivileged user and starts cron
+  via supervisord
+* `docker-compose.yml` now builds the image locally instead of pulling it
+
+### Removed
+
+* Removed the Seki payment gateway
+
+### Fixed
+
+* Fixed Active Record encryption
+* Fixed `ENABLE_EXCEPTION_NOTIFIER=false` being ignored
+* Fixed file attachments not being saved when creating records (uploads,
+  footer logos, achievements, products, startpage banners, tournaments)
+* Fixed event dates that ended earlier today still being shown as upcoming
+* Fixed blank styling variables overriding the theme defaults
+* Fixed the payment countdown timer
+* Fixed the seat map update failing
+* Fixed the `setup:user` task
+
+### Upgrading instructions
+
+* Run the database migrations (the Docker setup runs `db:prepare` on start)
+* Set the `PAYREXX_API_KEY` env var. The app refuses to boot without it
+* Optionally set `SENTRY_DSN` (and `SENTRY_TRACES_SAMPLE_RATE`, defaults to
+  `0.01`) to report errors to Sentry or GlitchTip
+* If you used the Seki payment gateway, switch to another gateway
+* `docker-compose.yml` now exposes the Postgres port `5432` on the host.
+  Remove this mapping if your database should not be reachable from outside
+
 ## 1.10.1 - 2024-10-15
 
 * Add white background arount ticket QR code in dark mode
