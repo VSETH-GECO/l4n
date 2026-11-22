@@ -60,6 +60,17 @@ module Unit
           assert_equal 1, fetch(:product).reload.inventory
         end
 
+        def test_keeps_order_while_a_payment_is_in_progress
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'waiting' })
+          stub_cancel_transaction(7, waiting: false)
+
+          ::Operations::Shop::Order::CleanupSingleOrder.run!(order: fetch(:order))
+
+          assert ::Order.exists?(fetch(:order).id)
+          assert_not_requested :delete, "#{GATEWAY_BASE_URL}42/"
+        end
+
         def test_cleanup_expired_handles_payrexx_orders
           stub_get_gateway(42, status: 'waiting')
           stub_delete_gateway(42)

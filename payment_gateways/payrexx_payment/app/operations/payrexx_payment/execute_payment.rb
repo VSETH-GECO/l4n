@@ -20,7 +20,14 @@ module PayrexxPayment
       gateway = fetch_gateway(order.payment_gateway_payment_id)
 
       fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Could not verify payment status') if gateway.nil?
-      fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Payment was not successful') unless payment_successful?(gateway, order)
+
+      unless payment_successful?(gateway, order)
+        # Payrexx can take a moment to confirm a payment (e.g. TWINT), during which
+        # its transaction is still waiting, or confirmed while the gateway isn't yet.
+        fail PayrexxPayment::PaymentPending, _('PayrexxPaymentGateway|Your payment is still being confirmed') if payment_in_progress?(order)
+
+        fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Payment was not successful')
+      end
 
       mark_as_paid(order)
 
@@ -51,6 +58,10 @@ module PayrexxPayment
       Rails.logger.error "Payrexx payment #{order.payment_gateway_payment_id} for order #{order.uuid} could not be processed: #{e.message}"
       Sentry.capture_exception(e)
       fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Your payment was received, but the order could not be completed. Please contact us.')
+    end
+
+    def payment_in_progress?(order)
+      fetch_transactions(order).any? { |transaction| [WAITING_STATUS, SUCCESSFUL_STATUS].include?(transaction['status']) }
     end
 
     # Returns true if the order has already been paid through Payrexx. Fails if it

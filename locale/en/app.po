@@ -2227,6 +2227,9 @@ msgstr "Paypal payment"
 msgid "PayrexxPaymentGateway"
 msgstr "Twint / Credit Card"
 
+msgid "PayrexxPaymentGateway|A payment for this order is still being processed, please try again in a moment"
+msgstr "A payment for this order is still being processed, please try again in a moment"
+
 msgid "PayrexxPaymentGateway|Cancel"
 msgstr "Cancel payment"
 
@@ -2274,6 +2277,15 @@ msgstr "Time left:"
 
 msgid "PayrexxPaymentGateway|Title"
 msgstr "Parexx payment gateway"
+
+msgid "PayrexxPaymentGateway|Your payment has not been confirmed yet. As soon as it is, your order will be marked as paid."
+msgstr "Your payment has not been confirmed yet. As soon as it is, your order will be marked as paid."
+
+msgid "PayrexxPaymentGateway|Your payment is being confirmed, this page refreshes automatically. Please do not pay again."
+msgstr "Your payment is being confirmed, this page refreshes automatically. Please do not pay again."
+
+msgid "PayrexxPaymentGateway|Your payment is still being confirmed"
+msgstr "Your payment is still being confirmed"
 
 msgid "PayrexxPaymentGateway|Your payment was received, but the order could not be completed. Please contact us."
 msgstr "Your payment was received, but the order could not be completed. Please contact us."

@@ -7,10 +7,14 @@ module PayrexxPayment
   GATEWAY_NAME = 'Payrexx Payment'.freeze
 
   # Called before an unpaid order is deleted. Deletes the order's Payrexx gateway,
-  # such that it can't be paid anymore. Returns true if the order turned out to
-  # be paid already, in which case it is now marked as paid and must not be deleted.
-  def self.before_order_cleanup(order) # rubocop:disable Naming/PredicateMethod
+  # such that it can't be paid anymore. Returns true if the order must not be
+  # deleted: either it turned out to be paid already (and is now marked as paid),
+  # or a payment for it is still in progress (we'll try again on the next cleanup).
+  def self.before_order_cleanup(order)
     PayrexxPayment::ReleaseGateway.run!(order: order).paid?
+  rescue PayrexxPayment::PaymentPending
+    Rails.logger.warn "Not cleaning up order #{order.uuid} yet, a Payrexx payment for it is still in progress"
+    true
   end
 
   # Called before the order is paid (or marked for a delayed payment) through any

@@ -49,6 +49,27 @@ module Unit
           assert_not_paid
         end
 
+        def test_waiting_transaction_means_payment_is_pending
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'waiting' })
+
+          assert_not_paid(error: ::PayrexxPayment::PaymentPending)
+        end
+
+        def test_confirmed_transaction_on_waiting_gateway_means_payment_is_pending
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'confirmed' })
+
+          assert_not_paid(error: ::PayrexxPayment::PaymentPending)
+        end
+
+        def test_cancelled_transaction_is_not_pending
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'cancelled' })
+
+          assert_not_paid
+        end
+
         def test_amount_mismatch_is_not_accepted
           stub_get_gateway(42, amount: ORDER_TOTAL_CENTS - 1)
 

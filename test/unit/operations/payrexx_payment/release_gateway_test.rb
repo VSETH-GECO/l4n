@@ -60,6 +60,87 @@ module Unit
 
           assert_not ::PayrexxPayment::ReleaseGateway.run!(order: fetch(:order)).paid?
         end
+
+        def test_waiting_transaction_is_cancelled_before_deleting_the_gateway
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'waiting' }, { id: 8, status: 'cancelled' })
+          cancel = stub_cancel_transaction(7)
+          delete = stub_delete_gateway(42)
+
+          assert_not release.paid?
+
+          assert_requested cancel
+          assert_not_requested :patch, "#{TRANSACTION_BASE_URL}8/cancel"
+          assert_requested delete
+        end
+
+        def test_transaction_paid_while_cancelling_marks_order_as_paid
+          # The transaction is confirmed just before we try to cancel it
+          stub_get_gateway(42, status: %w[waiting confirmed])
+          stub_transactions({ id: 7, status: 'waiting' })
+          stub_cancel_transaction(7, waiting: false)
+
+          assert_predicate release, :paid?
+
+          assert_not_requested :delete, "#{GATEWAY_BASE_URL}42/"
+          assert_predicate fetch(:order).reload, :paid?
+          assert_equal 8, fetch(:product).reload.inventory
+        end
+
+        def test_transaction_failed_while_cancelling_deletes_the_gateway
+          stub_get_gateway(42, status: 'waiting')
+          stub_request(:get, TRANSACTION_BASE_URL).with(query: hash_including(filterReference: fetch(:order).uuid))
+                                                  .to_return(transactions_response('waiting'), transactions_response('declined'))
+          stub_cancel_transaction(7, waiting: false)
+          delete = stub_delete_gateway(42)
+
+          assert_not release.paid?
+
+          assert_requested delete
+        end
+
+        def test_transaction_that_cannot_be_cancelled_keeps_the_gateway
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'waiting' })
+          stub_cancel_transaction(7, waiting: false)
+
+          assert_raises(::PayrexxPayment::PaymentPending) { release }
+
+          assert_not_requested :delete, "#{GATEWAY_BASE_URL}42/"
+          assert_not fetch(:order).reload.paid?
+        end
+
+        def test_confirmed_transaction_keeps_the_gateway_until_it_is_confirmed_too
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'confirmed' })
+
+          assert_raises(::PayrexxPayment::PaymentPending) { release }
+
+          assert_not_requested :patch, "#{TRANSACTION_BASE_URL}7/cancel"
+          assert_not_requested :delete, "#{GATEWAY_BASE_URL}42/"
+        end
+
+        def test_transactions_of_other_references_are_ignored
+          # `filterReference` also matches the purpose of other transactions
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'waiting', reference_id: 'other' }, { id: 8, status: 'confirmed', reference_id: 'other' })
+          delete = stub_delete_gateway(42)
+
+          assert_not release.paid?
+
+          assert_not_requested :patch, "#{TRANSACTION_BASE_URL}7/cancel"
+          assert_requested delete
+        end
+
+        private
+
+        def release
+          ::PayrexxPayment::ReleaseGateway.run!(order: fetch(:order))
+        end
+
+        def transactions_response(status)
+          { status: 200, body: { status: 'success', data: [{ id: 7, status: status, referenceId: fetch(:order).uuid }] }.to_json, headers: { 'Content-Type' => 'application/json' } }
+        end
       end
     end
   end

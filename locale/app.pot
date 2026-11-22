@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 18:27+0000\n"
-"PO-Revision-Date: 2026-11-22 18:27+0000\n"
+"POT-Creation-Date: 2026-11-22 18:39+0000\n"
+"PO-Revision-Date: 2026-11-22 18:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -2228,6 +2228,9 @@ msgstr ""
 msgid "PayrexxPaymentGateway"
 msgstr ""
 
+msgid "PayrexxPaymentGateway|A payment for this order is still being processed, please try again in a moment"
+msgstr ""
+
 msgid "PayrexxPaymentGateway|Cancel"
 msgstr ""
 
@@ -2274,6 +2277,15 @@ msgid "PayrexxPaymentGateway|Time left:"
 msgstr ""
 
 msgid "PayrexxPaymentGateway|Title"
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Your payment has not been confirmed yet. As soon as it is, your order will be marked as paid."
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Your payment is being confirmed, this page refreshes automatically. Please do not pay again."
+msgstr ""
+
+msgid "PayrexxPaymentGateway|Your payment is still being confirmed"
 msgstr ""
 
 msgid "PayrexxPaymentGateway|Your payment was received, but the order could not be completed. Please contact us."

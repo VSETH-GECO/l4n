@@ -1,5 +1,9 @@
 module PayrexxPayment
   class PaymentController < ApplicationController
+    # Wait up to about a minute for a pending payment to be confirmed
+    MAX_PENDING_ATTEMPTS = 20
+    PENDING_RETRY_DELAY = 3 # seconds
+
     def index
       run Operations::PaymentGateway::GetPaymentInfo
     rescue Operations::PaymentGateway::InvalidOrder => e
@@ -39,6 +43,7 @@ module PayrexxPayment
         redirect_to op.gateway_url, allow_other_host: true
       end
     rescue Operations::PaymentGateway::InvalidOrder, PayrexxPayment::ExecutionFailed => e
+      # Also handles PaymentPending, if a previous payment for the order is still in progress
       flash[:danger] = e.message
       redirect_to main_app.shop_cart_path
     end
@@ -51,6 +56,8 @@ module PayrexxPayment
         flash[:danger] = _('PayrexxPaymentGateway|Payment could not be verified')
         redirect_to main_app.shop_cart_path
       end
+    rescue PayrexxPayment::PaymentPending
+      payment_pending
     rescue PayrexxPayment::ExecutionFailed => e
       flash[:danger] = e.message
       redirect_to main_app.shop_cart_path
@@ -59,6 +66,25 @@ module PayrexxPayment
     def failure
       flash[:danger] = _('PayrexxPaymentGateway|Payment was cancelled or failed')
       redirect_to main_app.shop_cart_path
+    end
+
+    private
+
+    # Shows a page that reloads the success URL every few seconds, until the
+    # payment is confirmed or we give up.
+    def payment_pending
+      @attempt = params[:attempt].to_i + 1
+
+      if @attempt <= MAX_PENDING_ATTEMPTS
+        @retry_path = success_payment_path(order_id: params[:order_id], attempt: @attempt)
+        @retry_delay = PENDING_RETRY_DELAY
+        render :pending
+      else
+        # The order is marked as paid once Payrexx confirms the payment, at the
+        # latest when the order would be cleaned up.
+        flash[:warning] = _('PayrexxPaymentGateway|Your payment has not been confirmed yet. As soon as it is, your order will be marked as paid.')
+        redirect_to main_app.shop_orders_path
+      end
     end
   end
 end

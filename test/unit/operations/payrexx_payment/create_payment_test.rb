@@ -57,6 +57,19 @@ module Unit
           assert_equal '43', fetch(:order).reload.payment_gateway_payment_id
         end
 
+        def test_previous_payment_still_in_progress
+          setup_payrexx_order
+          stub_get_gateway(42, status: 'waiting')
+          stub_transactions({ id: 7, status: 'confirmed' })
+
+          assert_raises(::PayrexxPayment::PaymentPending) do
+            ::PayrexxPayment::CreatePayment.run!(order_id: fetch(:order).uuid)
+          end
+
+          assert_not_requested :post, GATEWAY_BASE_URL
+          assert_equal '42', fetch(:order).reload.payment_gateway_payment_id
+        end
+
         def test_previous_gateway_already_paid
           setup_payrexx_order
           stub_get_gateway(42)
