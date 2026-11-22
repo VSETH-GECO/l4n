@@ -1,7 +1,7 @@
 - content_for :page_title do
   = _('SekiPaymentGateway|Title')
 
-.alert.alert-warning.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
+.alert.alert-warning.countdown{ data: { seconds_left: [(op.result[:valid_until] - Time.zone.now).to_i, 0].max, redirect: main_app.shop_cart_url } }
   = _('SekiPaymentGateway|Time left:')
   %span#time-left= _('SekiPaymentGateway|Countdown loading...')
 
