@@ -28,7 +28,7 @@ yarn run eslint app/javascript
 bundle exec rake translate:run
 ```
 
-You can also develop in Docker without a local Ruby or Postgres. `docker compose -f docker-compose.dev.yml up --build` uses `docker/dev/` and bind-mounts the repo; on startup it runs bundle and yarn installs and `db:prepare` for dev and test, then `bin/dev`. Run commands inside it with `docker compose -f docker-compose.dev.yml exec app <cmd>`. (`docker-compose.yml` and `/Dockerfile` are for production only.)
+You can also develop in Docker without a local Ruby or Postgres. `docker compose -f docker-compose.dev.yml up --build` uses `docker/dev/` and bind-mounts the repo; on startup it runs bundle and yarn installs and `db:prepare` for dev and test, then `bin/dev`. Run commands inside it with `docker compose -f docker-compose.dev.yml exec app <cmd>`. If you set `DEV_IDLE=1` in `.env`, the app container does the setup but then idles instead of running `bin/dev`. You then start (and restart) the app on demand with `docker compose -f docker-compose.dev.yml exec app bin/dev`, without restarting the containers. (`docker-compose.yml` and `/Dockerfile` are for production only.)
 
 Local development needs a `.env` file. Nothing loads it automatically: Figaro reads ENV, and the dev compose file passes `.env` in through `env_file`. See the README for the minimum set of variables and `DEVELOPMENT.md` for the full list.
 

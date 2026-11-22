@@ -1,6 +1,9 @@
 # Local development environment. Usage:
 #   docker compose -f docker-compose.dev.yml up --build
 #   docker compose -f docker-compose.dev.yml exec app bin/rails test
+# Set DEV_IDLE=1 in .env to start the app container without the app, then run
+# (and restart) it on demand with:
+#   docker compose -f docker-compose.dev.yml exec app bin/dev
 # The app is served on https://localhost:3000 (self-signed certificate).
 name: l4n-dev
 
@@ -40,6 +43,9 @@ services:
         condition: service_healthy
     tty: true
     stdin_open: true
+    # Forwards signals and reaps processes, so `sleep infinity` (DEV_IDLE) and
+    # foreman stop promptly
+    init: true
 
 volumes:
   db-data:
