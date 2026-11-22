@@ -27,13 +27,20 @@ module PayrexxPayment
     end
 
     def complete_payment
-      if run PayrexxPayment::CreatePayment
-        # Redirect to the Payrexx gateway URL
-        redirect_to op.gateway_url, allow_other_host: true
-      else
+      if !run(PayrexxPayment::CreatePayment)
         flash[:danger] = _('PayrexxPaymentGateway|Something went wrong, please try again')
         redirect_to main_app.shop_cart_path
+      elsif op.already_paid
+        # A previously started payment for this order has been paid in the meantime
+        flash[:success] = _('Order|Successfully paid for the order')
+        redirect_to main_app.shop_order_path(id: params[:order_id])
+      else
+        # Redirect to the Payrexx gateway URL
+        redirect_to op.gateway_url, allow_other_host: true
       end
+    rescue Operations::PaymentGateway::InvalidOrder, PayrexxPayment::ExecutionFailed => e
+      flash[:danger] = e.message
+      redirect_to main_app.shop_cart_path
     end
 
     def success

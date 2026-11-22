@@ -11,8 +11,13 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'webmock/minitest'
 require 'pry-byebug'
 require_relative 'test_data_factory'
+
+# Tests must never talk to external services. Localhost stays allowed for the
+# system tests, which drive a browser through a local webdriver.
+WebMock.disable_net_connect!(allow_localhost: true)
 
 class ApplicationTest < ActiveSupport::TestCase
   include ::TestDataFactory

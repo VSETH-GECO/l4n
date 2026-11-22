@@ -77,6 +77,4 @@ module Operations::PaymentGateway
       @result[:total] = total
     end
   end
-
-  class InvalidOrder < StandardError; end
 end

@@ -6,16 +6,26 @@ module PayrexxPayment
 
     attr_accessor :payment_id
     attr_accessor :gateway_url
+    attr_accessor :already_paid
 
     def perform
       order_data = Operations::PaymentGateway::GetPaymentInfo.run!(order_id: osparams.order_id).result
+      order = ::Order.find_by!(uuid: osparams.order_id)
 
-      create_payment_gateway(order_data)
+      # If the user already started a payment for this order (e.g. went back from
+      # the Payrexx page and clicked "Pay now" again), the previous gateway must not
+      # stay payable. If it has been paid already, the order is now marked as paid.
+      if run_sub!(PayrexxPayment::ReleaseGateway, order: order).paid?
+        @already_paid = true
+        return
+      end
+
+      create_payment_gateway(order_data, order)
     end
 
     private
 
-    def create_payment_gateway(order_data)
+    def create_payment_gateway(order_data, order)
       # Payrexx expects the amount as an integer in cents. Use Money#cents directly,
       # converting through a float truncates (e.g. 19.99 * 100 => 1998).
       total = order_data[:total]
@@ -34,7 +44,7 @@ module PayrexxPayment
         pm:                 %w[TWINT], # Payment methods
         referenceId:        osparams.order_id,
         skipResultPage:     false,
-        validity:           30 # 30 minutes validity
+        validity:           validity_in_minutes(order_data[:valid_until])
       }
 
       # Add purpose/description
@@ -59,10 +69,24 @@ module PayrexxPayment
 
       fail "Gateway creation failed: #{response_data['message'] || 'Unknown error'}" unless response_data['status'] == 'success' && response_data['data']
 
-      ::Order.find_by(uuid: osparams.order_id).update!(payment_gateway_payment_id: response_data['data'][0]['id'])
+      order.update!(
+        payment_gateway_name:       PayrexxPayment::GATEWAY_NAME,
+        payment_gateway_payment_id: response_data['data'][0]['id']
+      )
 
       @payment_id = response_data['data'][0]['id']
       @gateway_url = response_data['data'][0]['link']
+    end
+
+    # The gateway must expire before the order does, otherwise the user could
+    # still pay after the order has been cleaned up. `valid_until` already
+    # contains some padding before the order actually expires.
+    def validity_in_minutes(valid_until)
+      minutes = ((valid_until - Time.zone.now) / 1.minute).floor
+
+      fail Operations::PaymentGateway::InvalidOrder, _('Checkout|Order expired') if minutes < 1
+
+      minutes
     end
 
     def base_url

@@ -116,6 +116,7 @@ end
 group :test do
   gem 'faker', '~> 3.8'
   gem 'simplecov', '~> 1.3', require: false
+  gem 'webmock', '~> 3.38', require: false
 end
 
 # Payment gateways
