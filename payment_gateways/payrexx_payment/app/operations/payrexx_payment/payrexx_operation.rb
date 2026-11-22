@@ -27,11 +27,15 @@ module PayrexxPayment
     end
 
     def api_base_url
-      'https://api.payrexx.com/v1.0'
+      'https://api.payrexx.com/v1.19'
     end
 
-    def gateway_url
+    def gateways_endpoint
       "#{api_base_url}/Gateway/?instance=#{payrexx_instance}"
+    end
+
+    def gateway_endpoint(gateway_id)
+      "#{api_base_url}/Gateway/#{gateway_id}/?instance=#{payrexx_instance}"
     end
 
     def common_headers

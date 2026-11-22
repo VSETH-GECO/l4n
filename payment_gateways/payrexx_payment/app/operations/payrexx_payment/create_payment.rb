@@ -16,8 +16,9 @@ module PayrexxPayment
     private
 
     def create_payment_gateway(order_data)
-      # Calculate total amount in cents (Payrexx expects amount in cents)
-      total_amount = (order_data[:total].to_f * 100).to_i
+      # Payrexx expects the amount as an integer in cents. Use Money#cents directly,
+      # converting through a float truncates (e.g. 19.99 * 100 => 1998).
+      total = order_data[:total]
 
       # Prepare success, failure, and cancel URLs
       success_url = "#{base_url}/success?order_id=#{osparams.order_id}"
@@ -25,8 +26,8 @@ module PayrexxPayment
       cancel_url = "#{base_url}/cancel?order_id=#{osparams.order_id}"
 
       body = {
-        amount:             total_amount,
-        currency:           order_data[:currency] || 'CHF',
+        amount:             total.cents,
+        currency:           total.currency.iso_code,
         successRedirectUrl: success_url,
         failedRedirectUrl:  failure_url,
         cancelRedirectUrl:  cancel_url,
@@ -43,7 +44,7 @@ module PayrexxPayment
       end
 
       response = HTTParty.post(
-        payment_url,
+        gateways_endpoint,
         body:    body,
         headers: {
           'accept'       => 'application/json',
@@ -64,10 +65,6 @@ module PayrexxPayment
       @gateway_url = response_data['data'][0]['link']
     end
 
-    def payment_url
-      "https://api.payrexx.com/v1.0/Gateway/?instance=#{payrexx_instance}"
-    end
-
     def base_url
       # This should be the base URL of your application
       # You might need to configure this in your Rails app
@@ -76,14 +73,6 @@ module PayrexxPayment
       else
         "#{Rails.application.config.force_ssl ? 'https' : 'http'}://#{Rails.application.config.action_mailer.default_url_options[:host]}/paymentgateway/payrexx"
       end
-    end
-
-    def api_key
-      Figaro.env.payrexx_api_key!
-    end
-
-    def payrexx_instance
-      Rails.env.development? ? 'vseth' : PAYREXX_INSTANCE
     end
   end
 end
