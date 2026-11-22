@@ -47,6 +47,12 @@ For the exception notification:
 If you want to add more than one recipient, you can pass in a string where the recipients
 are delimited by a semicolon `;`, e.g. `"foo@example.com; bar@example.com`
 
+For error tracking with Sentry or a Sentry-compatible server such as GlitchTip
+(only active in production, and only if `SENTRY_DSN` is set):
+
+* `SENTRY_DSN` (optional)
+* `SENTRY_TRACES_SAMPLE_RATE` (optional, defaults to `0.01`, i.e. 1% of transactions)
+
 For the devise mailer
 
 * `DEVISE_MAIL_SENDER` (optional)

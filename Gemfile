@@ -81,6 +81,8 @@ gem 'omniauth-steam', '~> 1.0'
 
 # Notifications
 gem 'exception_notification', '~> 5.0'
+gem 'sentry-rails', '~> 7.3'
+gem 'sentry-ruby', '~> 7.3'
 
 # Development gems
 group :development do
