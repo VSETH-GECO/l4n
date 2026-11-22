@@ -6,14 +6,14 @@
     - more_dates_count = event.future_dates.count - 1
     .card.mb-3
       .card-body
-        .event-key-facts
+        .event-key-facts.event-key-date
           = render 'shared/date_tile', date: next_date.start_date, classes: 'date-tile-lg'
           %div
             %h2.event-list-title.with-badge
               = link_to event.title, event_path(event)
               - if (badge = event_date_badge(next_date))
                 %span.badge.event-badge= badge
-            .event-key-facts-meta
+            .event-key-date-meta
               %span
                 = icon %i[far fa-calendar]
                 = event_date_days(next_date)

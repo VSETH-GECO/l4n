@@ -1,18 +1,22 @@
-// Next date with date tile, times and location
+// Next date and further upcoming dates, see events/_key_date
 .event-key-facts
-  display: flex
-  align-items: center
-  gap: 1rem
   padding-bottom: 1.25rem
   margin-bottom: 1.25rem
   border-bottom: 1px solid var(--l4n-card-border-color)
 
-.event-key-facts-days
+.event-key-date
+  display: flex
+  align-items: center
+  gap: 1rem
+  > div
+    min-width: 0
+
+.event-key-date-days
   color: var(--l4n-heading-color)
   font-size: 1.15rem
   font-weight: 600
 
-.event-key-facts-meta
+.event-key-date-meta
   display: flex
   flex-wrap: wrap
   column-gap: 1.25rem
@@ -21,6 +25,42 @@
   color: var(--bs-secondary-color)
   .svg-inline--fa
     margin-right: 0.35rem
+
+// Further upcoming dates use the same layout, but smaller
+.event-key-date.event-key-date-sm
+  gap: 0.6rem
+  .date-tile
+    width: 2.6rem
+    padding: 0.25rem 0
+  .date-tile-day
+    font-size: 1rem
+  .date-tile-month
+    font-size: 0.6rem
+  .event-key-date-days
+    font-size: 0.9rem
+  .event-key-date-meta
+    flex-direction: column
+    row-gap: 0
+    margin-top: 0.1rem
+    font-size: 0.8rem
+    .svg-inline--fa
+      margin-right: 0.3rem
+
+.event-upcoming-dates
+  margin-top: 1.25rem
+
+.event-upcoming-dates-title
+  color: var(--bs-secondary-color)
+  font-size: 0.75rem
+  font-weight: 600
+  letter-spacing: 0.04em
+  text-transform: uppercase
+  margin-bottom: 0.5rem
+
+.event-upcoming-dates-grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr))
+  gap: 0.75rem 1.25rem
 
 // Container for text followed by a badge. The gap only applies between items
 // on the same line, so a wrapped badge has no margin on the left.
@@ -39,13 +79,7 @@
   letter-spacing: 0.04em
   text-transform: uppercase
 
-// List of further dates
-.event-dates-title
-  color: var(--l4n-heading-color)
-  font-size: 1rem
-  font-weight: 600
-  margin-bottom: 0.75rem
-
+// List of past dates
 .event-date-list
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr))
@@ -80,8 +114,6 @@
   .event-date-list
     margin-top: 0.75rem
     opacity: 0.6
-  &:not(:first-child)
-    margin-top: 1.25rem
 
 .card .card-footer.event-dates
   border-top: 1px solid var(--l4n-card-border-color)

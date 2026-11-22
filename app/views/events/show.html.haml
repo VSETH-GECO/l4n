@@ -19,34 +19,23 @@
     -# still be possible to display the event when the direct link is used.
     - if next_date.present?
       .event-key-facts
-        = render 'shared/date_tile', date: next_date.start_date, classes: 'date-tile-lg'
-        %div
-          .event-key-facts-days.with-badge
-            = event_date_days(next_date)
-            - if (badge = event_date_badge(next_date))
-              %span.badge.event-badge= badge
-          .event-key-facts-meta
-            %span
-              = icon %i[far fa-clock]
-              = event_date_times(next_date)
-            - if next_date.location.present?
-              %span
-                = icon %i[fas fa-location-dot]
-                = next_date.location
+        = render 'events/key_date', event_date: next_date
+
+        - if upcoming_dates.any?
+          .event-upcoming-dates
+            .event-upcoming-dates-title= _('Event|More dates')
+            .event-upcoming-dates-grid
+              - upcoming_dates.each do |event_date|
+                = render 'events/key_date', event_date: event_date, small: true
     - else
       .event-key-facts
         .text-muted= _('Event|This event is over')
 
     = markdown(model.description)
 
-  - if upcoming_dates.any? || past_dates.any?
+  - if past_dates.any?
     .card-footer.event-dates
-      - if upcoming_dates.any?
-        %h2.event-dates-title= _('Event|More dates')
-        = render 'events/date_list', dates: upcoming_dates
-
-      - if past_dates.any?
-        -# For events that are over, these are the only dates, so they are shown right away
-        %details.event-past-dates{ open: next_date.nil? }
-          %summary= _('Event|Show past dates (%{count})') % { count: past_dates.count }
-          = render 'events/date_list', dates: past_dates.reverse
+      -# For events that are over, these are the only dates, so they are shown right away
+      %details.event-past-dates{ open: next_date.nil? }
+        %summary= _('Event|Show past dates (%{count})') % { count: past_dates.count }
+        = render 'events/date_list', dates: past_dates.reverse

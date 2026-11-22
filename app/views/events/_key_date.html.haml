@@ -1,0 +1,18 @@
+-# A date with date tile, times and location. The next date of an event is
+-# shown large, further upcoming dates use the same layout but smaller.
+- small = local_assigns.fetch(:small, false)
+.event-key-date{ class: ('event-key-date-sm' if small) }
+  = render 'shared/date_tile', date: event_date.start_date, classes: ('date-tile-lg' unless small)
+  %div
+    .event-key-date-days.with-badge
+      = event_date_days(event_date)
+      - if (badge = event_date_badge(event_date))
+        %span.badge.event-badge{ class: ('event-badge-sm' if small) }= badge
+    .event-key-date-meta
+      %span
+        = icon %i[far fa-clock]
+        = event_date_times(event_date)
+      - if event_date.location.present?
+        %span
+          = icon %i[fas fa-location-dot]
+          = event_date.location
