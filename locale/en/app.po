@@ -2254,9 +2254,6 @@ msgstr "Pay with Twint / Credit Card"
 msgid "PayrexxPaymentGateway|Pay now"
 msgstr "Pay now"
 
-msgid "PayrexxPaymentGateway|Payment could not be verified"
-msgstr "Payment could not be verified"
-
 msgid "PayrexxPaymentGateway|Payment details"
 msgstr "Payment details"
 

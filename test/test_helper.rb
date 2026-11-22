@@ -9,6 +9,9 @@ SimpleCov.start 'rails' do
 end
 
 ENV['RAILS_ENV'] ||= 'test'
+
+# Required at boot, the actual API is stubbed with WebMock in the tests
+ENV['PAYREXX_API_KEY'] ||= 'test-payrexx-api-key'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'

@@ -4,14 +4,14 @@ module PayrexxPayment
       str! :order_id
     end
 
-    def perform # rubocop:disable Naming/PredicateMethod
+    def perform
       order = ::Order.find_by(uuid: osparams.order_id)
 
       fail PayrexxPayment::ExecutionFailed, _('Checkout|The given order was not found') if order.nil?
 
       # The success URL can be hit multiple times (reload, back button), an order
       # that is already paid must not be processed again.
-      return true if paid_through_payrexx?(order)
+      return if paid_through_payrexx?(order)
 
       fail PayrexxPayment::ExecutionFailed, _('PayrexxPaymentGateway|Could not verify payment status') if order.payment_gateway_payment_id.blank?
 
@@ -30,8 +30,6 @@ module PayrexxPayment
       end
 
       mark_as_paid(order)
-
-      true
     end
 
     private

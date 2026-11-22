@@ -786,7 +786,6 @@
     "PayrexxPaymentGateway|Order details": "Order",
     "PayrexxPaymentGateway|Pay": "Pay with Twint / Credit Card",
     "PayrexxPaymentGateway|Pay now": "Pay now",
-    "PayrexxPaymentGateway|Payment could not be verified": "Payment could not be verified",
     "PayrexxPaymentGateway|Payment details": "Payment details",
     "PayrexxPaymentGateway|Payment was cancelled or failed": "Payment was cancelled or failed",
     "PayrexxPaymentGateway|Payment was not successful": "Payment was not successful",

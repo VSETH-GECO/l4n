@@ -4,7 +4,6 @@ module PayrexxPayment
       str! :order_id
     end
 
-    attr_accessor :payment_id
     attr_accessor :gateway_url
     attr_accessor :already_paid
 
@@ -72,7 +71,6 @@ module PayrexxPayment
         payment_gateway_payment_id: response_data['data'][0]['id']
       )
 
-      @payment_id = response_data['data'][0]['id']
       @gateway_url = response_data['data'][0]['link']
     end
 
