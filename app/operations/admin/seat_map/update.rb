@@ -15,10 +15,8 @@ module Operations::Admin::SeatMap
 
     private
 
-    def build_model
-      @model = LanParty.find(osparams.lan_party_id).seat_map
-      build_nested_model_ops :update
-      assign_attributes
+    def find_model
+      LanParty.find(osparams.lan_party_id).seat_map
     end
   end
 end
