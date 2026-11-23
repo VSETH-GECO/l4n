@@ -6,4 +6,12 @@ then
   gem install foreman
 fi
 
-foreman start -f Procfile.dev "$@"
+# Foreman doesn't connect stdin to the processes it runs, so debuggers like
+# binding.irb can't be used under it. Run only the asset watchers through
+# foreman (in the background) and the Rails server in the foreground, where it
+# owns the terminal.
+foreman start -f Procfile.dev &
+foreman_pid=$!
+trap 'kill -TERM "$foreman_pid" 2> /dev/null; wait "$foreman_pid" 2> /dev/null' EXIT
+
+bin/rails server -b 'ssl://0.0.0.0:3000' "$@"

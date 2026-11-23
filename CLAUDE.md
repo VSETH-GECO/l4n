@@ -10,7 +10,7 @@ L4N is a Rails 7.2 CMS for running LAN parties: ticketing with a QR check-in sca
 
 ```bash
 bundle install && yarn                  # install dependencies
-bin/dev                                 # dev server (Procfile.dev): rails s over ssl://0.0.0.0:3000 + sass + esbuild watchers
+bin/dev                                 # dev server: rails s over ssl://0.0.0.0:3000 in the foreground (so binding.irb works) + sass/esbuild watchers from Procfile.dev
 bundle exec rake db:create db:migrate   # DB setup (config/database.yml: user `rails`, dbs `l4n` / `l4n_test`)
 bundle exec rake setup:user             # create the first user, with permission to edit users
 
