@@ -83,15 +83,15 @@ jobs:
           private-key: ${{ secrets.GECO_DEPLOYMENT_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: |
-            l4n-deploy
+            website-k8s
 
       - run: echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
 
-      - name: Update deployment repo
+      - name: Update gitops repo
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ steps.app-token.outputs.token }}
-          repository: VSETH-GECO/l4n-deploy
+          repository: VSETH-GECO/website-k8s
           event-type: l4n
           client-payload: |
             {
